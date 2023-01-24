@@ -1,3 +1,16 @@
-site_name: AR-Biosphere Docs
+site_name: AR-Biosphere 🦆️
+theme:
+    name: material
+    features::
+      - search.suggest
+      - search.highlight
+      - content.tabs.link
+plugins:
+  - search
+nav: 
+    - Project Requirements: "index.md"
+    - Software Design: "pages/software.md"
+    - Project Management: "pages/management.md"
+    - Teamwork: "pages/teamwork.mc"
 docs_dir: ./docblueprint
 site_dir: ./docs
