@@ -1,0 +1,5 @@
+#To install requirements: pip3 install -r requirements.txt
+
+# mkdocs -----------------------------------------------
+mkdocs
+mkdocs-material
