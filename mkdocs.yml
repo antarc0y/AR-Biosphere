@@ -11,6 +11,10 @@ theme:
       - search.suggest
       - search.highlight
       - content.tabs.link
+    palette:
+      scheme: slate
+      primary: light blue
+
 plugins:
   - search
 nav: 
