@@ -59,8 +59,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 
 | **Preferred**   | **Manageable**  |
 | --------------- | --------------- |
-| Raunak Agarwal  | Raunak Agarwal  |
-|                 | Juyi Han        |
+| Raunak Agarwal  | Juyi Han        |
 |                 | Kevin Sha       |
 
 #### IMP (Implementer)
