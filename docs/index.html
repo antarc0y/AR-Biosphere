@@ -12,12 +12,12 @@
       
         <link rel="next" href="pages/software/">
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="images/logo.jpg">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
     
     
       
-        <title>AR-Biosphere 🦆️🌎</title>
+        <title>AR-Biosphere 🦆</title>
       
     
     
@@ -40,6 +40,8 @@
       
     
     
+      <link rel="stylesheet" href="css/logo.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -55,7 +57,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="">
   
     
     
@@ -79,10 +81,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="AR-Biosphere 🦆️🌎" class="md-header__button md-logo" aria-label="AR-Biosphere 🦆️🌎" data-md-component="logo">
+    <a href="." title="AR-Biosphere 🦆" class="md-header__button md-logo" aria-label="AR-Biosphere 🦆" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="images/logo.jpg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -92,7 +93,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            AR-Biosphere 🦆️🌎
+            AR-Biosphere 🦆
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -165,13 +166,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="AR-Biosphere 🦆️🌎" class="md-nav__button md-logo" aria-label="AR-Biosphere 🦆️🌎" data-md-component="logo">
+    <a href="." title="AR-Biosphere 🦆" class="md-nav__button md-logo" aria-label="AR-Biosphere 🦆" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="images/logo.jpg" alt="logo">
 
     </a>
-    AR-Biosphere 🦆️🌎
+    AR-Biosphere 🦆
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -426,122 +426,124 @@
 <tr>
 <td>US 01.01</td>
 <td>As a User, I want to see a home screen that welcomes me to the app and has a link to the company's website, so I can gain more insights.</td>
-<td>1</td>
-<td><li> Access to web browser enabled </li></td>
+<td>3</td>
+<td><li> User can see the homescreen and can interact with its links. </li></td>
 <td>Must</td>
 </tr>
 <tr>
 <td>US 01.02</td>
 <td>As a User, I want the system to identify my location, so that I can share it with the app.</td>
 <td>3</td>
-<td><li> Location sharing is enabled </li></td>
+<td><li> User's location is identified. </li></td>
 <td>Must</td>
 </tr>
 <tr>
 <td>US 01.03</td>
 <td>As a user, I want to be able to enter my location manually or change it, if it is incorrect.</td>
 <td>3</td>
-<td><li>Location sharing is enabled </li></td>
+<td><li> User's location information is changed to the new manually selected one. </li></td>
 <td>Must</td>
 </tr>
 <tr>
 <td>US 01.04</td>
 <td>As a user, I want to be able to select a surface that I’m pointing at from a drop down menu, to optimize the AR experience</td>
 <td>2</td>
-<td><li> Location sharing is Enabled </li></td>
+<td><li> User's selected surface is correctly marked as the AR objects's spawn location. </li></td>
 <td>Must</td>
 </tr>
 <tr>
 <td>US 01.05</td>
 <td>As a User, I want the app to access my camera, so that it can display Augmented objects.</td>
 <td>2</td>
-<td><li>Camera Access is enabled</li></td>
+<td><li> User's Camera is opened.</li></td>
 <td>Must</td>
 </tr>
 <tr>
 <td>US 01.06</td>
 <td>As an admin, I want to be able to add more 3D models, to increase user engagement.</td>
 <td>2</td>
-<td><li> Functional Admin Panel </li></td>
+<td><li> New models and their info are added to the DB. </li></td>
 <td>Must</td>
 </tr>
 <tr>
 <td>US 02.01</td>
 <td>As a user, I want to be able to view augmented objects on my screen, so that I can interact with them.</td>
 <td>5</td>
-<td><li>User has the camera access enabled.</li> <li>User is pointing the camera towards a surface</li></td>
+<td><li> User can see appropriately placed AR objects.</td>
 <td>Must</td>
 </tr>
 <tr>
 <td>US 02.02</td>
 <td>As a user, I want to be able to view a brief description about the ecosystem I’m looking at, so that I know what to expect.</td>
 <td>3</td>
-<td><li>Ecosystem has been selected by the user. </li></td>
+<td><li> User can see information about the ecosystem in a new activity. </li></td>
 <td>Should</td>
 </tr>
 <tr>
 <td>US 02.03.01</td>
 <td>As a user, I want to be able to click on an augmented object, so that I can learn information about it.</td>
 <td>3</td>
-<td><li> User is viewing an augmented object through their camera </li></td>
+<td><li> User is viewing an augmented object through their camera. </li></td>
 <td>Must</td>
 </tr>
 <tr>
 <td>US 02.03.02</td>
 <td>As a user, I want to be able to navigate to external links for each object, so that I can gather more information.</td>
 <td>3</td>
-<td><li>Object information is already visible. </li></td>
+<td><li>From the popup information screen, user can click on a link to go to an external site where they learn more about the object. </li></td>
 <td>Should</td>
 </tr>
 <tr>
 <td>US 02.03.03</td>
 <td>As a user, I want to be able to exit out of external information tabs, so that I can view other Augmented objects.</td>
 <td>3</td>
-<td><li>User is currently viewing the information </li></td>
+<td><li>From the external information screen, user can click on exit/back button and be back to the camera screen. </li></td>
 <td>Should</td>
 </tr>
 <tr>
 <td>US 03.01</td>
 <td>As a user, I want to create an account, so I can save my progress and interaction information on the app</td>
 <td>5</td>
-<td><li>User has a valid email.</li> <li> User confirms their password. </li></td>
+<td><li>User can select "Forgot Password" on the login screen.</li> <li> User can enter their email and receive a reset link. </li> <li> User can log in with their new password.</li></td>
 <td>Could</td>
 </tr>
 <tr>
 <td>US 03.02</td>
 <td>As a user, I want to login to my account, to get a personalized experience.</td>
 <td>5</td>
-<td><li>User has verified their account</li></td>
+<td><li>User opens the app and can see a login screen.</li> <li> User can enter their credentials and log in to their account.</li> <li> User can choose "Forgot Password" to recover their account.</li></td>
 <td>Could</td>
 </tr>
 <tr>
 <td>US 03.03</td>
-<td>As a user, I want to be able to save object information in my records, so that I can read about it late.</td>
+<td>As a user, I want to be able to save object information in my records, so that I can read about it later.</td>
 <td>5</td>
-<td><li>User is logged into their account </li></td>
+<td><li>User can select an object.</li> <li> User can choose to save selected object.</li> <li> User can see a list of saved objects.</li></td>
 <td>Could</td>
 </tr>
 <tr>
 <td>US 04.01</td>
 <td>As a user, I want to be able to identify a species (eg. A real life plant) through the app, so that I can recognize new species.</td>
 <td>8</td>
-<td><li> Camera access is enabled.</li> <li> The user can capture a good quality picture of the object</li></td>
+<td><li> User can point camera at a species.</li> <li> User can see information on possible matches for that species. </li></td>
 <td>Would like, but won't get</td>
 </tr>
 <tr>
 <td>US 04.02</td>
 <td>As a user, I want to be able to share my findings with others, so that I can help others find those objects/species.</td>
 <td>8</td>
-<td><li> User is logged in.</li> <li> Used has the object saved. </li></td>
+<td><li> User can press share and select other users.</li> <li> Other users can receive and see the object and its information. </li></td>
 <td>Would like but won't get</td>
 </tr>
 </tbody>
 </table>
 <h2 id="similar-products">Similar Products</h2>
 <ul>
-<li><a href="https://play.google.com/store/apps/details?id=com.google.ar.unity.ddelements">ARCore Elements</a>: </li>
+<li><a href="https://play.google.com/store/apps/details?id=com.google.ar.unity.ddelements">ARCore Elements</a>: <ul>
 <li>Demo app by Google using ARCore platform. </li>
 <li>Has tips for User Movement, User Interface and Object Movement.</li>
+</ul>
+</li>
 </ul>
 <h2 id="open-source-products">Open Source Products</h2>
 <ul>
@@ -550,20 +552,15 @@
 </ul>
 <h2 id="technical-resources">Technical Resources</h2>
 <ul>
-<li>
-<p>AR Engine: <a href="https://unity.com/">Unity</a></p>
-</li>
-<li>
-<p><a href="https://docs.unity3d.com/2019.3/Documentation/Manual/UnityasaLibrary.html">Unity as a library in other applications</a></p>
-</li>
+<li>AR Engine: <a href="https://unity.com/">Unity</a><ul>
+<li><a href="https://docs.unity3d.com/2019.3/Documentation/Manual/UnityasaLibrary.html">Unity as a library in other applications</a></li>
 <li>Platform: <a href="https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.0/manual/index.html">AR Foundation</a>
-    Created by Unity, has support for ARCore by Google and ARKit by Apple.</li>
-<li><a href="https://unity.com/products/unity-mars">Unity Mars</a><ul>
-<li>Integrates with AR Foundation to build apps </li>
-</ul>
-</li>
+Created by Unity, has support for ARCore by Google and ARKit by Apple.</li>
+<li><a href="https://unity.com/products/unity-mars">Unity Mars</a>: Integrates with AR Foundation to build apps </li>
 <li><a href="ttps://developers.google.com/ar/develop/unity-arf/getting-started-ar-foundation">Google's guide on getting started with AR Foundation</a></li>
 <li><a href="https://codelabs.developers.google.com/arcore-unity-ar-foundation#0">Create an AR game using Unity's AR Foundation</a></li>
+</ul>
+</li>
 <li><a href="https://github.com/viromedia">ViroReact</a>: Integrate directly with React Native. No longer in development</li>
 <li>Other resources: TBD</li>
 </ul>

@@ -1,6 +1,8 @@
-site_name: AR-Biosphere 🦆️🌎
+site_name: AR-Biosphere 🦆 
 theme:
     name: material
+    logo: 'images/logo.jpg'
+    favicon: 'images/logo.jpg'
     highlightjs: true
     hljs_languages:
         - yaml
@@ -9,6 +11,10 @@ theme:
       - search.suggest
       - search.highlight
       - content.tabs.link
+    palette:
+      scheme: default
+      primary: light blue
+
 plugins:
   - search
 nav: 
@@ -18,3 +24,5 @@ nav:
     - Teamwork: "pages/teamwork.md"
 docs_dir: ./docblueprint
 site_dir: ./docs
+extra_css:
+ - css/logo.css

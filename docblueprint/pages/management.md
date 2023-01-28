@@ -13,15 +13,15 @@ This page provides a general overview of the assigned tasks and roles for the du
 
 | **Task**        | **Related US** | **Assigned To** | **Due Date** |
 | --------------- | ------------------- | -------------------- | ------------------------- |
-| Project Summary and Glossary | Documentation | Kevin Sha | Jan xx |
-| User Stories | Documentation | Raunak Agarwal, Mohammad Hammad, Vaibhav Chugh | Jan xx |
-| Similar Products and Technical Sources | Documentation | Huy Ta | Jan xx |
-| Software Architecture and Sequence Diagram | Documentation | Yui Han | Jan xx |
-| UML Components and Class Models | Documentation | Mohammad Hammad | Jan xx |
-| Low Fidelity Wireframes| Documentation | Vaibhav Chugh | Jan xx |
-| Story Map | Documentation | Raunak Agarwal | Jan xx |
-| Project Planning | Documentation | Vaibhav Chugh | Jan xx |
-| Teamwork Docs | Documentation | Kevin Sha, Yui Han | Jan xx |
+| Project Summary and Glossary | Documentation | Kevin Sha | Jan 27 |
+| User Stories | Documentation | Raunak Agarwal, Mohammad Hammad, Vaibhav Chugh | Jan 27 |
+| Similar Products and Technical Sources | Documentation | Huy Ta | Jan 27 |
+| Software Architecture and Sequence Diagram | Documentation | Yui Han | Jan 27 |
+| UML Components and Class Models | Documentation | Mohammad Hammad | Jan 27 |
+| Low Fidelity Wireframes| Documentation | Vaibhav Chugh | Jan 27 |
+| Story Map | Documentation | Raunak Agarwal | Jan 27 |
+| Project Planning | Documentation | Vaibhav Chugh | Jan 27 |
+| Teamwork Docs | Documentation | Kevin Sha, Yui Han | Jan 27 |
 
 ### Sprint 2
 *Due: February 11* 
