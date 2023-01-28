@@ -12,7 +12,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 | Mohammad Hammad | IMP, CF, SP         | PL, TW, ME           | SH, RI, CO                |
 | Raunak Agarwal  | SH, RI, IMP         | CO, PL, SP           | ME, TW, CF                |
 | Vaibhav Chugh   | CO, IMP, CF         | ME, RI, SP           | SH, PL, TW                |
-| Juyi Han        | ME, IMP, CF         | SP, PL, SH           | RI, TW, CO                |
+| Yui Han        | ME, IMP, CF         | SP, PL, SH           | RI, TW, CO                |
 | Huy Ta          | CF, CO, TW          | SP, IMP, ME          | PL, SH, RI                |
 | Kevin Sha       | PL, ME, IMP         | SH, SP, CF           | RI, CO, TW                |
 
@@ -26,7 +26,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 | ------------- | --------------- |
 | Kevin Sha     | Mohammad Hammad |
 |               | Raunak Agarwal  |
-|               | Juyi Han        |
+|               | Yui Han        |
 
 #### ME (Monitor Evaluator)
 
@@ -34,7 +34,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 
 | **Preferred** | **Manageable**  |
 | ------------- | --------------- |
-| Juyi Han      | Mohammad Hammad |
+| Yui Han      | Mohammad Hammad |
 | Kevin Sha     | Vaibhav Chugh   |
 |               | Huy Ta          |
 
@@ -46,7 +46,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 | --------------- | --------------- |
 | Mohammad Hammad | Raunak Agarwal  |
 |                 | Vaibhav Chugh   |
-|                 | Juyi Han        |
+|                 | Yui Han        |
 |                 | Huy Ta          |
 |                 | Kevin Sha       |
 
@@ -59,7 +59,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 | **Preferred**   | **Manageable**  |
 | --------------- | --------------- |
 | Raunak Agarwal  | Raunak Agarwal  |
-|                 | Juyi Han        |
+|                 | Yui Han        |
 |                 | Kevin Sha       |
 
 #### IMP (Implementer)
@@ -71,7 +71,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 | Mohammad Hammad | Huy Ta          |
 | Vaibhav Chugh   |                 |
 | Raunak Agarwal  |                 |
-| Juyi Han        |                 |
+| Yui Han        |                 |
 | Kevin Sha       |                 |
 
 #### CF (Completer Finisher)
@@ -82,7 +82,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 | --------------- | --------------- |
 | Mohammad Hammad | Kevin Sha       |
 | Vaibhav Chugh   |                 |
-| Juyi Han        |                 |
+| Yui Han        |                 |
 | Huy Ta          |                 |
 
 ### People Roles
