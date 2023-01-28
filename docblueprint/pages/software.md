@@ -16,4 +16,14 @@ Our app can be divided into a number of central classes along with some helper o
 ## Sequence Diagram
 
 The sequence diagram features the four most important interactions in our app: login, location recognition, camera view, and information view. From opening the app, users may choose to login. After which, all users must set their location either automatically through a built in maps API, or manually enter their location if the GPS is incorrect. Once location is set, users will be navigated to their camera view that allows them to point their camera at aquatic objects in order to see an AR of said object on screen. Users may view information about objects by clicking on them, where they may choose to navigate further to external Wiki sites through embedded links. Users may choose to save objects to their account database, if logged in. 
+
 ![Sequence](../images/sequence.png)
+
+## Low-Fidelity User Interface 
+
+[Wireframes](https://balsamiq.com/learn/articles/what-are-wireframes/) are used to show the overall look and feel of your app, as well as the high-level user-interaction design. Looking at the wireframes, anyone should be able to get an idea of what will be developed. Low fidelity wireframes are just a quick sketch that can make ideas more tangible. They are focused on the “big picture” of the project.
+
+Wireframes for this project were made using [Balsamiq](https://balsamiq.com/). They provide a clear overview of the app structure, layout, information architecture, user flow, functionality, and intended behaviors.
+
+![Wireframes](../images/wireframes.png)
+
