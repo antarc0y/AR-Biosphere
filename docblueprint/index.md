@@ -58,7 +58,7 @@ US 04.02 | As a user, I want to be able to share my findings with others, so tha
     * Integrates with AR Foundation to build apps 
   * [Google's guide on getting started with AR Foundation](ttps://developers.google.com/ar/develop/unity-arf/getting-started-ar-foundation)
   * [Create an AR game using Unity's AR Foundation](https://codelabs.developers.google.com/arcore-unity-ar-foundation#0)
-* [ViroReact](https://github.com/viromedia) ?? Integrate directly with React Native. No longer in development
+* [ViroReact](https://github.com/viromedia): Integrate directly with React Native. No longer in development
 * Other resources: TBD
 
 
