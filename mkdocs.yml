@@ -12,7 +12,7 @@ theme:
       - search.highlight
       - content.tabs.link
     palette:
-      scheme: slate
+      scheme: default
       primary: light blue
 
 plugins:
