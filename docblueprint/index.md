@@ -38,8 +38,28 @@ US 04.02 | As a user, I want to be able to share my findings with others, so tha
 
 
 ## Similar Products
+* [ARCore Elements](https://play.google.com/store/apps/details?id=com.google.ar.unity.ddelements): 
+  * Demo app by Google using ARCore platform. 
+  * Has tips for User Movement, User Interface and Object Movement.
+
+
+## Open Source Products
+* https://github.com/viromedia/figment-ar: AR app built with [ViroReact](https://github.com/viromedia)
+* https://github.com/Unity-Technologies/arfoundation-samples/: AR app demo built with [Unity's AR Foundation](https://unity.com/)
+
 
 ## Technical Resources
+* AR Engine: [Unity](https://unity.com/)
+
+  * [Unity as a library in other applications](https://docs.unity3d.com/2019.3/Documentation/Manual/UnityasaLibrary.html)
+  * Platform: [AR Foundation](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.0/manual/index.html)
+    Created by Unity, has support for ARCore by Google and ARKit by Apple.
+  * [Unity Mars](https://unity.com/products/unity-mars)
+    * Integrates with AR Foundation to build apps 
+  * [Google's guide on getting started with AR Foundation](ttps://developers.google.com/ar/develop/unity-arf/getting-started-ar-foundation)
+  * [Create an AR game using Unity's AR Foundation](https://codelabs.developers.google.com/arcore-unity-ar-foundation#0)
+* [ViroReact](https://github.com/viromedia) ?? Integrate directly with React Native. No longer in development
+* Other resources: TBD
 
 
 
