@@ -11,6 +11,6 @@ nav:
     - Project Requirements: "index.md"
     - Software Design: "pages/software.md"
     - Project Management: "pages/management.md"
-    - Teamwork: "pages/teamwork.mc"
+    - Teamwork: "pages/teamwork.md"
 docs_dir: ./docblueprint
 site_dir: ./docs
