@@ -5,3 +5,10 @@
 Our project will use the N-tier layered architecture format, we plan on using React Native and Unity3D for the user interface layer, and the main logic of our app will be laid out in Unity3D. We will use Unity for rendering AR models through the AR Foundation Framework that allows adaptation to both Android and iOS without further changes. Tentatively, we want to use Django ORM as the persistence layer for accessing model data, and postgres data base for storing 3D models that we will use for the AR experience. This architecture diagram may be subjected to change in future sprints. 
 
 ![Architecture](../images/architecture.png)
+
+
+## UML Class Diagram
+
+Our app can be divided into a number of central classes along with some helper ones. The user class makes calls that get the app user up and running like making calls that obtain the user's current location using the Location class (which further makes use of the class GeocoderResult that Google Maps API uses). The Camera class is responsible for displaying AR objects (which are classed as ARObject). ARObjects are heavily reliant on x, y, and z coordinates, which is why having a 3D vector class, Vector3, is convenient.
+
+![UML](../images/uml.svg)
