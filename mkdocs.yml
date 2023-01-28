@@ -1,6 +1,10 @@
 site_name: AR-Biosphere 🦆️🌎
 theme:
     name: material
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - rust
     features::
       - search.suggest
       - search.highlight
