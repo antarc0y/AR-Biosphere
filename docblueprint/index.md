@@ -20,11 +20,12 @@ When a user first opens the product, they will confirm their location in order t
 
 Index  | User Story| Story Point | Acceptance test | MoSCoW
 ------ | ------------- | ------ | -------- | -------
-US 01.01  | As a User, I want the system to identify my location, so that I can share it with the app. | 3 | <li> Location sharing is enabled </li>| Must
-US 01.02  | As a user, I want to be able to enter my location manually or change it, if it is incorrect. | 3 | <li>Location sharing is enabled </li>| Must
-US 01.03 | As a user, I want to be able to select a surface that I’m pointing at from a drop down menu, to optimize the AR experience | 2 | <li> Location sharing is Enabled </li>| Must
-US 01.04 | As a User, I want the app to access my camera, so that it can display Augmented objects. | 2 | <li>Camera Access is enabled</li> | Must
-US 01.05 | As an admin, I want to be able to add more 3D models, to increase user engagement. | 2 |<li> Functional Admin Panel </li>| Must
+US 01.01  | As a User, I want to see a home screen that welcomes me to the app and has a link to the company's website, so I can gain more insights. | 1 | <li> Access to web browser enabled </li>| Must
+US 01.02  | As a User, I want the system to identify my location, so that I can share it with the app. | 3 | <li> Location sharing is enabled </li>| Must
+US 01.03  | As a user, I want to be able to enter my location manually or change it, if it is incorrect. | 3 | <li>Location sharing is enabled </li>| Must
+US 01.04 | As a user, I want to be able to select a surface that I’m pointing at from a drop down menu, to optimize the AR experience | 2 | <li> Location sharing is Enabled </li>| Must
+US 01.05 | As a User, I want the app to access my camera, so that it can display Augmented objects. | 2 | <li>Camera Access is enabled</li> | Must
+US 01.06 | As an admin, I want to be able to add more 3D models, to increase user engagement. | 2 |<li> Functional Admin Panel </li>| Must
 US 02.01 | As a user, I want to be able to view augmented objects on my screen, so that I can interact with them. | 5 |  <li>User has the camera access enabled.</li> <li>User is pointing the camera towards a surface</li>| Must 
 US 02.02 | As a user, I want to be able to view a brief description about the ecosystem I’m looking at, so that I know what to expect. | 3 | <li>Ecosystem has been selected by the user. </li> | Should
 US 02.03.01 | As a user, I want to be able to click on an augmented object, so that I can learn information about it. | 3 |<li> User is viewing an augmented object through their camera </li>| Must
