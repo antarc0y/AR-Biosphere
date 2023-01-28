@@ -1,14 +1,10 @@
 # ar-biosphere
 ## AR Biosphere (Aquatic Biosphere of Canada) [CSL]
 
-<br>
-
 ### Background
 [The Aquatic Biosphere of Canada's](https://www.aquaticbiosphere.ca/) mission is: To `educate`, `inspire` and `empower` people to play an active role in the conservation of our aquatic ecosystems. AR Biosphere specifically focuses on the life that exists within, on and at the edges of water.
 
 Read more: [About us](https://www.aquaticbiosphere.ca/opportunity), [Aquatic Biosphere Network](https://www.thepublicplace.online/en/channel/the-aquatic-biosphere.8447)
-
-<br>
 
 ### Project Description
 The project's `goal` is to build a prototype (proof of concept) of an [Augmented Reality](https://en.wikipedia.org/wiki/Augmented_reality) Ecosystem app.

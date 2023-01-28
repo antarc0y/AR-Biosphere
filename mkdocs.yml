@@ -1,6 +1,7 @@
-site_name: AR-Biosphere 🦆️🌎
+site_name: AR-Biosphere
 theme:
     name: material
+    favicon: 'img/favicon.png'
     highlightjs: true
     hljs_languages:
         - yaml
