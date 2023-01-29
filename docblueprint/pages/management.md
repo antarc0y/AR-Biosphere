@@ -1,9 +1,95 @@
 # Project Management
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas sed tempus. Aliquam ultrices sagittis orci a scelerisque purus semper. Lectus proin nibh nisl condimentum. Pharetra massa massa ultricies mi quis hendrerit. Ornare arcu odio ut sem. Proin nibh nisl condimentum id. Venenatis lectus magna fringilla urna porttitor rhoncus dolor. Ac tortor vitae purus faucibus. Quam quisque id diam vel quam. Massa tempor nec feugiat nisl pretium. Velit sed ullamcorper morbi tincidunt ornare massa eget. Nisl nisi scelerisque eu ultrices vitae auctor eu augue ut. Eu lobortis elementum nibh tellus molestie nunc. Lacus vestibulum sed arcu non. Faucibus et molestie ac feugiat sed lectus vestibulum mattis.
+This page provides a general overview of the assigned tasks and roles for the duration of five sprints (subject to change).
 
-Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Nisl suscipit adipiscing bibendum est ultricies integer quis auctor. A cras semper auctor neque vitae tempus. Tristique risus nec feugiat in fermentum. Urna cursus eget nunc scelerisque viverra mauris. Vestibulum sed arcu non odio euismod. Vitae sapien pellentesque habitant morbi. Consectetur adipiscing elit pellentesque habitant morbi tristique senectus et netus. Consequat semper viverra nam libero justo laoreet. Non enim praesent elementum facilisis leo vel fringilla est. Ullamcorper sit amet risus nullam eget felis eget nunc.
-
-
-# Story map
+## Story map
 ![Architecture](../images/storymap.png)
+
+## Project Plan
+### Sprint 1
+*Due: January 28* 
+
+**Tasks**
+
+| **Task**        | **Related US** | **Assigned To** | **Due Date** |
+| --------------- | ------------------- | -------------------- | ------------------------- |
+| Project Summary and Glossary | Documentation | Kevin Sha | Jan 27 |
+| User Stories | Documentation | Raunak Agarwal, Mohammad Hammad, Vaibhav Chugh | Jan 27 |
+| Similar Products and Technical Sources | Documentation | Huy Ta | Jan 27 |
+| Software Architecture and Sequence Diagram | Documentation | Yui Han | Jan 27 |
+| UML Components and Class Models | Documentation | Mohammad Hammad | Jan 27 |
+| Low Fidelity Wireframes| Documentation | Vaibhav Chugh | Jan 27 |
+| Story Map | Documentation | Raunak Agarwal | Jan 27 |
+| Project Planning | Documentation | Vaibhav Chugh, Kevin Sha | Jan 27 |
+| Teamwork Docs | Documentation | Kevin Sha, Yui Han | Jan 27 |
+
+### Sprint 2
+*Due: February 11* 
+
+**User Stories**
+
+| **User Story** | **Story Points** |
+| --------------- | ------------------- |
+| SETUP - Setting up dev environment | 8 |
+| US 01.01 - User views home screen| 1 |
+
+
+Estimated Sprint Velocity: **9**
+
+**Tasks**
+
+| **Task**        | **Related US** | **Assigned To** | **Due Date** |
+| --------------- | ------------------- | -------------------- | ------------------------- |
+| PostgreSQL Database Setup | SETUP | Vaibhav Chugh, Mohammad Hammad | Feb 5 |
+| Django Models | SETUP | Vaibhav Chugh, Mohammad Hsammad | Feb 5 |
+| Link Unity to React Native | SETUP | Yui Han, Huy Ta | Feb 9 |
+| Setup React Native with initial home page | SETUP, US 01.01 | Kevin Sha, Raunak Agarwal | Feb 9 |
+
+### Sprint 3
+*Due: March 4*
+
+**User Stories**
+
+| **User Story** | **Story Points** |
+| --------------- | ------------------- |
+| US 01.04 - User select surface | 2 |
+| US 01.05 - User use camera | 2 |
+| US 01.02 - User assigned location| 3 |
+| US 01.03 - User enter location manually| 2 |
+
+
+Estimated Sprint Velocity: **...**
+
+**Tasks**
+
+Sprint 3 tasks will be added during Spring 2.
+
+### Sprint 4
+*Due: March 18*
+
+**User Stories**
+
+| **User Story** | **Story Points** |
+| --------------- | ------------------- |
+| ... | ... |
+
+Estimated Sprint Velocity: **...**
+
+**Tasks**
+
+Sprint 4 tasks will be added during Spring 3.
+
+### Sprint 5
+*Due: April 4*
+
+**User Stories**
+
+| **User Story** | **Story Points** |
+| --------------- | ------------------- |
+| ... | ... |
+
+Estimated Sprint Velocity: **...**
+
+**Tasks**
+
+Sprint 5 tasks will be added during Spring 4.
