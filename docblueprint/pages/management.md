@@ -22,6 +22,7 @@ This page provides a general overview of the assigned tasks and roles for the du
 | Story Map | Documentation | Raunak Agarwal | Jan 27 |
 | Project Planning | Documentation | Vaibhav Chugh, Kevin Sha | Jan 27 |
 | Teamwork Docs | Documentation | Kevin Sha, Yui Han | Jan 27 |
+| Meeting Minutes | Documentation | Yui Han | Jan 27 |
 
 ### Sprint 2
 *Due: February 11* 
