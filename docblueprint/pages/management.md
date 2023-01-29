@@ -62,7 +62,7 @@ Estimated Sprint Velocity: **14**
 
 **Tasks**
 
-Sprint 3 tasks will be added during Spring 2.
+Sprint 3 tasks will be added during Sprint 2.
 
 ### Sprint 4
 *Due: March 18*
@@ -82,7 +82,7 @@ Estimated Sprint Velocity: **26**
 
 **Tasks**
 
-Sprint 4 tasks will be added during Spring 3.
+Sprint 4 tasks will be added during Sprint 3.
 
 ### Sprint 5
 *Due: April 4*
@@ -100,4 +100,4 @@ Estimated Sprint Velocity: **23**
 
 **Tasks**
 
-Sprint 5 tasks will be added during Spring 4.
+Sprint 5 tasks will be added during Sprint 4.
