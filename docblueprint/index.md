@@ -60,6 +60,7 @@ When a user first opens the product, they will confirm their location in order t
 * Backend: [Django](https://www.djangoproject.com/) and [PostgreSQL](https://www.postgresql.org/)
     * [Django REST Framework](https://www.django-rest-framework.org/): API framework for Django
 * Frontend: [React Native](https://reactnative.dev/)
+* Deployment: [Expo](https://expo.io/)
 
 
 
