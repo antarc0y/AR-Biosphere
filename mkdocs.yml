@@ -1,5 +1,8 @@
 site_name: AR-Biosphere 🦆 
 theme:
+    icon:
+    admonition:
+      note: material/note-edit
     name: material
     logo: 'images/logo.jpg'
     favicon: 'images/logo.jpg'
@@ -22,7 +25,12 @@ nav:
     - Software Design: "pages/software.md"
     - Project Management: "pages/management.md"
     - Teamwork: "pages/teamwork.md"
+    - Meeting Minutes: "pages/meeting.md"
 docs_dir: ./docblueprint
 site_dir: ./docs
 extra_css:
  - css/logo.css
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
