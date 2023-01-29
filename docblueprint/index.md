@@ -20,11 +20,12 @@ When a user first opens the product, they will confirm their location in order t
 
 | Index       | User Story                                                                                                                       | Story Point | Acceptance test                                                                                                                                                                                    | MoSCoW                    |
 |-------------|----------------------------------------------------------------------------------------------------------------------------------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| US 01.01    | As a User, I want the system to identify my location, so that I can share it with the app.                                       | 3           | <li> User's location is identified. </li>                                                                                                                                                         | Must                      |
-| US 01.02    | As a user, I want to be able to enter my location manually or change it, if it is incorrect.                                     | 3           | <li> User's location information is changed to the new manually selected one. </li>                                                                                                                      | Must                      |
-| US 01.03    | As a user, I want to be able to select a surface that I’m pointing at from a drop down menu, to optimize the AR experience       | 2           | <li> User's selected surface is correctly marked as the AR objects's spawn location. </li>                                                                                                                               | Must                      |
-| US 01.04    | As a User, I want the app to access my camera, so that it can display Augmented objects.                                         | 2           | <li> User's Camera is opened.</li>                                                                                                                                                                        | Must                      |
-| US 01.05    | As an admin, I want to be able to add more 3D models, to increase user engagement.                                               | 2           | <li> New models and their info are added to the DB. </li>                                                                                                                                          | Must                      |
+| US 01.01    | As a User, I want to see a home screen that welcomes me to the app and has a link to the company's website, so I can gain more insights.                                                                                                                                        | 3           | <li> User can see the homescreen and can interact with its links. </li>                                                                                                                                                         | Must
+| US 01.02    | As a User, I want the system to identify my location, so that I can share it with the app.                                       | 3           | <li> User's location is identified. </li>                                                                                                                                                         | Must                      |
+| US 01.03    | As a user, I want to be able to enter my location manually or change it, if it is incorrect.                                     | 3           | <li> User's location information is changed to the new manually selected one. </li>                                                                                                                      | Must                      |
+| US 01.04    | As a user, I want to be able to select a surface that I’m pointing at from a drop down menu, to optimize the AR experience       | 2           | <li> User's selected surface is correctly marked as the AR objects's spawn location. </li>                                                                                                                               | Must                      |
+| US 01.05    | As a User, I want the app to access my camera, so that it can display Augmented objects.                                         | 2           | <li> User's Camera is opened.</li>                                                                                                                                                                        | Must                      |
+| US 01.06    | As an admin, I want to be able to add more 3D models, to increase user engagement.                                               | 2           | <li> New models and their info are added to the DB. </li>                                                                                                                                          | Must                      |
 | US 02.01    | As a user, I want to be able to view augmented objects on my screen, so that I can interact with them.                           | 5           | <li> User can see appropriately placed AR objects.                                                                                                                                             | Must                      |
 | US 02.02    | As a user, I want to be able to view a brief description about the ecosystem I’m looking at, so that I know what to expect.      | 3           | <li> User can see information about the ecosystem in a new activity. </li>                                                                                                                     | Should                    |
 | US 02.03.01 | As a user, I want to be able to click on an augmented object, so that I can learn information about it.                          | 3           | <li> User is viewing an augmented object through their camera. </li>                                                                                                                                | Must                      |
@@ -38,8 +39,8 @@ When a user first opens the product, they will confirm their location in order t
 
 ## Similar Products
 * [ARCore Elements](https://play.google.com/store/apps/details?id=com.google.ar.unity.ddelements): 
-  * Demo app by Google using ARCore platform. 
-  * Has tips for User Movement, User Interface and Object Movement.
+    * Demo app by Google using ARCore platform. 
+    * Has tips for User Movement, User Interface and Object Movement.
 
 
 ## Open Source Products
@@ -49,12 +50,12 @@ When a user first opens the product, they will confirm their location in order t
 
 ## Technical Resources
 * AR Engine: [Unity](https://unity.com/)
-  * [Unity as a library in other applications](https://docs.unity3d.com/2019.3/Documentation/Manual/UnityasaLibrary.html)
-  * Platform: [AR Foundation](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.0/manual/index.html)
+    * [Unity as a library in other applications](https://docs.unity3d.com/2019.3/Documentation/Manual/UnityasaLibrary.html)
+    * Platform: [AR Foundation](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.0/manual/index.html)
     Created by Unity, has support for ARCore by Google and ARKit by Apple.
-  * [Unity Mars](https://unity.com/products/unity-mars): Integrates with AR Foundation to build apps 
-  * [Google's guide on getting started with AR Foundation](ttps://developers.google.com/ar/develop/unity-arf/getting-started-ar-foundation)
-  * [Create an AR game using Unity's AR Foundation](https://codelabs.developers.google.com/arcore-unity-ar-foundation#0)
+    * [Unity Mars](https://unity.com/products/unity-mars): Integrates with AR Foundation to build apps 
+    * [Google's guide on getting started with AR Foundation](ttps://developers.google.com/ar/develop/unity-arf/getting-started-ar-foundation)
+    * [Create an AR game using Unity's AR Foundation](https://codelabs.developers.google.com/arcore-unity-ar-foundation#0)
 * [ViroReact](https://github.com/viromedia): Integrate directly with React Native. No longer in development
 * Other resources: TBD
 
