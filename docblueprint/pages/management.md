@@ -20,7 +20,7 @@ This page provides a general overview of the assigned tasks and roles for the du
 | UML Components and Class Models | Documentation | Mohammad Hammad | Jan 27 |
 | Low Fidelity Wireframes| Documentation | Vaibhav Chugh | Jan 27 |
 | Story Map | Documentation | Raunak Agarwal | Jan 27 |
-| Project Planning | Documentation | Vaibhav Chugh | Jan 27 |
+| Project Planning | Documentation | Vaibhav Chugh, Kevin Sha | Jan 27 |
 | Teamwork Docs | Documentation | Kevin Sha, Yui Han | Jan 27 |
 
 ### Sprint 2
@@ -30,19 +30,20 @@ This page provides a general overview of the assigned tasks and roles for the du
 
 | **User Story** | **Story Points** |
 | --------------- | ------------------- |
-| SETUP - Setting up dev environment | 3 |
-| US 01.01 - View Home Page| 1 |
-| US 01.02 - GPS Location| 3 |
-| US 01.03 - Edit and Confirm Location| 3 |
+| SETUP - Setting up dev environment | 8 |
+| US 01.01 - User views home screen| 1 |
 
-Estimated Sprint Velocity: **10**
+
+Estimated Sprint Velocity: **9**
 
 **Tasks**
 
 | **Task**        | **Related US** | **Assigned To** | **Due Date** |
 | --------------- | ------------------- | -------------------- | ------------------------- |
-| PostgreSQL Database Setup | SETUP | xyz | Feb xx |
-| Django Models | SETUP | xyz | Feb xx |
+| PostgreSQL Database Setup | SETUP | Vaibhav Chugh, Mohammad Hammad | Feb 5 |
+| Django Models | SETUP | Vaibhav Chugh, Mohammad Hsammad | Feb 5 |
+| Link Unity to React Native | SETUP | Yui Han, Huy Ta | Feb 9 |
+| Setup React Native with initial home page | SETUP, US 01.01 | Kevin Sha, Raunak Agarwal | Feb 9 |
 
 ### Sprint 3
 *Due: March 4*
@@ -51,7 +52,11 @@ Estimated Sprint Velocity: **10**
 
 | **User Story** | **Story Points** |
 | --------------- | ------------------- |
-| ... | ... |
+| US 01.04 - User select surface | 2 |
+| US 01.05 - User use camera | 2 |
+| US 01.02 - User assigned location| 3 |
+| US 01.03 - User enter location manually| 2 |
+
 
 Estimated Sprint Velocity: **...**
 
