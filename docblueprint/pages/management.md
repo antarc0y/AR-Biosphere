@@ -52,13 +52,13 @@ Estimated Sprint Velocity: **9**
 
 | **User Story** | **Story Points** |
 | --------------- | ------------------- |
-| US 01.04 - User select surface | 2 |
-| US 01.05 - User use camera | 2 |
 | US 01.02 - User assigned location| 3 |
 | US 01.03 - User enter location manually| 2 |
+| US 01.04 - User select surface | 2 |
+| US 01.05 - User use camera | 2 |
+| US 02.01 - User view models | 5 |
 
-
-Estimated Sprint Velocity: **...**
+Estimated Sprint Velocity: **14**
 
 **Tasks**
 
@@ -71,9 +71,14 @@ Sprint 3 tasks will be added during Spring 2.
 
 | **User Story** | **Story Points** |
 | --------------- | ------------------- |
-| ... | ... |
+| US 01.06 - Admin add models | 2 |
+| US 02.02 - User view description | 5 |
+| US 02.03.01 - User click model | 3 |
+| US 02.03.02 - User navigate object link | 5 |
+| US 02.03.03 - User exit link | 3 |
+| US 04.01 - User identify species | 8 |
 
-Estimated Sprint Velocity: **...**
+Estimated Sprint Velocity: **26**
 
 **Tasks**
 
@@ -86,9 +91,12 @@ Sprint 4 tasks will be added during Spring 3.
 
 | **User Story** | **Story Points** |
 | --------------- | ------------------- |
-| ... | ... |
+| US 03.01 - User create account | 5 |
+| US 03.02 - User login to account | 5 |
+| US 03.03 - User save object | 5 |
+| US 04.02 - User share findings | 8 |
 
-Estimated Sprint Velocity: **...**
+Estimated Sprint Velocity: **23**
 
 **Tasks**
 
