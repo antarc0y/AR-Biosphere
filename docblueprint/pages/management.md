@@ -42,13 +42,14 @@ Estimated Sprint Velocity: **11**
 
 | **Task**        | **Related US** | **Assigned To** | **Due Date** |
 | --------------- | ------------------- | -------------------- | ------------------------- |
-| Unity setup + firebase | SETUP | Vaibhav Chugh, Mohammad Hammad | Feb 8 |
-| Create camera display | US 01.05 | Yui Han, Mohamma Hammad | Feb 11 |
-| Create unity landing page | US 01.01 | Vaibhav Chugh, Mohammad Hammad | Feb 9 |
+| Unity setup + firebase | SETUP | Mohammad Hammad | Feb 8 |
+| Create camera display | US 01.05 | Raunak Agarwal, Huy Ta | Feb 11 |
+| Create unity landing page | US 01.01 | Vaibhav Chugh, Yui Han, Raunak Argarwal | Feb 9 |
 | Replan sprints and storymap | Documentation | Kevin Sha | Feb 9 |
-| Update architecture diagram | Documentation | Yui Han | Feb 9 |
+| Update architecture diagram and meeting minutes | Documentation | Yui Han | Feb 9 |
 | Update user stories | Documentation | Raunak Agarwal | Feb 9 |
 | Update similar open source projects | Documentation | Huy Ta | Feb 9 |
+| Testing | Testing | Huy Ta | Feb 11 |
 
 ### Sprint 3
 *Due: March 4*

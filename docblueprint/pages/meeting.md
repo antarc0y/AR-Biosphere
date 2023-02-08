@@ -132,10 +132,10 @@
 
     - Distributed tasks for sprint 2:
         - Kevin: rebalance velocity of sprint planning, update story maps
-        - V: research on Unity, work on home page of app
+        - V: design UI of landing page
         - Mohammad: set up Firebase, work on home page of app
-        - Yui: access camera in Unity, update architecture diagram, general update of docs 
-        - Raun: update user stories to match new sprints
+        - Yui: design UI of landind page, update architecture diagram, general update of docs 
+        - Raun: design UI of landing page, update user stories to match new sprints
         - Huy: update list of similar projects and open source projects 
 
    
