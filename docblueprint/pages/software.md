@@ -2,9 +2,9 @@
 
 ## Architecture Diagram
 
-Our project will use the N-tier layered architecture format, we plan on using React Native and Unity3D for the user interface of the presentation layer, and the main logic of our app will be contained in Unity3D. Google Maps API will be used in the business layer to assist location detection. We will use Unity3D to build all AR related functionality through the AR Foundation Framework that allows adaptation to both Android and iOS without further changes. Tentatively, we want to use Django ORM as the persistence layer for accessing AR model data, and a PostgreSQL database for storing 3D models that we will use for the AR experience. Currently we plan on hosting the backend database on a Google Cloud server. This architecture diagram may be subjected to change in future sprints. 
+Our project will use the N-tier layered architecture format, we plan on using Unity3D for the user interface of the presentation layer, and the main logic of our app will be contained in Unity3D as well. Google Maps API will be used in the business layer to assist location detection. We will use Unity3D to access camera, detect surfaces, and build all AR related functionality through the AR Foundation Framework that allows adaptation to both Android and iOS without further changes. Tentatively, we want to use Firebase Firestore as the persistence layer for accessing AR model data, and a Firestore database for storing 3D models that we will use for the AR experience. Currently we plan on hosting the backend database on a Google Cloud server. This architecture diagram may be subjected to change in future sprints. 
 
-![Architecture](../images/architecture.png)
+![Architecture](../images/architecture2.png)
 
 
 ## UML Class Diagram

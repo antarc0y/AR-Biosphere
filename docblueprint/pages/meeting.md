@@ -89,4 +89,53 @@
     - Plan to have all sprint 1 deliverables added to team documentation page by the end of the day
 
     - Finalize and make last minute edits software design diagrams, and user stories
+
+??? abstract "Feb 1 / Second Client Meeting"
+
+    ## Main Purpose
+
+    - Update Paula on the sprint 1 items, show her low fidelity wireframes 
+    - Comfirm that our high level designs align with her vision
+
+    ## Attendance
     
+    - Paula (Client), The entire biosphere team
+
+    ## Important Takeaways
+
+    - Paula confirmed that our architectural design and wireframes align with her specifications
+
+    - Paula confirmed this project can be open source
+
+    - Discussed frameworks and technologies amongst team members
+
+    - Team to finalize decision between using Firebase or NodeJS as backend persistence layer, research the semanics between ARCore vs AR Foundation
+
+??? abstract "Feb 6 / Sprint 2 Meeting, Sprint 1 Review"
+
+    ## Main Purpose
+
+    - Review of sprint 1 deliverables with Yazeed, consider feedback for sprint 2 updates
+    - Comfirm tasks for sprint 2
+
+    ## Attendance
+    
+    - Yazeed (TA), The entire biosphere team
+
+    ## Important Takeaways
+
+    - Architecture diagram, open source resources, and user stories needs to be updated for sprint 2
+
+    - Sprint planning needs to be reconsidered, user stories should be more evenly distributed amongst sprint to avoid having one sprint with a much higher velocity
+
+    - Decided to use Firebase Firestore as backend with Firebase database, because of team member familiarity and easy to use. Might consider transfering to NodeJS at later sprints because it is more scalable. Kevin assures us it is a simple transition. 
+
+    - Distributed tasks for sprint 2:
+        - Kevin: rebalance velocity of sprint planning, update story maps
+        - V: research on Unity, work on home page of app
+        - Mohammad: set up Firebase, work on home page of app
+        - Yui: access camera in Unity, update architecture diagram, general update of docs 
+        - Raun: update user stories to match new sprints
+        - Huy: update list of similar projects and open source projects 
+
+   
