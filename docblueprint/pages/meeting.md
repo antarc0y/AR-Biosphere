@@ -138,4 +138,25 @@
         - Raun: design UI of landing page, update user stories to match new sprints
         - Huy: update list of similar projects and open source projects 
 
-   
+??? abstract "Feb 8 / Sprint 2 Update Meeting + Unity Workshop"
+
+    ## Main Purpose
+
+    - Comfirm progress for sprint 2, further divide the tasks in a more specific manner
+    - Discuss assigning issues on Git
+    - Learn Unity with Yazeed
+
+
+    ## Attendance
+    
+    - The entire biosphere team, Yazeed (only for workshop)
+
+    ## Important Takeaways
+
+    - Documentation updates mostly completed, addressed feedbacks from sprint 1 
+
+    - Push Unity code base to Git, work on landing page and accessing camera
+
+    - Work on testing 
+
+    - Aim to have everything done by Friday, Feb 10
