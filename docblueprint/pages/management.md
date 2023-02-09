@@ -33,18 +33,23 @@ This page provides a general overview of the assigned tasks and roles for the du
 | --------------- | ------------------- |
 | SETUP - Setting up dev environment | 8 |
 | US 01.01 - User views home screen| 1 |
+| US 01.05 - User use camera | 2 |
 
 
-Estimated Sprint Velocity: **9**
+Estimated Sprint Velocity: **11**
 
 **Tasks**
 
 | **Task**        | **Related US** | **Assigned To** | **Due Date** |
 | --------------- | ------------------- | -------------------- | ------------------------- |
-| PostgreSQL Database Setup | SETUP | Vaibhav Chugh, Mohammad Hammad | Feb 5 |
-| Django Models | SETUP | Vaibhav Chugh, Mohammad Hsammad | Feb 5 |
-| Link Unity to React Native | SETUP | Yui Han, Huy Ta | Feb 9 |
-| Setup React Native with initial home page | SETUP, US 01.01 | Kevin Sha, Raunak Agarwal | Feb 9 |
+| Unity setup + firebase | SETUP | Mohammad Hammad | Feb 8 |
+| Create camera display | US 01.05 | Raunak Agarwal, Huy Ta | Feb 11 |
+| Create unity landing page | US 01.01 | Vaibhav Chugh, Yui Han, Raunak Argarwal | Feb 9 |
+| Replan sprints and storymap | Documentation | Kevin Sha | Feb 9 |
+| Update architecture diagram and meeting minutes | Documentation | Yui Han | Feb 9 |
+| Update user stories | Documentation | Raunak Agarwal | Feb 9 |
+| Update similar open source projects | Documentation | Huy Ta | Feb 9 |
+| Testing | Testing | Huy Ta | Feb 11 |
 
 ### Sprint 3
 *Due: March 4*
@@ -56,10 +61,10 @@ Estimated Sprint Velocity: **9**
 | US 01.02 - User assigned location| 3 |
 | US 01.03 - User enter location manually| 2 |
 | US 01.04 - User select surface | 2 |
-| US 01.05 - User use camera | 2 |
 | US 02.01 - User view models | 5 |
+| US 04.01 - User identify species | 8 |
 
-Estimated Sprint Velocity: **14**
+Estimated Sprint Velocity: **20**
 
 **Tasks**
 
@@ -77,9 +82,8 @@ Sprint 3 tasks will be added during Sprint 2.
 | US 02.03.01 - User click model | 3 |
 | US 02.03.02 - User navigate object link | 5 |
 | US 02.03.03 - User exit link | 3 |
-| US 04.01 - User identify species | 8 |
 
-Estimated Sprint Velocity: **26**
+Estimated Sprint Velocity: **18**
 
 **Tasks**
 
