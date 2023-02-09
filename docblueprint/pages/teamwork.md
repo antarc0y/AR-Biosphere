@@ -2,7 +2,7 @@
 
 ## Team Canvas
 Below is the team canvas for our team
-![TeamCanvas](../images/teamcanvas.png)
+![TeamCanvas](../images/teamcanvas2.png)
 
 ## Belbin Roles
 See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/about/belbin-team-roles).
