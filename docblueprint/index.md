@@ -39,13 +39,26 @@ When a user first opens the product, they will confirm their location in order t
 ## Similar Products
 * [ARCore Elements](https://play.google.com/store/apps/details?id=com.google.ar.unity.ddelements): 
     * Demo app by Google using ARCore platform. 
-    * Has tips for User Movement, User Interface and Object Movement.
-
+    * The AR Elements are selectable and have sounds. Users can click on elements to view helpful tips for implementing
+User Movement, User Interface and Object Movement. 
+    * Selected elements come forward into the scene and the rest are pushed back. 
+We can implement a similar feature to allow users to select objects and view information about them to avoid clustering the scene.
+* [Augment](https://play.google.com/store/apps/details?id=com.ar.augment) and [AR Viewer](https://play.google.com/store/apps/details?id=com.ipol.arviewer.app):
+    * AR apps where user view premade models or import and view their own models (AR Viewer).
+    * Can be used to preview models before using in our own app.
+    * Augment has Capture button to take a picture of the scene with the AR objects like a normal camera. AR Viewer also allows video recording up to 4K.
+    * We can implement a similar feature to allow users to take photos and possibly record videos.
 
 ## Open Source Products
-* https://github.com/viromedia/figment-ar: AR app built with [ViroReact](https://github.com/viromedia)
 * https://github.com/Unity-Technologies/arfoundation-samples/: AR app demo built with [Unity's AR Foundation](https://unity.com/)
-
+    * Has clear structure and instructions for setup with Unity and AR Foundation.
+    * Has detailed samples of different AR features like planes, lighting, and object placement, etc. as well as ARCore and ARKit specific features.
+    * We can follow implementations of the features we want to implement in our app.
+* https://github.com/viromedia/figment-ar: AR app built with [ViroReact](https://github.com/viromedia)
+    * Built and released on both iOS and Android.
+    * Has multiple AR element types including animated models and environment. User can add multiple elements to the scene.
+    * User can select an element and choose to remove them from the scene. We can implement a similar feature to allow users to select objects and view information about them 
+or remove them from the scene.
 
 ## Technical Resources
 * AR Engine: [Unity](https://unity.com/)
@@ -55,11 +68,15 @@ When a user first opens the product, they will confirm their location in order t
     * [Unity Mars](https://unity.com/products/unity-mars): Integrates with AR Foundation to build apps 
     * [Google's guide on getting started with AR Foundation](ttps://developers.google.com/ar/develop/unity-arf/getting-started-ar-foundation)
     * [Create an AR game using Unity's AR Foundation](https://codelabs.developers.google.com/arcore-unity-ar-foundation#0)
-* [ViroReact](https://github.com/viromedia): Integrate directly with React Native. No longer in development
-* Backend: [Django](https://www.djangoproject.com/) and [PostgreSQL](https://www.postgresql.org/)
-    * [Django REST Framework](https://www.django-rest-framework.org/): API framework for Django
-* Frontend: [React Native](https://reactnative.dev/)
+* Backend: [Firebase](https://firebase.google.com/)
+    * [Firebase Authentication](https://firebase.google.com/docs/auth)
+    * [Firebase Realtime Database](https://firebase.google.com/docs/database)
+    * [Firebase Storage](https://firebase.google.com/docs/storage)
+* Frontend: [Unity](https://unity.com/)
+  * [Creating UI in Unity](https://docs.unity3d.com/2020.2/Documentation/Manual/UIToolkits.html)
+  * [Comparison between Unity UI framworks](https://docs.unity3d.com/2020.2/Documentation/Manual/UI-system-compare.html)
 * Deployment: [Expo](https://expo.io/)
+* * [ViroReact](https://github.com/viromedia): Integrate directly with React Native. No longer in development.
 
 
 
