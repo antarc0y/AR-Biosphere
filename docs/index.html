@@ -509,13 +509,6 @@
 <td>Should</td>
 </tr>
 <tr>
-<td>US 02.03.03</td>
-<td>As a user, I want to be able to exit out of external information tabs, so that I can view other Augmented objects.</td>
-<td>3</td>
-<td><li>From the external information screen, user can click on exit/back button and be back to the camera screen. </li></td>
-<td>Should</td>
-</tr>
-<tr>
 <td>US 03.01</td>
 <td>As a user, I want to create an account, so I can save my progress and interaction information on the app</td>
 <td>5</td>
@@ -556,14 +549,35 @@
 <ul>
 <li><a href="https://play.google.com/store/apps/details?id=com.google.ar.unity.ddelements">ARCore Elements</a>: <ul>
 <li>Demo app by Google using ARCore platform. </li>
-<li>Has tips for User Movement, User Interface and Object Movement.</li>
+<li>The AR Elements are selectable and have sounds. Users can click on elements to view helpful tips for implementing
+User Movement, User Interface and Object Movement. </li>
+<li>Selected elements come forward into the scene and the rest are pushed back. 
+We can implement a similar feature to allow users to select objects and view information about them to avoid clustering the scene.</li>
+</ul>
+</li>
+<li><a href="https://play.google.com/store/apps/details?id=com.ar.augment">Augment</a> and <a href="https://play.google.com/store/apps/details?id=com.ipol.arviewer.app">AR Viewer</a>:<ul>
+<li>AR apps where user view premade models or import and view their own models (AR Viewer).</li>
+<li>Can be used to preview models before using in our own app.</li>
+<li>Augment has Capture button to take a picture of the scene with the AR objects like a normal camera. AR Viewer also allows video recording up to 4K.</li>
+<li>We can implement a similar feature to allow users to take photos and possibly record videos.</li>
 </ul>
 </li>
 </ul>
 <h2 id="open-source-products">Open Source Products</h2>
 <ul>
-<li>https://github.com/viromedia/figment-ar: AR app built with <a href="https://github.com/viromedia">ViroReact</a></li>
-<li>https://github.com/Unity-Technologies/arfoundation-samples/: AR app demo built with <a href="https://unity.com/">Unity's AR Foundation</a></li>
+<li>https://github.com/Unity-Technologies/arfoundation-samples/: AR app demo built with <a href="https://unity.com/">Unity's AR Foundation</a><ul>
+<li>Has clear structure and instructions for setup with Unity and AR Foundation.</li>
+<li>Has detailed samples of different AR features like planes, lighting, and object placement, etc. as well as ARCore and ARKit specific features.</li>
+<li>We can follow implementations of the features we want to implement in our app.</li>
+</ul>
+</li>
+<li>https://github.com/viromedia/figment-ar: AR app built with <a href="https://github.com/viromedia">ViroReact</a><ul>
+<li>Built and released on both iOS and Android.</li>
+<li>Has multiple AR element types including animated models and environment. User can add multiple elements to the scene.</li>
+<li>User can select an element and choose to remove them from the scene. We can implement a similar feature to allow users to select objects and view information about them 
+or remove them from the scene.</li>
+</ul>
+</li>
 </ul>
 <h2 id="technical-resources">Technical Resources</h2>
 <ul>
@@ -576,13 +590,21 @@ Created by Unity, has support for ARCore by Google and ARKit by Apple.</li>
 <li><a href="https://codelabs.developers.google.com/arcore-unity-ar-foundation#0">Create an AR game using Unity's AR Foundation</a></li>
 </ul>
 </li>
-<li><a href="https://github.com/viromedia">ViroReact</a>: Integrate directly with React Native. No longer in development</li>
-<li>Backend: <a href="https://www.djangoproject.com/">Django</a> and <a href="https://www.postgresql.org/">PostgreSQL</a><ul>
-<li><a href="https://www.django-rest-framework.org/">Django REST Framework</a>: API framework for Django</li>
+<li>Backend: <a href="https://firebase.google.com/">Firebase</a><ul>
+<li><a href="https://firebase.google.com/docs/auth">Firebase Authentication</a></li>
+<li><a href="https://firebase.google.com/docs/database">Firebase Realtime Database</a></li>
+<li><a href="https://firebase.google.com/docs/storage">Firebase Storage</a></li>
 </ul>
 </li>
-<li>Frontend: <a href="https://reactnative.dev/">React Native</a></li>
+<li>Frontend: <a href="https://unity.com/">Unity</a></li>
+<li><a href="https://docs.unity3d.com/2020.2/Documentation/Manual/UIToolkits.html">Creating UI in Unity</a></li>
+<li><a href="https://docs.unity3d.com/2020.2/Documentation/Manual/UI-system-compare.html">Comparison between Unity UI framworks</a></li>
 <li>Deployment: <a href="https://expo.io/">Expo</a></li>
+<li>
+<ul>
+<li><a href="https://github.com/viromedia">ViroReact</a>: Integrate directly with React Native. No longer in development.</li>
+</ul>
+</li>
 </ul>
 
 
