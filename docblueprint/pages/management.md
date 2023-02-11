@@ -90,8 +90,9 @@ Estimated Sprint Velocity: **20**
 | US 02.03.01 - User click model | 3 |
 | US 02.03.02 - User navigate object link | 5 |
 | US 02.03.03 - User exit link | 3 |
+| US 04.03 - User detects water body and land with camera | 5 |
 
-Estimated Sprint Velocity: **18**
+Estimated Sprint Velocity: **23**
 
 **Tasks**
 
