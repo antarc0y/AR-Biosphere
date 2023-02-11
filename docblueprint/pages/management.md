@@ -59,8 +59,8 @@ Estimated Sprint Velocity: **11**
 | **User Story** | **Story Points** |
 | --------------- | ------------------- |
 | US 01.02 - User assigned location| 3 |
-| US 01.03 - User enter location manually| 2 |
-| US 01.04 - User select surface | 2 |
+| US 01.03 - User enter location manually| 5 |
+| US 01.04 - User select surface | 3 |
 | US 02.01 - User view models | 5 |
 | US 04.01 - User identify species | 8 |
 
@@ -68,7 +68,15 @@ Estimated Sprint Velocity: **20**
 
 **Tasks**
 
-Sprint 3 tasks will be added during Sprint 2.
+| **Task**        | **Related US** | **Assigned To** | **Due Date** |
+| --------------- | ------------------- | -------------------- | ------------------------- |
+| Integrate Geolocation API to determine current location | US 01.02 | Mohammad Hammad, Huy Ta | Feb 20 |
+| Allow user to manually enter his location + handle false cases | US 01.03 | Kevin Sha, Raunak Agarwal | Feb 20 |
+| Create proper UI to acommodate both methods of determining location | US 01.02, 01.03 | Yui Han, Kevin Sha | Feb 24 |
+| Highlight the surface that the user has selected | US 01.04 | Vaibhav Chugh, Huy Ta | Feb 24 |
+| Spawn AR objects on selected surface | US 02.01 | Mohammad Hammad, Yui Han | Mar 1 |
+| Fix docs according to TA feedback and write sprint 4 planning | Documentation | Raunak Agarwal, Vaibhav Chugh | Mar 1 |
+
 
 ### Sprint 4
 *Due: March 18*
