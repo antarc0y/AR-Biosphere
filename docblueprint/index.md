@@ -30,7 +30,6 @@ When a user first opens the product, they will confirm their location in order t
 | US 02.02    | As a user, I want to be able to view a brief description about the ecosystem I’m looking at, so that I know what to expect.              | 3           | <li> User can see information about the ecosystem in a new activity. </li>                                                                                                                            | Should                    |
 | US 02.03.01 | As a user, I want to be able to click on an augmented object, so that I can learn information about it.                                  | 3           | <li> User is viewing an augmented object through their camera. </li>                                                                                                                                  | Must                      |
 | US 02.03.02 | As a user, I want to be able to navigate to external links for each object, so that I can gather more information.                       | 3           | <li>From the popup information screen, user can click on a link to go to an external site where they learn more about the object. </li>                                                               | Should                    |
-| US 02.03.03 | As a user, I want to be able to exit out of external information tabs, so that I can view other Augmented objects.                       | 3           | <li>From the external information screen, user can click on exit/back button and be back to the camera screen. </li>                                                                                  | Should                    |
 | US 03.01    | As a user, I want to create an account, so I can save my progress and interaction information on the app                                 | 5           | <li>User can select "Forgot Password" on the login screen.</li> <li> User can enter their email and receive a reset link. </li> <li> User can log in with their new password.</li>                    | Could                     |
 | US 03.02    | As a user, I want to login to my account, to get a personalized experience.                                                              | 5           | <li>User opens the app and can see a login screen.</li> <li> User can enter their credentials and log in to their account.</li> <li> User can choose "Forgot Password" to recover their account.</li> | Could                     |
 | US 03.03    | As a user, I want to be able to save object information in my records, so that I can read about it later.                                | 5           | <li>User can select an object.</li> <li> User can choose to save selected object.</li> <li> User can see a list of saved objects.</li>                                                                | Could                     |
@@ -40,13 +39,26 @@ When a user first opens the product, they will confirm their location in order t
 ## Similar Products
 * [ARCore Elements](https://play.google.com/store/apps/details?id=com.google.ar.unity.ddelements): 
     * Demo app by Google using ARCore platform. 
-    * Has tips for User Movement, User Interface and Object Movement.
-
+    * The AR Elements are selectable and have sounds. Users can click on elements to view helpful tips for implementing
+User Movement, User Interface and Object Movement. 
+    * Selected elements come forward into the scene and the rest are pushed back. 
+We can implement a similar feature to allow users to select objects and view information about them to avoid clustering the scene.
+* [Augment](https://play.google.com/store/apps/details?id=com.ar.augment) and [AR Viewer](https://play.google.com/store/apps/details?id=com.ipol.arviewer.app):
+    * AR apps where user view premade models or import and view their own models (AR Viewer).
+    * Can be used to preview models before using in our own app.
+    * Augment has Capture button to take a picture of the scene with the AR objects like a normal camera. AR Viewer also allows video recording up to 4K.
+    * We can implement a similar feature to allow users to take photos and possibly record videos.
 
 ## Open Source Products
-* https://github.com/viromedia/figment-ar: AR app built with [ViroReact](https://github.com/viromedia)
 * https://github.com/Unity-Technologies/arfoundation-samples/: AR app demo built with [Unity's AR Foundation](https://unity.com/)
-
+    * Has clear structure and instructions for setup with Unity and AR Foundation.
+    * Has detailed samples of different AR features like planes, lighting, and object placement, etc. as well as ARCore and ARKit specific features.
+    * We can follow implementations of the features we want to implement in our app.
+* https://github.com/viromedia/figment-ar: AR app built with [ViroReact](https://github.com/viromedia)
+    * Built and released on both iOS and Android.
+    * Has multiple AR element types including animated models and environment. User can add multiple elements to the scene.
+    * User can select an element and choose to remove them from the scene. We can implement a similar feature to allow users to select objects and view information about them 
+or remove them from the scene.
 
 ## Technical Resources
 * AR Engine: [Unity](https://unity.com/)
@@ -56,11 +68,15 @@ When a user first opens the product, they will confirm their location in order t
     * [Unity Mars](https://unity.com/products/unity-mars): Integrates with AR Foundation to build apps 
     * [Google's guide on getting started with AR Foundation](ttps://developers.google.com/ar/develop/unity-arf/getting-started-ar-foundation)
     * [Create an AR game using Unity's AR Foundation](https://codelabs.developers.google.com/arcore-unity-ar-foundation#0)
-* [ViroReact](https://github.com/viromedia): Integrate directly with React Native. No longer in development
-* Backend: [Django](https://www.djangoproject.com/) and [PostgreSQL](https://www.postgresql.org/)
-    * [Django REST Framework](https://www.django-rest-framework.org/): API framework for Django
-* Frontend: [React Native](https://reactnative.dev/)
+* Backend: [Firebase](https://firebase.google.com/)
+    * [Firebase Authentication](https://firebase.google.com/docs/auth)
+    * [Firebase Realtime Database](https://firebase.google.com/docs/database)
+    * [Firebase Storage](https://firebase.google.com/docs/storage)
+* Frontend: [Unity](https://unity.com/)
+  * [Creating UI in Unity](https://docs.unity3d.com/2020.2/Documentation/Manual/UIToolkits.html)
+  * [Comparison between Unity UI framworks](https://docs.unity3d.com/2020.2/Documentation/Manual/UI-system-compare.html)
 * Deployment: [Expo](https://expo.io/)
+* * [ViroReact](https://github.com/viromedia): Integrate directly with React Native. No longer in development.
 
 
 
