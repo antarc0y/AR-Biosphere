@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -381,8 +381,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 60, y: -30}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 58.90001, y: -32.1}
+  m_SizeDelta: {x: 2.200016, y: -4.2000027}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &234942404
 MonoBehaviour:
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: About Us
+  m_text: About us
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0d94bb4e39bbf474d9ae0a5f594220bf, type: 2}
   m_sharedMaterial: {fileID: 9039346946455393968, guid: 0d94bb4e39bbf474d9ae0a5f594220bf,
@@ -414,8 +414,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 2746810112
+  m_fontColor: {r: 0, g: 1, b: 0.7210772, a: 0.6392157}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -432,8 +432,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -601,7 +601,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30.356, y: 196}
+  m_AnchoredPosition: {x: -30.356, y: 166.8}
   m_SizeDelta: {x: 208.712, y: 156.082}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &501085757
@@ -1016,6 +1016,7 @@ GameObject:
   - component: {fileID: 1307287175}
   - component: {fileID: 1307287174}
   - component: {fileID: 1307287173}
+  - component: {fileID: 1307287176}
   m_Layer: 5
   m_Name: about us
   m_TagString: Untagged
@@ -1041,8 +1042,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25.24, y: -628.611}
-  m_SizeDelta: {x: 287.936, y: 68.679}
+  m_AnchoredPosition: {x: 23.4, y: -685.9}
+  m_SizeDelta: {x: 228.3, y: 65.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1307287173
 MonoBehaviour:
@@ -1087,7 +1088,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1307287174}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1307287176}
+        m_TargetAssemblyTypeName: AboutUsLink, Assembly-CSharp
+        m_MethodName: OpenAboutUs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1307287174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1126,6 +1139,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307287171}
   m_CullTransparentMesh: 1
+--- !u!114 &1307287176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307287171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a9cd21d238ce3840aa968807dfe4400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1888885428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,7 +1209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Begin
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0d94bb4e39bbf474d9ae0a5f594220bf, type: 2}
   m_sharedMaterial: {fileID: 9039346946455393968, guid: 0d94bb4e39bbf474d9ae0a5f594220bf,
