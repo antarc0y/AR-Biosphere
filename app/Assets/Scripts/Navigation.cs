@@ -9,7 +9,7 @@ public class Navigation : MonoBehaviour
     // Start is called before the first frame update
     public void GoToNextScene() 
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2); 
     }
 
     public void GoToPreviousScene()
