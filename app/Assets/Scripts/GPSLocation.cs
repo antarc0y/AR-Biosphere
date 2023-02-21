@@ -27,36 +27,30 @@ public class GPSLocation : MonoBehaviour
 {
     public RawImage rawMap;
     private string apiKey = "AIzaSyBHqm9CstJzpzXe6H8jtioNzXGZbgOXMzk";
-    private float lat = 53.54708384949384f; //Edmonton downtown roger's place
-    private float lon = -113.4978218588264f;
+    //private float lat = 53.54708384949384f; //Edmonton downtown roger's place
+    //private float lon = -113.4978218588264f;
+    private float lat =1.0f;
+    private float lon = 1.0f;
     private int zoom = 15;
     private enum resolution { low = 1, high = 2 };
     private resolution mapResolution = resolution.high;
     private enum type { roadmap, satellite, gybrid, terrain };
     private type mapType = type.roadmap;
     private string url = "";
-    private int mapWidth = 640;
-    private int mapHeight = 640;
+    private int mapWidth, mapHeight;
+    private Rect rect;
     //private bool mapIsLoading = false; //not used. Can be used to know that the map is loading 
 
     void Start()
     {
-        // https://stackoverflow.com/a/48709735
-        // this script is attached to both GPSButton and Map; specify using Map
         GameObject obj = GameObject.Find("Map");
         rawMap = obj.GetComponent<RawImage>();
+        rect = rawMap.GetComponent<RectTransform>().rect;
+        mapWidth = (int)rect.width;
+        mapHeight = (int)rect.height;
+        StartCoroutine(InputLocation());
         StartCoroutine(GetGoogleMap());
     }
-
-    public void onGPSClick(){
-        lat = 53.51890438485273f;
-        lon = -113.51914288581222f; //Try testing manually with these coordinates first before working with the GPS
-        GameObject obj = GameObject.Find("Map");
-        rawMap = obj.GetComponent<RawImage>();
-        //StartCoroutine(InputLocation());
-        StartCoroutine(GetGoogleMap());
-    }
-
 
     private IEnumerator InputLocation()
     {
@@ -100,7 +94,13 @@ public class GPSLocation : MonoBehaviour
 
     private IEnumerator GetGoogleMap()
     {
-        url = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=" + zoom + "&size=" + mapWidth + "x" + mapHeight + "&scale=" + mapResolution + "&maptype=" + mapType + "&key=" + apiKey;
+        if (lat == 1.0f && lon == 1.0f)
+        {
+            yield return StartCoroutine(InputLocation());
+        }
+        url =   "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + 
+                "&zoom=" + zoom + "&size=" + mapWidth + "x" + mapHeight + "&scale=" + 
+                mapResolution + "&maptype=" + mapType + "&markers=" + lat + "," + lon +"&key=" + apiKey;
         //mapIsLoading = true;
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
         yield return www.SendWebRequest();
