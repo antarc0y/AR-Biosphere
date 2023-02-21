@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82622c0f8a26646ab3689a2677e907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rawMap: {fileID: 0}
+  rawMap: {fileID: 586600147}
 --- !u!1 &872019803
 GameObject:
   m_ObjectHideFlags: 0

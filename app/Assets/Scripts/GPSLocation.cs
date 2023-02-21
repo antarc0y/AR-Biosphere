@@ -41,13 +41,18 @@ public class GPSLocation : MonoBehaviour
 
     void Start()
     {
-        rawMap = GetComponent<RawImage>();
+        // https://stackoverflow.com/a/48709735
+        // this script is attached to both GPSButton and Map; specify using Map
+        GameObject obj = GameObject.Find("Map");
+        rawMap = obj.GetComponent<RawImage>();
         StartCoroutine(GetGoogleMap());
     }
 
     public void onGPSClick(){
         lat = 53.51890438485273f;
         lon = -113.51914288581222f; //Try testing manually with these coordinates first before working with the GPS
+        GameObject obj = GameObject.Find("Map");
+        rawMap = obj.GetComponent<RawImage>();
         //StartCoroutine(InputLocation());
         StartCoroutine(GetGoogleMap());
     }
