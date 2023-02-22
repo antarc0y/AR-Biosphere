@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -25,6 +26,8 @@ public class ObjectManager : MonoBehaviour
     // Distance for random spawn location
     private float _minDistance = 0.5f;
     private float _maxDistance = 3.0f;
+
+    private float y = 0f;
     
 
     private void Awake()
@@ -40,27 +43,24 @@ public class ObjectManager : MonoBehaviour
 
     private void Update()
     {
-        // Spawn objects every 25 frames if the maximum number of objects has not been reached.
         if (Input.touchCount > 0) OnTouch();
-        if (_spawnedObjects.Count == maxObjectCount) return;
-        if (Time.frameCount % 25 == 0) SpawnObjects();
+        
+        // Spawn objects every 25 frames if the maximum number of objects has not been reached.
+        if (_spawnedObjects.Count < maxObjectCount && Time.frameCount % 25 == 0) SpawnObjects();
     }
     
     private void SpawnObjects()
     {
         // Cast ray from center of screen to detect planes
-        if (_raycastManager.Raycast(new Vector2(Screen.width / 2f, Screen.height / 2f), _hits,
-                TrackableType.PlaneWithinPolygon))
+        if (_raycastManager.Raycast(new Vector2(Random.Range(0, Screen.width), Random.Range(0, Screen.height)),
+                _hits, TrackableType.PlaneWithinPolygon))
         {
             var hitPose = _hits[0].pose;
-
-            // Determine spawn location randomly around the detected plane, within the screen boundaries.
-            Vector3 spawnPosition = new Vector3();
-            do
-            {
-                spawnPosition = hitPose.position + Random.insideUnitSphere * Random.Range(_minDistance, _maxDistance);
-                spawnPosition.y = hitPose.position.y;
-            } while(!IsPointWithinScreen(spawnPosition));
+            
+            var spawnPosition = hitPose.position;
+            if (y == 0f) y = spawnPosition.y;
+            else spawnPosition.y = y;
+            if (!IsPointWithinScreen(spawnPosition)) return;
             
             // Align the spawned object with the detected plane
             Quaternion spawnRotation = Quaternion.FromToRotation(Vector3.up, hitPose.up);
