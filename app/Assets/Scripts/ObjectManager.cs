@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -28,6 +25,7 @@ public class ObjectManager : MonoBehaviour
     // Distance for random spawn location
     private float _minDistance = 0.5f;
     private float _maxDistance = 3.0f;
+    
 
     private void Awake()
     {
@@ -37,13 +35,13 @@ public class ObjectManager : MonoBehaviour
         if (!_mainCamera)
         {
             _mainCamera = Camera.main;
-            _mainCamera.enabled = true;
         }
     }
 
     private void Update()
     {
         // Spawn objects every 25 frames if the maximum number of objects has not been reached.
+        if (Input.touchCount > 0) OnTouch();
         if (_spawnedObjects.Count == maxObjectCount) return;
         if (Time.frameCount % 25 == 0) SpawnObjects();
     }
@@ -70,8 +68,9 @@ public class ObjectManager : MonoBehaviour
             // Select prefabs from list and spawn them, adding them to the list of spawned objects.
             // TODO: Add a check to make sure the spawned object is not too close to another object.
             // TODO: Download prefabs from db as AssetBundle instead of hardcoding them.
-            GameObject objectToSpawn = objectList[Random.Range(0, objectList.Count)];
-            GameObject spawnedObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
+            var objectToSpawn = objectList[Random.Range(0, objectList.Count)];
+            objectToSpawn.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            var spawnedObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
             _spawnedObjects.Add(spawnedObject);
         }
     }
@@ -96,6 +95,31 @@ public class ObjectManager : MonoBehaviour
         return false;
     }
 
+    // When user clicks on the screen, checks if the click was on a spawned object.
+    // Right now, all it does is delete all spawned objects. To be changed.
+    private void OnTouch()
+    {
+        var touch = Input.GetTouch(0);
+        if (touch.phase != TouchPhase.Began) return;
+        var ray = _mainCamera.ScreenPointToRay(touch.position);
+        RaycastHit hitObject;
+        
+        if (Physics.Raycast(ray, out hitObject))
+        {
+            var selectedObject = hitObject.collider.gameObject;
+            if (selectedObject != null)
+            {
+                DeleteObjects();
+            }
+        }
+    }
+
+    private void OnGUI()
+    {
+        // Display the number of spawned objects
+        GUI.Label(new Rect(20, 20, 200, 40), $"Objects: {_spawnedObjects.Count}");
+    }
+    
     // Delete all spawned objects. Called on button click.
     public void DeleteObjects()
     {
@@ -104,5 +128,10 @@ public class ObjectManager : MonoBehaviour
             Destroy(spawnedObject);
         }
         _spawnedObjects.Clear();
+    }
+    
+    private void OnDestroy()
+    {
+        DeleteObjects();
     }
 }
