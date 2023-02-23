@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
-using DG.Tweening.Modules;
 
 public class SwitchToggle : MonoBehaviour
 {
@@ -42,11 +41,9 @@ public class SwitchToggle : MonoBehaviour
         //uiHandleRectTransform.anchoredPosition = on ? handlePosition * -1 : handlePosition ; // no anim
         uiHandleRectTransform.DOAnchorPos(on ? handlePosition * -1 : handlePosition, .4f).SetEase(Ease.InOutBack);
 
-        //backgroundImage.color = on ? backgroundActiveColor : backgroundDefaultColor ; // no anim
         backgroundImage.DOColor(on ? backgroundActiveColor : backgroundDefaultColor, .6f);
-
-        //handleImage.color = on ? handleActiveColor : handleDefaultColor ; // no anim
         handleImage.DOColor(on ? handleActiveColor : handleDefaultColor, .4f);
+
     }
 
     void OnDestroy()
