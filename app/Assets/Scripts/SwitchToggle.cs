@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
-using DG.Tweening.Modules;
 
 public class SwitchToggle : MonoBehaviour
 {
