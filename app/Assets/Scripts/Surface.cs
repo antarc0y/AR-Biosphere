@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System;
+using UnityEngine.Scripting.APIUpdating;
 /// <summary>
 /// Represents a switch handler that responds to the toggle switch being clicked
 /// used to change the surface between land or water
