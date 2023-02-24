@@ -20,7 +20,7 @@ public class SwitchToggle : MonoBehaviour {
 
       handlePosition = uiHandleRectTransform.anchoredPosition ;
 
-      backgroundImage = uiHandleRectTransform.parent.GetComponent<Image>();
+      backgroundImage = uiHandleRectTransform.parent.GetComponent <Image> ( ) ;
       handleImage = uiHandleRectTransform.GetComponent <Image> ( ) ;
 
       backgroundDefaultColor = backgroundImage.color ;
