@@ -70,12 +70,13 @@ Estimated Sprint Velocity: **20**
 
 | **Task**        | **Related US** | **Assigned To** | **Due Date** |
 | --------------- | ------------------- | -------------------- | ------------------------- |
-| Integrate Geolocation API to determine current location | US 01.02 | Mohammad Hammad, Huy Ta | Feb 20 |
-| Allow user to manually enter his location + handle false cases | US 01.03 | Kevin Sha, Raunak Agarwal | Feb 20 |
-| Create proper UI to acommodate both methods of determining location | US 01.02, 01.03 | Yui Han, Kevin Sha | Feb 24 |
-| Highlight the surface that the user has selected | US 01.04 | Vaibhav Chugh, Huy Ta | Feb 24 |
-| Spawn AR objects on selected surface | US 02.01 | Mohammad Hammad, Yui Han | Mar 1 |
-| Fix docs according to TA feedback and write sprint 4 planning | Documentation | Raunak Agarwal, Vaibhav Chugh | Mar 1 |
+| Integrate Geolocation API to determine current location | US 01.02 | Kevin Sha, Vaibhav Chugh | Feb 20 |
+| Create proper UI to show the current location | US 01.02, 01.03 | Raunak Argawal, Kevin Sha | Feb 24 |
+| Create a toggle switch that allows user to set their surface as land or water | US 01.04 | Yui Han, Mohammad Hammad | Feb 24 |
+| Spawn AR objects on selected surface | US 02.01 | Mohammad Hammad, Huy Ta | Mar 1 |
+| Fix docs according to TA feedback | Documentation | Raunak Agarwal, Vaibhav Chugh, Yui Han | Mar 1 |
+| Sprint 4 planning | Documentation |Yui Han | Mar 1 |
+| Unit Testing | Testing | Raunak Argarwal, Huy Ta | Mar 1 |
 
 
 ### Sprint 4
@@ -96,7 +97,15 @@ Estimated Sprint Velocity: **23**
 
 **Tasks**
 
-Sprint 4 tasks will be added during Sprint 3.
+| **Task**        | **Related US** | **Assigned To** | **Due Date** |
+| --------------- | ------------------- | -------------------- | ------------------------- |
+| Select models based on client provided species, add models to database | US 01.06 | Mohammad Hammad, Huy Ta | Mar 12 |
+| Allow models to be clickable and view their description upon clicking| US 02.02, US 02.03.01 | Yui Han, Kevin Sha | Mar 12 |
+| Embed clickable link in model description | US 02.03.02 | Raunak Argarwal, Vaibhav Chugh| Mar 13 |
+| Allow user to nagivate model description link by opening an external web page, and be able to exit the link to resume viewing the model description in app | US 02.03.03 | Vaibhav Chugh, Huy Ta | Mar 13 |
+| User detects water body or land using camera | US 04.03 | Mohammad Hammad, Yui Han | Mar 16 |
+| Make revisions based on feedback| Documentation | Yui Han | Mar 16 |
+| Testing | Testing | Kevin Sha, Raunak Argawal | Mar 16
 
 ### Sprint 5
 *Due: April 4*

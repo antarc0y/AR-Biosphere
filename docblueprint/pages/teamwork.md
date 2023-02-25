@@ -4,6 +4,15 @@
 Below is the team canvas for our team
 ![TeamCanvas](../images/teamcanvas2.png)
 
+| **Sprints** | **Product Owner** | **Scrum Master** |
+| ------------| ------------------| -----------------| 
+| 1 | Kevin Sha      | Mohammad Hammad          |
+| 2 | Vaibhav Chugh         | Huy Ta         |
+| 3 | Raunak Argawal        | Yui Han          | 
+| 4 | TBD         | TBD       |
+| 5 | TBD      | TBD         | 
+
+
 ## Belbin Roles
 See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/about/belbin-team-roles).
 
