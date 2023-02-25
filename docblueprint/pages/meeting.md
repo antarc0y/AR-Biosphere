@@ -2,15 +2,15 @@
 
 ??? abstract "Jan 18 / First Client Meeting"
 
-    ## Main Purpose
+    ## Main Purpose 🕰️
 
     - Discuss project requirements with the client, clarify high level questions, and understand client's vision
 
-    ## Attendance
+    ## Attendance 👨‍💻
 
     - Paula (Client), Yazeed (TA), the entire Biosphere team
 
-    ## Q&A
+    ## Q&A❓+❗
 
     What are the overarching goals of the project?
 
@@ -38,15 +38,15 @@
 
 ??? abstract "Jan 22 / Internal Team Meeting"
 
-    ## Main Purpose
+    ## Main Purpose 🕰️
 
     - Discuss distribution of tasks for sprint 1, planned internal deadlines for completion of tasks
     
-    ## Attendance
+    ## Attendance 👨‍💻
 
     - The entire Biosphere team
     
-    ## Important Takeaways
+    ## Important Takeaways❗
 
     - Work for sprint 1 is documented in Google Drive
 
@@ -58,15 +58,15 @@
 
 ??? abstract "Jan 25 / Sprint 1 Check-in Meeting"
 
-    ## Main Purpose
+    ## Main Purpose 🕰️
 
     - Gather updates on all team members on their sprint 1 tasks
 
-    ## Attendance
+    ## Attendance 👨‍💻
     
     - The entire biosphere team
 
-    ## Important Takeaways
+    ## Important Takeaways❗
 
     - Team reached agreement on high level architecture to eb used for this project
 
@@ -76,15 +76,15 @@
 
 ??? abstract "Jan 27 / Sprint 1 Final Updates"
 
-    ## Main Purpose
+    ## Main Purpose 🕰️
 
     - Finalize all details of sprint 1 deliverables, provide feedback to other members' work
 
-    ## Attendance
+    ## Attendance 👨‍💻
     
     - The entire biosphere team
 
-    ## Important Takeaways
+    ## Important Takeaways❗
 
     - Plan to have all sprint 1 deliverables added to team documentation page by the end of the day
 
@@ -92,16 +92,16 @@
 
 ??? abstract "Feb 1 / Second Client Meeting"
 
-    ## Main Purpose
+    ## Main Purpose 🕰️
 
     - Update Paula on the sprint 1 items, show her low fidelity wireframes 
     - Comfirm that our high level designs align with her vision
 
-    ## Attendance
+    ## Attendance 👨‍💻
     
     - Paula (Client), The entire biosphere team
 
-    ## Important Takeaways
+    ## Important Takeaways❗
 
     - Paula confirmed that our architectural design and wireframes align with her specifications
 
@@ -113,17 +113,16 @@
 
 ??? abstract "Feb 6 / Sprint 2 Meeting, Sprint 1 Review"
 
-    ## Main Purpose
+    ## Main Purpose 🕰️
 
     - Review of sprint 1 deliverables with Yazeed, consider feedback for sprint 2 updates
     - Comfirm tasks for sprint 2
 
-    ## Attendance
+    ## Attendance 👨‍💻
     
     - Yazeed (TA), The entire biosphere team
 
-    ## Important Takeaways
-
+    ## Important Takeaways❗
     - Architecture diagram, open source resources, and user stories needs to be updated for sprint 2
 
     - Sprint planning needs to be reconsidered, user stories should be more evenly distributed amongst sprint to avoid having one sprint with a much higher velocity
@@ -140,18 +139,18 @@
 
 ??? abstract "Feb 8 / Sprint 2 Update Meeting + Unity Workshop"
 
-    ## Main Purpose
+    ## Main Purpose 🕰️
 
     - Comfirm progress for sprint 2, further divide the tasks in a more specific manner
     - Discuss assigning issues on Git
     - Learn Unity with Yazeed
 
 
-    ## Attendance
+    ## Attendance 👨‍💻
     
     - The entire biosphere team, Yazeed (only for workshop)
 
-    ## Important Takeaways
+    ## Important Takeaways❗
 
     - Documentation updates mostly completed, addressed feedbacks from sprint 1 
 
@@ -160,3 +159,54 @@
     - Work on testing 
 
     - Aim to have everything done by Friday, Feb 10
+
+??? abstract "Feb 13 / Sprint 2 demo and feedback"
+
+    ## Main Purpose 🕰️
+
+    - Review sprint 2 and discuss feedback
+    - Discuss next steps for sprint 3 (internal)
+
+    ## Attendance 👨‍💻
+    
+    - The entire biosphere team, Yazeed (for demo)
+
+    ## Important Takeaways❗
+
+    - Sprint 2 code base mostly looks good, minor updates on documentation required
+
+    - Implement a controller in each Unity scene to respond to onClick methods, write one script per scene
+
+    - Unit test is good, need more tests in the future
+
+    - Distribute tentative sprint 3 roles, assign roles per sprint in Github
+    - Kevin and V will start integrating google maps API, other members are not available this week due to midterms
+
+??? abstract "Feb 20/ Client Update and Internal Meeting"
+
+    ## Main Purpose 🕰️
+
+    - Demo the homescreen and camera to client
+    - Ask client for clarification on models and datasets
+    - Discuss next steps for sprint 3 (internal)
+
+    ## Attendance 👨‍💻
+    
+    - Paula + Lee (Clients), The entire biosphere team
+
+    ## Important Takeaways❗
+
+    - Clients like the current homepage
+    - Client provided us a document of species they would like us to find models of, would like at least 3-5 models
+    - Arthropod models should be upscaled for easy viewing, mammals and birds can be life-size
+    - Client not sure how the geodata will be provided, for the prototype, assume the app will only be used at UofA
+    - Use a 'treasure hunt' format where object pop up randomly on screen according to a set timer
+    - Use google maps to pin user location, do not implement manual location select
+    - Only have water and land as available surfaces, we will primarily test the app in the business quad
+    - Tentative tasks:
+        - Mohammad: UML updates
+        - Kevin: User story updates, google map API
+        - Yui: Sprint planning updates, surface selection
+        - Everyone: spawning AR models
+        - V: google maps API
+        - Raun: UI for location select

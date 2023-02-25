@@ -4,7 +4,7 @@
 Below is the team canvas for our team
 ![TeamCanvas](../images/teamcanvas2.png)
 
-| **Sprints** | **Product Owner** | **Scrum Master** |
+| **Sprints** | **Product Owner 🧑‍💼 ** | **Scrum Master ✏️** |
 | ------------| ------------------| -----------------| 
 | 1 | Kevin Sha      | Mohammad Hammad          |
 | 2 | Vaibhav Chugh         | Huy Ta         |
@@ -27,7 +27,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 
 ### Thinking Roles
 
-#### PL (Plant)
+#### PL (Plant)🪴
 
 > Tends to be highly creative and good at solving problems in unconventional ways.
 
@@ -37,7 +37,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 |               | Raunak Agarwal  |
 |               | Yui Han        |
 
-#### ME (Monitor Evaluator)
+#### ME (Monitor Evaluator) 🖥️
 
 > Provides a logical eye, making impartial judgements where required and weighs up the team's options in a dispassionate way.
 
@@ -47,7 +47,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 | Kevin Sha     | Vaibhav Chugh   |
 |               | Huy Ta          |
 
-#### SP (Specialist)
+#### SP (Specialist) ⚙️
 
 > Brings in-depth knowledge of a key area to the team.
 
@@ -61,7 +61,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 
 ### Action Roles
 
-#### SH (Shaper)
+#### SH (Shaper) 🔧
 
 > Provides the necessary drive to ensure that the team keeps moving and does not lose focus or momentum.
 
@@ -70,7 +70,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 | Raunak Agarwal  | Yui Han         |
 |                 | Kevin Sha       |
 
-#### IMP (Implementer)
+#### IMP (Implementer) 🗊
 
 > Needed to plan a workable strategy and carry it out as efficiently as possible.
 
@@ -82,7 +82,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 | Yui Han        |                 |
 | Kevin Sha       |                 |
 
-#### CF (Completer Finisher)
+#### CF (Completer Finisher) 🏃‍♂️
 
 > Most effectively used at the end of tasks to polish and scrutinise the work for errors, subjecting it to the highest standards of quality control.
 
@@ -95,7 +95,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 
 ### People Roles
 
-#### RI (Resource Investigator)
+#### RI (Resource Investigator) 🔍
 
 > Uses their inquisitive nature to find ideas to bring back to the team. 
 
@@ -103,7 +103,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 | -------------- | --------------- |
 | Raunak Agarwal | Vaibhav Chugh   |
 
-#### TW (Teamworker)
+#### TW (Teamworker) 🤝
 
 > Helps the team to gel, using their versatility to identify the work required and complete it on behalf of the team.
 
@@ -111,7 +111,7 @@ See [https://www.belbin.com/about/belbin-team-roles](https://www.belbin.com/abou
 | ------------- | --------------- |
 | Huy Ta        | Mohammad Hammad |
 
-#### CO (Co-ordinator)
+#### CO (Co-ordinator) 🗣️
 
 > Needed to focus on the team's objectives, draw out team members and delegate work appropriately.
 
