@@ -2,10 +2,16 @@ using UnityEngine ;
 using UnityEngine.UI ;
 using DG.Tweening ;
 
+/// <summary>
+/// Represents a switch toggle object that is clickable
+/// switch toggle will handle changing the surface for the AR environment
+/// we will only use Land or Water surfaces at this stage for simplicity
+/// </summary>
 public class SwitchToggle : MonoBehaviour {
    [SerializeField] RectTransform uiHandleRectTransform ;
    [SerializeField] Color backgroundActiveColor ;
    [SerializeField] Color handleActiveColor ;
+   [SerializeField] Surface surface;
 
    Image backgroundImage, handleImage ;
 
@@ -14,7 +20,11 @@ public class SwitchToggle : MonoBehaviour {
    Toggle toggle ;
 
    Vector2 handlePosition ;
-
+   
+    /// <summary>
+    /// handles initializing the toggle button
+    /// sets relevant information including anchor position, image components, colors
+    /// </summary>
    void Awake ( ) {
       toggle = GetComponent <Toggle> ( ) ;
 
@@ -32,19 +42,23 @@ public class SwitchToggle : MonoBehaviour {
          OnSwitch (true) ;
    }
 
+    /// <summary>
+    ///  handles onClick effects for the toggle switch
+    /// </summary>
+    /// <param name="on"></param>
    void OnSwitch (bool on) {
-      //Debug.Log("OnSwitch called with value: " + on);
-
-      //Debug.Log("Handle position before: " + uiHandleRectTransform.anchoredPosition);
-      //uiHandleRectTransform.anchoredPosition = on ? handlePosition * -1 : handlePosition ; // no anim
+    
+      // changes the position of the toggle button to create the sliding animation
       uiHandleRectTransform.DOAnchorPos (on ? handlePosition * -1 : handlePosition, .4f).SetEase (Ease.InOutBack) ;
 
-      //Debug.Log("uiHandleRectTransform anchored position set to: " + uiHandleRectTransform.anchoredPosition);
-        //backgroundImage.color = on ? backgroundActiveColor : backgroundDefaultColor ; // no anim
+      // changes switch background color upon clicking
       backgroundImage.DOColor (on ? backgroundActiveColor : backgroundDefaultColor, .6f) ;
 
-      //handleImage.color = on ? handleActiveColor : handleDefaultColor ; // no anim
+      // changes toggle button color upon clicking
       handleImage.DOColor (on ? handleActiveColor : handleDefaultColor, .4f) ;
+
+      // change surface every time the user clicks the toggle, defaults to land
+      surface.ChangeSurface();
    }
 
    void OnDestroy ( ) {
