@@ -11,9 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BlankAR.unity
     guid: 6bdce89659816455b9f906fc62d19910
-  - enabled: 1
-    path: Assets/Scenes/Surface select.unity
-    guid: b0ababbb471e887479e6db350eeb7954
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}
