@@ -29,8 +29,8 @@ public class GPSLocation : MonoBehaviour
     private string apiKey = "AIzaSyBHqm9CstJzpzXe6H8jtioNzXGZbgOXMzk";
     //private float lat = 53.54708384949384f; //Edmonton downtown roger's place
     //private float lon = -113.4978218588264f;
-    private float lat =1.0f;
-    private float lon = 1.0f;
+    private static float lat =1.0f;
+    private static float lon = 1.0f;
     private int zoom = 15;
     private enum resolution { low = 1, high = 2 };
     private resolution mapResolution = resolution.high;
@@ -113,6 +113,11 @@ public class GPSLocation : MonoBehaviour
             //mapIsLoading = false;
             rawMap.texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
         }
+    }
+
+    public float[] GetLatLon()
+    {
+        return new float[] {lat, lon};
     }
 
 }
