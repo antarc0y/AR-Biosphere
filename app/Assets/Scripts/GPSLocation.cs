@@ -48,8 +48,7 @@ public class GPSLocation : MonoBehaviour
         rect = rawMap.GetComponent<RectTransform>().rect;
         mapWidth = (int)rect.width;
         mapHeight = (int)rect.height;
-        StartCoroutine(InputLocation());
-        StartCoroutine(GetGoogleMap());
+        UpdateLatLonMap();
     }
 
     private IEnumerator InputLocation()
@@ -91,7 +90,6 @@ public class GPSLocation : MonoBehaviour
 
     }
 
-
     private IEnumerator GetGoogleMap()
     {
         if (lat == 1.0f && lon == 1.0f)
@@ -113,6 +111,12 @@ public class GPSLocation : MonoBehaviour
             //mapIsLoading = false;
             rawMap.texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
         }
+    }
+
+    public void UpdateLatLonMap()
+    {
+        StartCoroutine(InputLocation());
+        StartCoroutine(GetGoogleMap());
     }
 
     public float[] GetLatLon()
