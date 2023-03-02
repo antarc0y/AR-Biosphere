@@ -419,6 +419,36 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
+  - m_Index: 27
+    m_Metrics:
+      m_Width: 60.125
+      m_Height: 63
+      m_HorizontalBearingX: 0.71875
+      m_HorizontalBearingY: 63
+      m_HorizontalAdvance: 61.5625
+    m_GlyphRect:
+      m_X: 247
+      m_Y: 165
+      m_Width: 61
+      m_Height: 63
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  - m_Index: 35
+    m_Metrics:
+      m_Width: 40.6875
+      m_Height: 47.6875
+      m_HorizontalBearingX: 2.515625
+      m_HorizontalBearingY: 46.34375
+      m_HorizontalAdvance: 45.625
+    m_GlyphRect:
+      m_X: 327
+      m_Y: 165
+      m_Width: 42
+      m_Height: 49
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
   m_CharacterTable:
   - m_ElementType: 1
     m_Unicode: 10
@@ -520,6 +550,14 @@ MonoBehaviour:
     m_Unicode: 8230
     m_GlyphIndex: 342
     m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 89
+    m_GlyphIndex: 27
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 99
+    m_GlyphIndex: 35
+    m_Scale: 1
   m_AtlasTextures:
   - {fileID: 4023779959877318918}
   m_AtlasTextureIndex: 0
@@ -618,6 +656,14 @@ MonoBehaviour:
     m_Y: 89
     m_Width: 117
     m_Height: 82
+  - m_X: 237
+    m_Y: 155
+    m_Width: 80
+    m_Height: 82
+  - m_X: 317
+    m_Y: 155
+    m_Width: 61
+    m_Height: 68
   m_FreeGlyphRects:
   - m_X: 106
     m_Y: 25
@@ -627,10 +673,6 @@ MonoBehaviour:
     m_Y: 82
     m_Width: 52
     m_Height: 66
-  - m_X: 237
-    m_Y: 82
-    m_Width: 51
-    m_Height: 941
   - m_X: 70
     m_Y: 34
     m_Width: 3
@@ -679,22 +721,10 @@ MonoBehaviour:
     m_Y: 68
     m_Width: 5
     m_Height: 21
-  - m_X: 351
-    m_Y: 134
-    m_Width: 56
-    m_Height: 889
-  - m_X: 237
-    m_Y: 171
-    m_Width: 786
-    m_Height: 852
   - m_X: 524
     m_Y: 157
     m_Width: 499
     m_Height: 866
-  - m_X: 237
-    m_Y: 155
-    m_Width: 170
-    m_Height: 868
   - m_X: 476
     m_Y: 86
     m_Width: 75
@@ -703,6 +733,26 @@ MonoBehaviour:
     m_Y: 86
     m_Width: 27
     m_Height: 937
+  - m_X: 237
+    m_Y: 82
+    m_Width: 51
+    m_Height: 73
+  - m_X: 351
+    m_Y: 134
+    m_Width: 56
+    m_Height: 21
+  - m_X: 378
+    m_Y: 134
+    m_Width: 29
+    m_Height: 889
+  - m_X: 317
+    m_Y: 223
+    m_Width: 706
+    m_Height: 800
+  - m_X: 378
+    m_Y: 171
+    m_Width: 645
+    m_Height: 852
   m_fontInfo:
     Name: 
     PointSize: 0
