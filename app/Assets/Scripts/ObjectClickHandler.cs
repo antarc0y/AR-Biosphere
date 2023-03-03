@@ -1,13 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
+/// <summary>
+/// Class that handles click events on spawned objects.
+/// </summary>
 public class ObjectClickHandler : MonoBehaviour
 {
     public ObjectManager objectManager;
     public GameObject spawnedObject;
 
+    /// <summary>
+    /// Method that handles mouse down events on spawned objects. Right now removes the clicked object from the scene.
+    /// </summary>
     public void OnMouseDown()
     {
         objectManager.Remove(spawnedObject);
