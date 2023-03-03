@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 586600148}
   - component: {fileID: 586600147}
   - component: {fileID: 586600146}
+  - component: {fileID: 586600149}
   m_Layer: 5
   m_Name: Map
   m_TagString: Untagged
@@ -321,20 +322,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rawMap: {fileID: 586600147}
-  apiKey: AIzaSyBHqm9CstJzpzXe6H8jtioNzXGZbgOXMzk
-  lat: 1
-  lon: 1
-  zoom: 15
-  mapResolution: 2
-  mapType: 0
-  url: 
-  mapWidth: 0
-  mapHeight: 0
-  rect:
-    x: 0
-    y: 0
-    width: 0
-    height: 0
 --- !u!114 &586600147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +357,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586600144}
   m_CullTransparentMesh: 1
+--- !u!114 &586600149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586600144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 586600146}
+          m_TargetAssemblyTypeName: GPSLocation, Scripts
+          m_MethodName: UpdateLatLonMap
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &595136259
 GameObject:
   m_ObjectHideFlags: 0
