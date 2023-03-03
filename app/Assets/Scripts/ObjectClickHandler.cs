@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ObjectClickHandler : MonoBehaviour, IPointerClickHandler
+public class ObjectClickHandler : MonoBehaviour
 {
     public ObjectManager objectManager;
-    public GameObject gameObject;
+    public GameObject spawnedObject;
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnMouseDown()
     {
-        objectManager.DeleteObjects();
-        // objectManager.OnObjectClick(gameObject);
+        objectManager.Remove(spawnedObject);
+        Debug.Log(name);
     }
 }

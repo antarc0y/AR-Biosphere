@@ -35,7 +35,7 @@ public class ObjectManager : MonoBehaviour
             _mainCamera = Camera.main;
         }
     }
-
+    
     private void Update()
     {
         // Spawn objects every 25 frames if the maximum number of objects has not been reached.
@@ -64,15 +64,15 @@ public class ObjectManager : MonoBehaviour
             // TODO: Add a check to make sure the spawned object is not too close to another object.
             // TODO: Download prefabs from db as AssetBundle instead of hardcoding them.
             var objectToSpawn = objectList[Random.Range(0, objectList.Count)];
-            objectToSpawn.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            objectToSpawn.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             var spawnedObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
             _spawnedObjects.Add(spawnedObject);
             
             // Add a click handler to the spawned object
             ObjectClickHandler clickHandler = spawnedObject.AddComponent<ObjectClickHandler>();
-            clickHandler.enabled = true;
             clickHandler.objectManager = this;
-            clickHandler.gameObject = spawnedObject;
+            clickHandler.enabled = true;
+            clickHandler.spawnedObject = spawnedObject;
         }
     }
     
@@ -85,17 +85,21 @@ public class ObjectManager : MonoBehaviour
         if (_raycastManager.Raycast(ray, hits, TrackableType.PlaneWithinPolygon))
         {
             var plane = _planeManager.GetPlane(hits[0].trackableId);
-            return plane.alignment == PlaneAlignment.HorizontalUp;
+            if (plane.alignment != PlaneAlignment.HorizontalUp) return false;
         }
 
-        return false;
+        for (var i = 0; i < _spawnedObjects.Count; i++)
+        {
+            if (Vector3.Distance(_spawnedObjects[i].transform.position, point) < 0.5f) return false;
+        }
+        return true;
     }
     
 
     private void OnGUI()
     {
         // Display the number of spawned objects
-        GUI.Label(new Rect(20, 20, 200, 40), $"Objects: {_spawnedObjects.Count}");
+        GUI.Label(new Rect(40, 40, 200, 50), $"Objects: {_spawnedObjects.Count}");
     }
     
     // Delete all spawned objects. Called on button click.
@@ -106,10 +110,17 @@ public class ObjectManager : MonoBehaviour
             Destroy(spawnedObject);
         }
         _spawnedObjects.Clear();
+        y = 0f;
     }
     
-    private void OnDestroy()
+    private void OnApplicationPause(bool pause)
     {
-        DeleteObjects();
+        if (pause) DeleteObjects();
+    }
+
+    public void Remove(GameObject o)
+    {
+        _spawnedObjects.Remove(o);
+        Destroy(o);
     }
 }
