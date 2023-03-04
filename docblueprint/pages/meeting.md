@@ -210,3 +210,21 @@
         - Everyone: spawning AR models
         - V: google maps API
         - Raun: UI for location select
+    
+
+    ??? abstract "Mar 2/ TA Help Meeting"
+
+    ## Main Purpose 🕰️
+
+    - Receive help in debugging Unity and building project
+
+    ## Attendance 👨‍💻
+    
+    - The entire biosphere team, Yazeed
+
+    ## Important Takeaways❗
+
+    - Everyone received help in building and running the project
+    - Debugging support to solve the problem of clicking models
+    - Received help on how to make models not spawn on top of eachother
+    
