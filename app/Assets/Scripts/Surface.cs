@@ -3,11 +3,11 @@ using UnityEngine;
 /// <summary>
 /// Represents the current surface user projects camera on, contains 2 surfaces: land or water
 /// </summary>
-public class Surface : MonoBehaviour
+public class Surface
 {
     private bool isLand;
 
-    void Start()
+    public Surface()
     {
         isLand = true; // assume surface is land by default
     }

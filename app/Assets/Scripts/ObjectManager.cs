@@ -78,7 +78,7 @@ public class ObjectManager : MonoBehaviour
             var objectToSpawn = objectList[Random.Range(0, objectList.Count)];
             objectToSpawn.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             var spawnedObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
-            _spawnedObjects.Add(spawnedObject);
+            AddObject(spawnedObject);
             
             // Add a click handler to the spawned object
             var clickHandler = spawnedObject.AddComponent<ObjectClickHandler>();
@@ -143,4 +143,7 @@ public class ObjectManager : MonoBehaviour
     {
         if (pause) DeleteObjects();
     }
+    
+    public int ObjectCount => _spawnedObjects.Count;
+    public void AddObject(GameObject obj) => _spawnedObjects.Add(obj);
 }

@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 public class Navigation : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void GoToNextScene() 
+    static public void GoToNextScene() 
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
     }
 
-    public void GoToPreviousScene()
+    static public void GoToPreviousScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }

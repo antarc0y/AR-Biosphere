@@ -27,3 +27,9 @@
 
 # Windows
 /app/Thumbs.db
+
+# TestScenes
+/app/[As]ssets/InitTestScene*.unity
+
+# Temp build folder
+/app/build_BackUpThisFolder_ButDontShipItWithYourGame/
