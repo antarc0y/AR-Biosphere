@@ -59,23 +59,23 @@ Estimated Sprint Velocity: **11**
 | **User Story** | **Story Points** |
 | --------------- | ------------------- |
 | US 01.02 - User assigned location| 3 |
-| US 01.03 - User enter location manually| 5 |
-| US 01.04 - User select surface | 3 |
+| US 01.04 - User toggle surface | 3 |
 | US 02.01 - User view models | 5 |
+| US 01.03 - User manually enters location | 3 |
 | US 04.01 - User identify species | 8 |
 
-Estimated Sprint Velocity: **20**
+Estimated Sprint Velocity: **22**
 
 **Tasks**
 
 | **Task**        | **Related US** | **Assigned To** | **Due Date** |
 | --------------- | ------------------- | -------------------- | ------------------------- |
-| Integrate Geolocation API to determine current location | US 01.02 | Kevin Sha, Vaibhav Chugh | Feb 20 |
-| Create proper UI to show the current location | US 01.02, 01.03 | Raunak Argawal, Kevin Sha | Feb 24 |
+| Integrate Geolocation API to determine current location | US 01.02 | Vaibhav Chugh, Kevin Sha  | Feb 20 |
+| Create proper UI to show the current location | US 01.02 | Raunak Agarwal, Vaibhav Chugh, Kevin Sha  | Feb 24 |
 | Create a toggle switch that allows user to set their surface as land or water | US 01.04 | Yui Han, Mohammad Hammad | Feb 24 |
 | Spawn AR objects on selected surface | US 02.01 | Mohammad Hammad, Huy Ta | Mar 1 |
 | Fix docs according to TA feedback | Documentation | Raunak Agarwal, Vaibhav Chugh, Yui Han | Mar 1 |
-| Sprint 4 planning | Documentation |Yui Han | Mar 1 |
+| Sprint 4 planning | Documentation | Yui Han | Mar 1 |
 | Unit Testing | Testing | Raunak Argarwal, Huy Ta | Mar 1 |
 
 
@@ -90,10 +90,9 @@ Estimated Sprint Velocity: **20**
 | US 02.02 - User view description | 5 |
 | US 02.03.01 - User click model | 3 |
 | US 02.03.02 - User navigate object link | 5 |
-| US 02.03.03 - User exit link | 3 |
 | US 04.03 - User detects water body and land with camera | 5 |
 
-Estimated Sprint Velocity: **23**
+Estimated Sprint Velocity: **20**
 
 **Tasks**
 
