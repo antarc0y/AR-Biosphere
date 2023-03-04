@@ -212,7 +212,7 @@
         - Raun: UI for location select
     
 
-    ??? abstract "Mar 2/ TA Help Meeting"
+??? abstract "Mar 2/ TA Help Meeting"
 
     ## Main Purpose 🕰️
 
