@@ -138,11 +138,6 @@ public class ObjectManager : MonoBehaviour
         Destroy(obj);
     }
     
-    private void OnGUI()
-    {
-        // Display the number of spawned objects
-        GUI.Label(new Rect(40, 40, 200, 50), $"Objects: {_spawnedObjects.Count}");
-    }
 
     private void OnApplicationPause(bool pause)
     {
