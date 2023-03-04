@@ -76,7 +76,7 @@ Estimated Sprint Velocity: **20**
 | Spawn AR objects on selected surface | US 02.01 | Mohammad Hammad, Huy Ta | Mar 1 |
 | Fix docs according to TA feedback | Documentation | Raunak Agarwal, Vaibhav Chugh, Yui Han | Mar 1 |
 | Sprint 4 planning | Documentation |Yui Han | Mar 1 |
-| Unit Testing | Testing | Raunak Argarwal, Huy Ta | Mar 1 |
+| Unit Testing, UI Testing | Testing | Raunak Argarwal, Huy Ta | Mar 1 |
 
 
 ### Sprint 4
