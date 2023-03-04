@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.TestTools;
 using UnityEngine.XR.ARFoundation;
 
-public class ObjectManagerTest
+namespace Tests.PlayModeTest
 {
-    // A Test behaves as an ordinary method
+    // Test ObjectManager script
     public class ObjectManagerTests
     {
         private ObjectManager _objectManager;
-
+    
         [SetUp]
         public void Setup()
         {
@@ -23,38 +19,45 @@ public class ObjectManagerTest
             _objectManager.GetComponent<ARPlaneManager>();
             _objectManager.enabled = true;
         }
-
+    
         [Test]
         public void DeleteObjects_RemovesAllSpawnedObjects()
         {
-            // Arrange
+            // Initialize objects and add to the list
             for (int i = 0; i < 5; i++)
             {
                 var objectToSpawn = new GameObject();
                 var spawnedObject = Object.Instantiate(objectToSpawn);
                 _objectManager.AddObject(spawnedObject);
             }
-
-            // Act
+            
+            // Assert
+            Assert.AreEqual(_objectManager.ObjectCount, 5);
+    
+            // Remove all objects
             _objectManager.DeleteObjects();
-
+    
             // Assert
             Assert.AreEqual(_objectManager.ObjectCount, 0);
         }
-
+    
         [Test]
         public void Remove_RemovesSpecifiedObject()
         {
-            // Arrange
+            // Initialize 1 object and add to the list
             var objectToSpawn = new GameObject();
             var spawnedObject = Object.Instantiate(objectToSpawn);
             _objectManager.AddObject(spawnedObject);
-
-            // Act
+    
+            // Assert
+            Assert.AreEqual(_objectManager.ObjectCount, 1);
+            
+            // Remove specified object
             _objectManager.Remove(spawnedObject);
-
+    
             // Assert
             Assert.AreEqual(_objectManager.ObjectCount, 0);
         }
     }
+
 }

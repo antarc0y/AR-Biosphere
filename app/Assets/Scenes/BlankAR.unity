@@ -1210,6 +1210,7 @@ MonoBehaviour:
   - {fileID: 2206852426022253465, guid: de500f6b90f89bc4c87a6585b2dea01a, type: 3}
   - {fileID: 7770584863604633872, guid: 67de17aaa6711224f80123d9b1ef8cb7, type: 3}
   - {fileID: 104517609856167801, guid: 94c015d94f6e5364e9b36b960bbe1b77, type: 3}
+  switchToggle: {fileID: 2064411223}
   maxObjectCount: 5
 --- !u!114 &1659859601
 MonoBehaviour:
