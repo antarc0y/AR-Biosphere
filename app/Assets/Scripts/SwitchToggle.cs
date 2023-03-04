@@ -11,7 +11,7 @@ public class SwitchToggle : MonoBehaviour {
    [SerializeField] RectTransform uiHandleRectTransform ;
    [SerializeField] Color backgroundActiveColor ;
    [SerializeField] Color handleActiveColor ;
-   [SerializeField] Surface surface;
+   public Surface surface = new Surface();
 
    Image backgroundImage, handleImage ;
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -637,7 +637,6 @@ GameObject:
   - component: {fileID: 743392561}
   - component: {fileID: 743392560}
   - component: {fileID: 743392559}
-  - component: {fileID: 743392558}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -645,18 +644,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &743392558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 743392557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74a83124e14f02b4180179f501467f3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &743392559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1575,7 +1562,6 @@ MonoBehaviour:
   uiHandleRectTransform: {fileID: 738998929}
   backgroundActiveColor: {r: 0.27738217, g: 0.48661083, b: 0.8018868, a: 1}
   handleActiveColor: {r: 0.048059728, g: 0.33333334, b: 0.764151, a: 1}
-  surface: {fileID: 0}
 --- !u!114 &2064411224
 MonoBehaviour:
   m_ObjectHideFlags: 0
