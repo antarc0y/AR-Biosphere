@@ -27,3 +27,6 @@
 
 # Windows
 /app/Thumbs.db
+
+# TestScenes
+/app/[As]ssets/InitTestScene*.unity
