@@ -99,8 +99,8 @@ Estimated Sprint Velocity: **23**
 
 | **Task**        | **Related US** | **Assigned To** | **Due Date** |
 | --------------- | ------------------- | -------------------- | ------------------------- |
-| Select models based on client provided species, add models to database | US 01.06 | Mohammad Hammad, Huy Ta | Mar 12 |
-| Allow models to be clickable and view their description upon clicking| US 02.02, US 02.03.01 | Yui Han, Kevin Sha | Mar 12 |
+| Select models based on client provided species, add models to database as admin | US 01.06 | Huy Ta, Raunak Argawal | Mar 12 |
+| Allow models to be clickable and view their description upon clicking | US 02.02, US 02.03.01 | Yui Han, Kevin Sha, Mohammad Hammad | Mar 12 |
 | Embed clickable link in model description | US 02.03.02 | Raunak Argarwal, Vaibhav Chugh| Mar 13 |
 | Allow user to nagivate model description link by opening an external web page, and be able to exit the link to resume viewing the model description in app | US 02.03.03 | Vaibhav Chugh, Huy Ta | Mar 13 |
 | User detects water body or land using camera | US 04.03 | Mohammad Hammad, Yui Han | Mar 16 |
