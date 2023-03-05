@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using Random = UnityEngine.Random;
@@ -20,9 +21,13 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     private List<GameObject> _spawnedObjects = new();
     
+    [SerializeField]
+    private SwitchToggle switchToggle;
+    
     private Camera _mainCamera;
     private ARRaycastManager _raycastManager;
     private ARPlaneManager _planeManager;
+    
 
     /// <summary>
     /// Maximum number of objects that can be spawned
@@ -40,6 +45,7 @@ public class ObjectManager : MonoBehaviour
         // Initialize the AR components
         _raycastManager = GetComponent<ARRaycastManager>();
         _planeManager = GetComponent<ARPlaneManager>();
+        Debug.Log($"{switchToggle == null}");
         if (!_mainCamera)
         {
             _mainCamera = Camera.main;
@@ -48,8 +54,11 @@ public class ObjectManager : MonoBehaviour
     
     private void Update()
     {
-        // Spawn objects every 20 frames if the maximum number of objects has not been reached.
-        if (_spawnedObjects.Count < maxObjectCount && Time.frameCount % 20 == 0) SpawnObjects();
+        // Spawn objects every 20 frames if the maximum number of objects has not been reached and surface is water
+        if (_spawnedObjects.Count < maxObjectCount && Time.frameCount % 20 == 0 && switchToggle.IsOn)
+        {
+            SpawnObjects();
+        }
     }
     
     /// <summary>

@@ -11,7 +11,7 @@ public class SwitchToggle : MonoBehaviour {
    [SerializeField] RectTransform uiHandleRectTransform ;
    [SerializeField] Color backgroundActiveColor ;
    [SerializeField] Color handleActiveColor ;
-   public Surface surface = new Surface();
+   public static Surface surface  = new Surface();
 
    Image backgroundImage, handleImage ;
 
@@ -60,8 +60,13 @@ public class SwitchToggle : MonoBehaviour {
       // change surface every time the user clicks the toggle, defaults to land
       surface.ChangeSurface();
    }
+    
+   public bool IsOn => toggle.isOn;
 
-   void OnDestroy ( ) {
+   /// <summary>
+    /// handles destroying the toggle button
+    /// </summary>
+    void OnDestroy ( ) {
       toggle.onValueChanged.RemoveListener (OnSwitch) ;
    }
 }
