@@ -9,7 +9,7 @@ Our project will use the N-tier layered architecture format, we plan on using Un
 
 ## UML Class Diagram
 
-Our app can be divided into a number of central classes along with some helper ones. The user class makes calls that get the app user up and running like making calls that obtain the user's current location using the Location class (which further makes use of the class GeocoderResult that Google Maps API uses). The Camera class is responsible for displaying AR objects (which are classed as ARObject). ARObjects are heavily reliant on x, y, and z coordinates, which is why having a 3D vector class, Vector3, is convenient.
+The Aquatic Biosphere app is comprised of three distinct scenes: HomeScreen, UserLocation, and ARCamera. Navigation between these scenes is facilitated by the Navigation class, which provides convenient methods for accessing the succeeding and preceding scenes from any given scene. The HomeScreen scene serves as a welcoming introduction to the app and directs the user to the Aquatic Biosphere project page. Moving forward, the UserLocation scene employs Google's maps API to confirm the user's location. Finally, the ARCamera scene is responsible for managing all the AR models that appear on the screen, utilizing the ObjectManager class to accomplish this task. Users can access information about these models through a pop-up that is spawned by the ModelInfoView class, and this information is pulled from our database, which is managed using the DBHandler class. Throughout the app, 3-dimensional vectors play a prominent role, and these vectors are represented using our custom Vector3 class.
 
 ![UML](../images/uml.svg)
 
