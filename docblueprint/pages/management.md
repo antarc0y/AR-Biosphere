@@ -3,7 +3,7 @@
 This page provides a general overview of the assigned tasks and roles for the duration of five sprints (subject to change).
 
 ## Story map
-![Architecture](../images/storymap.png)
+![Architecture](../images/storymap4.png)
 
 ## Project Plan
 ### Sprint 1
