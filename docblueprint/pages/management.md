@@ -3,7 +3,7 @@
 This page provides a general overview of the assigned tasks and roles for the duration of five sprints (subject to change).
 
 ## Story map
-![Architecture](../images/storymap.png)
+![Architecture](../images/storymap4.png)
 
 ## Project Plan
 ### Sprint 1
@@ -59,23 +59,25 @@ Estimated Sprint Velocity: **11**
 | **User Story** | **Story Points** |
 | --------------- | ------------------- |
 | US 01.02 - User assigned location| 3 |
-| US 01.03 - User enter location manually| 5 |
-| US 01.04 - User select surface | 3 |
+| US 01.04 - User toggle surface | 3 |
 | US 02.01 - User view models | 5 |
+| US 01.03 - User manually enters location | 3 |
 | US 04.01 - User identify species | 8 |
 
-Estimated Sprint Velocity: **20**
+Estimated Sprint Velocity: **22**
 
 **Tasks**
 
 | **Task**        | **Related US** | **Assigned To** | **Due Date** |
 | --------------- | ------------------- | -------------------- | ------------------------- |
-| Integrate Geolocation API to determine current location | US 01.02 | Mohammad Hammad, Huy Ta | Feb 20 |
-| Allow user to manually enter his location + handle false cases | US 01.03 | Kevin Sha, Raunak Agarwal | Feb 20 |
-| Create proper UI to acommodate both methods of determining location | US 01.02, 01.03 | Yui Han, Kevin Sha | Feb 24 |
-| Highlight the surface that the user has selected | US 01.04 | Vaibhav Chugh, Huy Ta | Feb 24 |
-| Spawn AR objects on selected surface | US 02.01 | Mohammad Hammad, Yui Han | Mar 1 |
-| Fix docs according to TA feedback and write sprint 4 planning | Documentation | Raunak Agarwal, Vaibhav Chugh | Mar 1 |
+| Integrate Geolocation API to determine current location | US 01.02 | Vaibhav Chugh, Kevin Sha  | Feb 20 |
+| Create proper UI to show the current location | US 01.02 | Raunak Agarwal, Vaibhav Chugh, Kevin Sha  | Feb 24 |
+| Create a toggle switch that allows user to set their surface as land or water | US 01.04 | Yui Han, Mohammad Hammad | Feb 24 |
+| Spawn AR objects on selected surface | US 02.01 | Mohammad Hammad, Huy Ta | Mar 1 |
+| Fix docs according to TA feedback | Documentation | Raunak Agarwal, Vaibhav Chugh, Yui Han | Mar 1 |
+| Update Wireframes | Documentation | Vaibhav Chugh | Mar 1 |
+| Sprint 4 planning | Documentation | Yui Han | Mar 1 |
+| Unit Testing, UI Testing | Testing | Raunak Argarwal, Huy Ta | Mar 1 |
 
 
 ### Sprint 4
@@ -86,17 +88,25 @@ Estimated Sprint Velocity: **20**
 | **User Story** | **Story Points** |
 | --------------- | ------------------- |
 | US 01.06 - Admin add models | 2 |
-| US 02.02 - User view description | 5 |
+| US 02.02 - User view ecosystem description | 5 |
 | US 02.03.01 - User click model | 3 |
 | US 02.03.02 - User navigate object link | 5 |
-| US 02.03.03 - User exit link | 3 |
 | US 04.03 - User detects water body and land with camera | 5 |
 
-Estimated Sprint Velocity: **23**
+Estimated Sprint Velocity: **20**
 
 **Tasks**
 
-Sprint 4 tasks will be added during Sprint 3.
+| **Task**        | **Related US** | **Assigned To** | **Due Date** |
+| --------------- | ------------------- | -------------------- | ------------------------- |
+| Select models based on client provided species, add models to database as admin | US 01.06 | Huy Ta, Raunak Argawal | Mar 12 |
+| View model description upon clicking | US 02.03.01 | Mohammad Hammad, Huy Ta | Mar 12 |
+| View ecosystem description | US 02.02 | Yui Han, Kevin Sha, Mohammad Hammad | Mar 12 |
+| Embed clickable link in model description | US 02.03.02 | Raunak Argarwal, Vaibhav Chugh| Mar 13 |
+| Allow user to nagivate model description link by opening an external web page, and be able to exit the link to resume viewing the model description in app | US 02.03.03 | Vaibhav Chugh, Huy Ta | Mar 13 |
+| User detects water body or land using camera | US 04.03 | Mohammad Hammad, Yui Han | Mar 16 |
+| Make revisions based on feedback| Documentation | Yui Han, Kevin Sha | Mar 16 |
+| Unit Testing, UI Testing, Nagivagtion Testing | Testing | Kevin Sha, Raunak Argawal | Mar 16
 
 ### Sprint 5
 *Due: April 4*
