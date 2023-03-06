@@ -55,16 +55,24 @@ public class ObjectManager : MonoBehaviour
     private void Update()
     {
         // Spawn objects every 20 frames if the maximum number of objects has not been reached and surface is water
-        if (_spawnedObjects.Count < maxObjectCount && Time.frameCount % 20 == 0 && switchToggle.IsOn)
+        if (_spawnedObjects.Count < maxObjectCount && Time.frameCount % 20 == 0)
         {
-            SpawnObjects();
+            if (switchToggle.IsOn)
+            {
+                SpawnObjects(objectList.GetRange(0, 5));
+            }
+            else
+            {
+                SpawnObjects(objectList.GetRange(objectList.Count - 5, 5));
+            }
+            
         }
     }
     
     /// <summary>
     /// Method that spawns objects in the scene in a random location on a detected plane.
     /// </summary>
-    private void SpawnObjects()
+    private void SpawnObjects(List<GameObject> objectList)
     {
         List<ARRaycastHit> hits = new();
         // Cast ray from a random point within the screen to detect planes
@@ -72,23 +80,26 @@ public class ObjectManager : MonoBehaviour
                 hits, TrackableType.PlaneWithinPolygon))
         {
             var hitPose = hits[0].pose;
-            
+
             // Get spawn position and check if it is valid
             var spawnPosition = hitPose.position;
             if (y == 0f) y = spawnPosition.y;
             else spawnPosition.y = y;
             if (!IsPointValid(spawnPosition)) return;
-            
+
+            // Generate a random rotation around the y-axis only
+            Quaternion spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+
             // Align the spawned object with the detected plane
-            Quaternion spawnRotation = Quaternion.FromToRotation(Vector3.up, hitPose.up);
-        
+            spawnRotation = Quaternion.FromToRotation(Vector3.up, hitPose.up) * spawnRotation;
+
             // Select prefabs from list and spawn them, adding them to the list of spawned objects.
             // TODO: Download prefabs from db as AssetBundle instead of hardcoding them.
             var objectToSpawn = objectList[Random.Range(0, objectList.Count)];
             objectToSpawn.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             var spawnedObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
             AddObject(spawnedObject);
-            
+
             // Add a click handler to the spawned object
             var clickHandler = spawnedObject.AddComponent<ObjectClickHandler>();
             clickHandler.enabled = true;
@@ -96,6 +107,7 @@ public class ObjectManager : MonoBehaviour
             clickHandler.spawnedObject = spawnedObject;
         }
     }
+
     
     /// <summary>
     /// Method that checks if a point is a valid location for spawning an object.
