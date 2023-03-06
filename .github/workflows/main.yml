@@ -17,8 +17,8 @@ jobs:
     - name: Install NUnit
       working-directory: app
       run: |
-        dotnet add app.csproj package NUnit
-        dotnet add app.csproj package NUnit3TestAdapter
+        dotnet add . package NUnit
+        dotnet add . package NUnit3TestAdapter
     - name: Build and Test
       run: |
         dotnet build
