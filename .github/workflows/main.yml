@@ -15,10 +15,10 @@ jobs:
       with:
         dotnet-version: 5.0.300
     - name: Install NUnit
-      working-directory: app
+      working-directory: ./app
       run: |
-        dotnet add . package NUnit
-        dotnet add . package NUnit3TestAdapter
+        dotnet add ./app package NUnit
+        dotnet add ./app package NUnit3TestAdapter
     - name: Build and Test
       run: |
         dotnet build
