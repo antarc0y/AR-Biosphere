@@ -116,17 +116,6 @@ public class ObjectManager : MonoBehaviour
     /// <returns> <c>bool</c> whether the point is valid</returns>
     private bool IsPointValid(Vector3 point)
     {
-        var screenPoint = _mainCamera.WorldToScreenPoint(point);
-        var ray = _mainCamera.ScreenPointToRay(screenPoint);
-        List<ARRaycastHit> hits = new List<ARRaycastHit>();
-        
-        // Check if the point is on a horizontal plane
-        if (_raycastManager.Raycast(ray, hits, TrackableType.PlaneWithinPolygon))
-        {
-            var plane = _planeManager.GetPlane(hits[0].trackableId);
-            if (plane.alignment != PlaneAlignment.HorizontalUp) return false;
-        }
-
         // Check if the point is too close to an existing object
         foreach (var t in _spawnedObjects)
         {
