@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using Random = UnityEngine.Random;
+using TMPro;
 
 /// <summary>
 /// Class that handles spawning and deleting objects in the scene.
@@ -27,6 +28,9 @@ public class ObjectManager : MonoBehaviour
     private Camera _mainCamera;
     private ARRaycastManager _raycastManager;
     private ARPlaneManager _planeManager;
+
+    // todo: make private? what type?
+    public TextMeshProUGUI tempPopup;
     
 
     /// <summary>
@@ -45,6 +49,7 @@ public class ObjectManager : MonoBehaviour
         // Initialize the AR components
         _raycastManager = GetComponent<ARRaycastManager>();
         _planeManager = GetComponent<ARPlaneManager>();
+        tempPopup.SetText("animal name here");
         Debug.Log($"{switchToggle == null}");
         if (!_mainCamera)
         {

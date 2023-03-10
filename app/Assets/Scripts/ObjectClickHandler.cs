@@ -13,6 +13,7 @@ public class ObjectClickHandler : MonoBehaviour
     /// </summary>
     public void OnMouseDown()
     {
+        objectManager.tempPopup.SetText(name);
         objectManager.Remove(spawnedObject);
         Debug.Log(name);
     }
