@@ -5,9 +5,11 @@ using UnityEngine.UI;
 public class dialogUI : MonoBehaviour
 {
 	public GameObject pop_up_panel;
+	public Animator animator;
 
 	public void open_popup(){
 		pop_up_panel.SetActive(true);
+		animator.SetTrigger("pop");
 	}
 
 	public void close_popup(){
