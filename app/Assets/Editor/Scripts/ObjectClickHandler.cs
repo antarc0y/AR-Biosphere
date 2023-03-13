@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 
 /// <summary>
 /// Class that handles click events on spawned objects.
@@ -8,10 +7,6 @@ public class ObjectClickHandler : MonoBehaviour
 {
     public ObjectManager objectManager;
     public GameObject spawnedObject;
-
-    // Depth of Field settings
-    public float focusDistance = 0.5f;
-    public float aperture = 2f;
 
     // Zoom settings
     public float zoomDistance = 1f;
@@ -44,13 +39,6 @@ public class ObjectClickHandler : MonoBehaviour
             Vector3 direction = cameraPosition - spawnedObject.transform.position;
             spawnedObject.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
 
-            // Blur the background
-            PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
-            DepthOfField depthOfField = volume.profile.GetSetting<DepthOfField>();
-            depthOfField.active = true;
-            depthOfField.focusDistance.value = focusDistance;
-            depthOfField.aperture.value = aperture;
-
             // Zoom in the camera
             Camera.main.fieldOfView = zoomFOV;
 
@@ -61,18 +49,21 @@ public class ObjectClickHandler : MonoBehaviour
             // Zoom out the camera
             Camera.main.fieldOfView = 60f;
 
-            // Unblur the background
-            PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
-            DepthOfField depthOfField = volume.profile.GetSetting<DepthOfField>();
-            depthOfField.active = false;
+            // Calculate a new position for the object in front of the camera, a bit further from the camera
+            Vector3 newPosition = cameraPosition + cameraForward * (zoomDistance + 0.1f); // 0.1 units further away from the camera
 
-            // Calculate a new position for the object and set it
-            Vector3 newPosition = objectManager.GetRandomPosition();
+            // Shift the object downwards
+            newPosition += Vector3.down * 0.1f;
+
+            // Set the new position of the object
             spawnedObject.transform.position = newPosition;
 
             // Rotate the object to face the camera
             Vector3 direction = cameraPosition - spawnedObject.transform.position;
             spawnedObject.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+
+            // Zoom out the camera
+            Camera.main.fieldOfView = 60f;
 
             isZoomedIn = false;
         }
