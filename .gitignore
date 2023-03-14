@@ -33,3 +33,18 @@
 
 # Temp build folder
 /app/build_BackUpThisFolder_ButDontShipItWithYourGame/
+
+app/Assets/Plugins/Android/
+
+# Credential files:
+**/GoogleService-Info*.plist*
+**/google-services*.json*
+/Assets/StreamingAssets*
+/Assets/StreamingAssets/
+
+
+
+app/Assets/AssetBundles/
+
+app/Assets/StreamingAssets/google-services-desktop.json
+app/Assets/Plugins/Android/Firebase/

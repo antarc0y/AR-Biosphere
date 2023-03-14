@@ -28,6 +28,7 @@ public class ObjectManager : MonoBehaviour
     private ARRaycastManager _raycastManager;
     private ARPlaneManager _planeManager;
     
+    private Database _database;
 
     /// <summary>
     /// Maximum number of objects that can be spawned
@@ -40,12 +41,15 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     private float y = 0f;
 
-    private void Awake()
+    private bool isLoaded = false;
+    private void Start()
     {
         // Initialize the AR components
         _raycastManager = GetComponent<ARRaycastManager>();
         _planeManager = GetComponent<ARPlaneManager>();
-        Debug.Log($"{switchToggle == null}");
+        _database = GetComponent<Database>();
+        
+        _database.GetAssetBundle(AddPrefab);
         if (!_mainCamera)
         {
             _mainCamera = Camera.main;
@@ -57,18 +61,25 @@ public class ObjectManager : MonoBehaviour
         // Spawn objects every 20 frames if the maximum number of objects has not been reached and surface is water
         if (_spawnedObjects.Count < maxObjectCount && Time.frameCount % 20 == 0)
         {
-            if (switchToggle.IsOn)
-            {
-                SpawnObjects(objectList.GetRange(0, 5));
-            }
-            else
-            {
-                SpawnObjects(objectList.GetRange(objectList.Count - 5, 5));
-            }
-            
+            // if (switchToggle.IsOn)
+            // {
+            //     SpawnObjects(objectList.GetRange(0, 5));
+            // }
+            // else
+            // {
+            //     SpawnObjects(objectList.GetRange(objectList.Count - 5, 5));
+            // }
+            if (isLoaded) SpawnObjects(objectList);
         }
     }
     
+    public void AddPrefab(GameObject prefab)
+    {
+        Debug.Log("Prefab added");
+        objectList.Add(prefab);
+        isLoaded = true;
+    }
+
     /// <summary>
     /// Method that spawns objects in the scene in a random location on a detected plane.
     /// </summary>
