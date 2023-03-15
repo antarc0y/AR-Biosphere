@@ -13,7 +13,7 @@ public class ObjectClickHandler : MonoBehaviour
     /// </summary>
     public void OnMouseDown()
     {
-        objectManager.Remove(spawnedObject);
-        Debug.Log(name);
+        var species = spawnedObject.GetComponent<Species>();
+        Debug.Log("Clicked on " + species.speciesName + species.description + species.link);
     }
 }

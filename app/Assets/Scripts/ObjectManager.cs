@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using Random = UnityEngine.Random;
@@ -14,7 +13,7 @@ public class ObjectManager : MonoBehaviour
     /// List of prefabs to spawn from
     /// </summary>
     [SerializeField]
-    private List<GameObject> objectList = new();
+    private List<GameObject> landModels = new(), waterModels = new();
     
     /// <summary>
     /// List of spawned objects in the scene
@@ -26,9 +25,10 @@ public class ObjectManager : MonoBehaviour
     
     private Camera _mainCamera;
     private ARRaycastManager _raycastManager;
-    private ARPlaneManager _planeManager;
     
     private Database _database;
+    
+    private Dictionary<string, Dictionary<string, string>> _speciesInfo = new();
 
     /// <summary>
     /// Maximum number of objects that can be spawned
@@ -46,10 +46,9 @@ public class ObjectManager : MonoBehaviour
     {
         // Initialize the AR components
         _raycastManager = GetComponent<ARRaycastManager>();
-        _planeManager = GetComponent<ARPlaneManager>();
         _database = GetComponent<Database>();
         
-        _database.GetAssetBundle(AddPrefab);
+        _database.SetUp(SetPrefabLoaded, landModels, waterModels, _speciesInfo);
         if (!_mainCamera)
         {
             _mainCamera = Camera.main;
@@ -59,31 +58,19 @@ public class ObjectManager : MonoBehaviour
     private void Update()
     {
         // Spawn objects every 20 frames if the maximum number of objects has not been reached and surface is water
-        if (_spawnedObjects.Count < maxObjectCount && Time.frameCount % 20 == 0)
+        if (_spawnedObjects.Count < maxObjectCount && Time.frameCount % 20 == 0 && isLoaded)
         {
-            // if (switchToggle.IsOn)
-            // {
-            //     SpawnObjects(objectList.GetRange(0, 5));
-            // }
-            // else
-            // {
-            //     SpawnObjects(objectList.GetRange(objectList.Count - 5, 5));
-            // }
-            if (isLoaded) SpawnObjects(objectList);
+            if (switchToggle.IsOn) SpawnObjects(false);
+            else SpawnObjects(true);
         }
     }
     
-    public void AddPrefab(GameObject prefab)
-    {
-        Debug.Log("Prefab added");
-        objectList.Add(prefab);
-        isLoaded = true;
-    }
+    public void SetPrefabLoaded() => isLoaded = true;
 
     /// <summary>
     /// Method that spawns objects in the scene in a random location on a detected plane.
     /// </summary>
-    private void SpawnObjects(List<GameObject> objectList)
+    private void SpawnObjects(bool isLand)
     {
         List<ARRaycastHit> hits = new();
         // Cast ray from a random point within the screen to detect planes
@@ -106,16 +93,23 @@ public class ObjectManager : MonoBehaviour
 
             // Select prefabs from list and spawn them, adding them to the list of spawned objects.
             // TODO: Download prefabs from db as AssetBundle instead of hardcoding them.
+            var objectList = isLand ? landModels : waterModels;
             var objectToSpawn = objectList[Random.Range(0, objectList.Count)];
             objectToSpawn.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             var spawnedObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
             AddObject(spawnedObject);
+            Debug.Log($"{spawnedObject.name}");
 
             // Add a click handler to the spawned object
             var clickHandler = spawnedObject.AddComponent<ObjectClickHandler>();
-            clickHandler.enabled = true;
             clickHandler.objectManager = this;
             clickHandler.spawnedObject = spawnedObject;
+            
+            // Add a species component to the spawned object
+            var species = spawnedObject.AddComponent<Species>();
+            var modelName = spawnedObject.name.Replace("(Clone)", "");
+            species.SetInfo(_speciesInfo[modelName]["name"], 
+                _speciesInfo[modelName]["description"], _speciesInfo[modelName]["link"]);
         }
     }
 
