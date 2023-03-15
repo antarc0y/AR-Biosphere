@@ -5,8 +5,16 @@ using UnityEngine;
 /// </summary>
 public class ObjectClickHandler : MonoBehaviour
 {
-    public ObjectManager objectManager;
+    private static ObjectManager objectManager;
     public GameObject spawnedObject;
+
+    private void Start()
+    {
+        if (!objectManager)
+        {
+            objectManager = GetComponentInParent<ObjectManager>();
+        }
+    }
 
     /// <summary>
     /// Method that handles mouse down events on spawned objects. Right now removes the clicked object from the scene.

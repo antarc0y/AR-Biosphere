@@ -42,10 +42,8 @@ app/Assets/Plugins/Android/
 /Assets/StreamingAssets*
 /Assets/StreamingAssets/
 
-
-
 app/Assets/AssetBundles/
 
 app/Assets/StreamingAssets/google-services-desktop.json
-app/Assets/Plugins/Android/Firebase/
+# app/Assets/Plugins/Android/Firebase/
 app/Assets/google-services.json.meta

@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Firebase.Extensions;
 using UnityEngine;
 using Firebase.Storage;
@@ -12,7 +10,7 @@ using UnityEngine.Networking;
 public class Database : MonoBehaviour
 {
     private StorageReference _reference;
-    private string location = "ualberta";
+    private const string location = "ualberta";
     private List<string> species;
     private FirebaseFirestore db;
     private List<GameObject> _landPrefabs, _waterPrefabs;
@@ -30,7 +28,8 @@ public class Database : MonoBehaviour
 #endif
     }
 
-    public void SetUp(UnityAction callback, List<GameObject> landPrefabs, List<GameObject> waterPrefabs, Dictionary<string, Dictionary<string, string>> info)
+    public void SetUp(UnityAction callback, List<GameObject> landPrefabs, List<GameObject> waterPrefabs, 
+        Dictionary<string, Dictionary<string, string>> info)
     {
         db.Collection("locations").Document(location).GetSnapshotAsync().ContinueWithOnMainThread(task =>
         {
@@ -65,29 +64,7 @@ public class Database : MonoBehaviour
                 else
                 {
                     var snapshot = task.Result;
-                    if (snapshot.Exists)
-                    {
-                        var assetName = snapshot.GetValue<string>("assetName");
-                        var description = snapshot.GetValue<string>("description");
-                        var isLand = snapshot.GetValue<bool>("isLand");
-                        var link = snapshot.GetValue<string>("link");
-
-                        _info[assetName] = new Dictionary<string, string>()
-                        {
-                            {"name", speciesName},
-                            {"description", description},
-                            {"link", link}
-                        };
-                        
-                        _reference.Child(speciesName)
-                            .GetDownloadUrlAsync().ContinueWithOnMainThread( t => {
-                                if (!task.IsFaulted && !task.IsCanceled) {
-                                    Debug.Log("Download URL: " + task.Result);
-                                    var url = t.Result.ToString();
-                                    StartCoroutine(DownloadFile(url, assetName, isLand));
-                                }
-                            });
-                    }
+                    if (snapshot.Exists) ReadValues(snapshot, speciesName);
                     else Debug.Log("No such document!");
                 }
             });
@@ -95,9 +72,31 @@ public class Database : MonoBehaviour
         callback();
     }
 
+    private void ReadValues(DocumentSnapshot snapshot, string speciesName)
+    {
+        var assetName = snapshot.GetValue<string>("assetName");
+        var description = snapshot.GetValue<string>("description");
+        var isLand = snapshot.GetValue<bool>("isLand");
+        var link = snapshot.GetValue<string>("link");
+
+        _info[assetName] = new Dictionary<string, string>()
+        {
+            {"name", speciesName},
+            {"description", description},
+            {"link", link}
+        };
+        
+        _reference.Child(speciesName).GetDownloadUrlAsync().ContinueWithOnMainThread( t => {
+            if (!t.IsFaulted && !t.IsCanceled) {
+                var url = t.Result.ToString();
+                StartCoroutine(DownloadFile(url, assetName, isLand));
+            }
+        });
+    }
+
     private IEnumerator DownloadFile(string url, string assetName, bool isLand)
     {
-        Debug.Log("assetName: " + assetName);
+        // Debug.Log("assetName: " + assetName);
         var www = UnityWebRequestAssetBundle.GetAssetBundle(url, 1, 0);
         yield return www.SendWebRequest();
         
@@ -109,6 +108,8 @@ public class Database : MonoBehaviour
         {
             // Get downloaded asset bundle
             var bundle = DownloadHandlerAssetBundle.GetContent(www);
+            var x = bundle.GetAllAssetNames();
+            if (assetName == "FishV2") Debug.Log("x[0]: " + x[0]);
             var asset = bundle.LoadAsset<GameObject>(assetName);
             if (isLand) _landPrefabs.Add(asset);
             else _waterPrefabs.Add(asset);

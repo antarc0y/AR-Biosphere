@@ -102,7 +102,6 @@ public class ObjectManager : MonoBehaviour
 
             // Add a click handler to the spawned object
             var clickHandler = spawnedObject.AddComponent<ObjectClickHandler>();
-            clickHandler.objectManager = this;
             clickHandler.spawnedObject = spawnedObject;
             
             // Add a species component to the spawned object
