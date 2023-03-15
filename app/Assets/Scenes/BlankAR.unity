@@ -164,8 +164,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -315.00006}
-  m_SizeDelta: {x: -64.671, y: -916.307}
+  m_AnchoredPosition: {x: 0, y: -183.85986}
+  m_SizeDelta: {x: -64.671, y: -546.716}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &142974545
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pop_up_panel: {fileID: 142974543}
-  animator: {fileID: 142974548}
+  dialogUI: {fileID: 0}
 --- !u!114 &142974546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 40821de3da2de2942a21ade02116dbb0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f4e1bb794c0aaa845b1d04cd37104d70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -274,10 +274,10 @@ RectTransform:
   m_Father: {fileID: 142974544}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 465, y: 447}
-  m_SizeDelta: {x: 30, y: 40}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 134}
+  m_SizeDelta: {x: 75, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &158183858
 MonoBehaviour:
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pop_up_panel: {fileID: 142974543}
-  animator: {fileID: 142974548}
+  dialogUI: {fileID: 142974548}
 --- !u!114 &158183859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.43137255, g: 0.44705883, b: 0.4627451, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.36862746, g: 0.3647059, b: 0.3647059, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -339,7 +339,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142974548}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: ResetTrigger
+        m_MethodName: SetTrigger
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5ee727cb48533334e8f6d1683126cdeb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b16894ecaa959894881d739c1035d370, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -422,8 +422,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -383, y: 385}
-  m_SizeDelta: {x: 20.595, y: 20.592}
+  m_AnchoredPosition: {x: -377, y: 559}
+  m_SizeDelta: {x: 24.769, y: 24.765}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &206705560
 MonoBehaviour:
@@ -592,7 +592,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 440}
+  m_AnchoredPosition: {x: 20, y: 600}
   m_SizeDelta: {x: 500, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &471492553
@@ -615,10 +615,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'About ecosystem '
+  m_text: About Ecosystem
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 88ced1f42c1486f46930de22ef86906d, type: 2}
-  m_sharedMaterial: {fileID: 4454733294103850255, guid: 88ced1f42c1486f46930de22ef86906d,
+  m_fontAsset: {fileID: 11400000, guid: 62253536610e3ac46866610052cb46ff, type: 2}
+  m_sharedMaterial: {fileID: -649264885112876173, guid: 62253536610e3ac46866610052cb46ff,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1311,7 +1311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pop_up_panel: {fileID: 142974543}
-  animator: {fileID: 0}
+  dialogUI: {fileID: 0}
 --- !u!4 &853557165
 Transform:
   m_ObjectHideFlags: 0
@@ -1821,7 +1821,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142974548}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: ResetTrigger
+        m_MethodName: SetTrigger
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1882,7 +1882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pop_up_panel: {fileID: 142974543}
-  animator: {fileID: 0}
+  dialogUI: {fileID: 142974548}
 --- !u!1 &1543433182
 GameObject:
   m_ObjectHideFlags: 0
@@ -1922,7 +1922,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.486}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -0.99993896, y: 0}
+  m_AnchoredPosition: {x: -1, y: 0}
   m_SizeDelta: {x: 62.633, y: 62.633}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1543433184
@@ -2298,8 +2298,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -216, y: 68.23}
-  m_SizeDelta: {x: 222.79, y: 136.461}
+  m_AnchoredPosition: {x: -176.452, y: -241.176}
+  m_SizeDelta: {x: 315.658, y: 437.544}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1725858859
 MonoBehaviour:
@@ -2323,8 +2323,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: information bla bla bla
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 88ced1f42c1486f46930de22ef86906d, type: 2}
-  m_sharedMaterial: {fileID: 4454733294103850255, guid: 88ced1f42c1486f46930de22ef86906d,
+  m_fontAsset: {fileID: 11400000, guid: 62253536610e3ac46866610052cb46ff, type: 2}
+  m_sharedMaterial: {fileID: -649264885112876173, guid: 62253536610e3ac46866610052cb46ff,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2385,7 +2385,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0.012784958, z: -186.35352, w: 0}
+  m_margin: {x: 0, y: -107.02678, z: -186.35352, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
