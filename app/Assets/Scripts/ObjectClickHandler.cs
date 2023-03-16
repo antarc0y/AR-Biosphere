@@ -14,7 +14,8 @@ public class ObjectClickHandler : MonoBehaviour
     public void OnMouseDown()
     {
         objectManager.tempPopup.SetText(name);
-        objectManager.Remove(spawnedObject);
+        //objectManager.Remove(spawnedObject);
         Debug.Log(name);
+        objectManager.ShowFloatingText(name, transform.position);
     }
 }

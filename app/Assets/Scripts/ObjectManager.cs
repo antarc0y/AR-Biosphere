@@ -44,6 +44,9 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     private float y = 0f;
 
+    public GameObject FloatingTextPrefab;
+
+
     private void Awake()
     {
         // Initialize the AR components
@@ -110,6 +113,14 @@ public class ObjectManager : MonoBehaviour
             clickHandler.enabled = true;
             clickHandler.objectManager = this;
             clickHandler.spawnedObject = spawnedObject;
+        }
+    }
+
+    public void ShowFloatingText(string text, Vector3 position)
+    {
+        if (FloatingTextPrefab) {
+            var go = Instantiate(FloatingTextPrefab, position, Quaternion.identity, transform);
+            go.GetComponent<TextMesh>().text = text;
         }
     }
 

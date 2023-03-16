@@ -1249,7 +1249,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.486}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -15, y: 0}
+  m_AnchoredPosition: {x: -14.999878, y: 0}
   m_SizeDelta: {x: 62.633, y: 62.633}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1543433184
@@ -1430,6 +1430,8 @@ MonoBehaviour:
   switchToggle: {fileID: 2064411223}
   tempPopup: {fileID: 767375159}
   maxObjectCount: 5
+  FloatingTextPrefab: {fileID: 2398445852469248477, guid: bd1fb84b4db450a438bea7f7a9ddff79,
+    type: 3}
 --- !u!114 &1659859602
 MonoBehaviour:
   m_ObjectHideFlags: 0
