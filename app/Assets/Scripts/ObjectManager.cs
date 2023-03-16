@@ -30,7 +30,7 @@ public class ObjectManager : MonoBehaviour
     private ARPlaneManager _planeManager;
 
     // todo: make private? what type?
-    public TextMeshProUGUI tempPopup;
+    //public TextMeshProUGUI tempPopup;
     
 
     /// <summary>
@@ -45,6 +45,8 @@ public class ObjectManager : MonoBehaviour
     private float y = 0f;
 
     public GameObject FloatingTextPrefab;
+    public Animator objectPopUp;
+    public TextMeshProUGUI objectPopUpText;
 
 
     private void Awake()
@@ -52,7 +54,7 @@ public class ObjectManager : MonoBehaviour
         // Initialize the AR components
         _raycastManager = GetComponent<ARRaycastManager>();
         _planeManager = GetComponent<ARPlaneManager>();
-        tempPopup.SetText("animal name here");
+        //tempPopup.SetText("animal name here");
         Debug.Log($"{switchToggle == null}");
         if (!_mainCamera)
         {
@@ -122,6 +124,17 @@ public class ObjectManager : MonoBehaviour
             var go = Instantiate(FloatingTextPrefab, position, Quaternion.identity, transform);
             go.GetComponent<TextMesh>().text = text;
         }
+    }
+
+    public void ShowObjectPopUp(string name)
+    {   
+        objectPopUpText.SetText("Random info about " + name + ".");
+        objectPopUp.SetBool("visible", true);
+    }
+
+    public void HideObjectPopUp()
+    {
+        objectPopUp.SetBool("visible", false);
     }
 
     
