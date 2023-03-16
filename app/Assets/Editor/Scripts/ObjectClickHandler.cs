@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 
 /// <summary>
 /// Class that handles click events on spawned objects.
@@ -13,19 +12,9 @@ public class ObjectClickHandler : MonoBehaviour
     public float zoomDistance = 1f;
     public float zoomFOV = 30f;
 
-    // Post-processing settings
-    public PostProcessVolume postProcessVolume;
-    public float blurAmount = 5f;
-
     // Private state
     private bool isZoomedIn = false;
-    private DepthOfField depthOfField;
-
-    private void Start()
-    {
-        // Get the depth of field effect from the post-processing volume
-        postProcessVolume.profile.TryGetSettings(out depthOfField);
-    }
+    
 
     /// <summary>
     /// Method that handles mouse down events on spawned objects. Right now removes the clicked object from the scene.
@@ -51,14 +40,6 @@ public class ObjectClickHandler : MonoBehaviour
             Vector3 direction = originalPosition - spawnedObject.transform.position;
             spawnedObject.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
 
-            // Zoom in the camera
-            Camera.main.fieldOfView = zoomFOV;
-
-            // Enable the depth of field effect and set the blur amount
-            depthOfField.active = true;
-            depthOfField.focusDistance.value = zoomDistance;
-            depthOfField.aperture.value = blurAmount;
-
             isZoomedIn = true;
         }
         else
@@ -68,9 +49,6 @@ public class ObjectClickHandler : MonoBehaviour
 
             // Restore the original position of the object
             spawnedObject.transform.position = originalPosition;
-
-            // Disable the depth of field effect
-            depthOfField.active = false;
 
             isZoomedIn = false;
         }
