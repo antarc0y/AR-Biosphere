@@ -14,6 +14,8 @@ public class ObjectClickHandler : MonoBehaviour
 
     // Private state
     private bool isZoomedIn = false;
+    private Vector3 originalPosition;
+    private Quaternion originalRotation;
     
 
     /// <summary>
@@ -22,23 +24,22 @@ public class ObjectClickHandler : MonoBehaviour
     public void OnMouseDown()
     {
         // Get the position and forward vector of the AR camera
-        Vector3 originalPosition = Camera.main.transform.position;
+        Vector3 cameraPosition = Camera.main.transform.position;
         Vector3 cameraForward = Camera.main.transform.forward;
 
         if (!isZoomedIn)
         {
-            // Calculate a new position for the object in front of the camera, a bit closer to the camera
-            Vector3 newPosition = originalPosition + cameraForward * zoomDistance - cameraForward.normalized * 0.1f; // 0.5 units in front and 0.1 units closer to the camera
+            // Store the original position and rotation of the object
+            originalPosition = spawnedObject.transform.position;
+            originalRotation = spawnedObject.transform.rotation;
 
-            // Shift the object downwards
-            newPosition += Vector3.down * 0.1f;
+            // Make the object a child of the camera and set its position and rotation relative to the camera
+            spawnedObject.transform.SetParent(Camera.main.transform);
+            spawnedObject.transform.localPosition = Vector3.forward * zoomDistance;
+            spawnedObject.transform.localRotation = Quaternion.identity;
 
-            // Set the new position of the object
-            spawnedObject.transform.position = newPosition;
-
-            // Rotate the object to face the camera
-            Vector3 direction = originalPosition - spawnedObject.transform.position;
-            spawnedObject.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+            // Zoom in the camera
+            Camera.main.fieldOfView = zoomFOV;
 
             isZoomedIn = true;
         }
@@ -47,8 +48,10 @@ public class ObjectClickHandler : MonoBehaviour
             // Zoom out the camera
             Camera.main.fieldOfView = -zoomFOV;
 
-            // Restore the original position of the object
+            // Make the object not a child of the camera and restore its original position and rotation
+            spawnedObject.transform.SetParent(null);
             spawnedObject.transform.position = originalPosition;
+            spawnedObject.transform.rotation = originalRotation;
 
             isZoomedIn = false;
         }
