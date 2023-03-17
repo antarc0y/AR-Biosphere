@@ -13,7 +13,7 @@ public class RawImageSize : MonoBehaviour
         rawImage = GetComponent<RawImage>();
 
         // Set the width and height to match the screen dimensions
-        rawImage.rectTransform.sizeDelta = new Vector2(470, 470);
+        rawImage.rectTransform.sizeDelta = new Vector2(850, 850);
     }
 }
 

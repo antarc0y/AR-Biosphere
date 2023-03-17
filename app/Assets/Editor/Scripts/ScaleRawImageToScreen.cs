@@ -21,8 +21,8 @@ public class ScaleRawImageToScreen : MonoBehaviour
 
     void SetRawImageSize()
     {
-        rectTransform.sizeDelta = new Vector2(470, 470);
-        rawImage.texture = new RenderTexture(470, 470, 24);
+        rectTransform.sizeDelta = new Vector2(850, 850);
+        rawImage.texture = new RenderTexture(850, 850, 24);
     }
 }
 
