@@ -17,6 +17,4 @@ public class DialogUI : MonoBehaviour
 		pop_up_panel.SetActive(false);
 		dialogUI.SetTrigger("close");
 	}
-   // Start is called before the first frame update
-
 }

@@ -39,9 +39,10 @@ public class ObjectManager : MonoBehaviour
     /// <summary>
     /// y position of the spawned objects. This is used to ensure that the objects are spawned on the same plane.
     /// </summary>
-    private float y = 0f;
+    private float _y = 0f;
 
-    private bool isLoaded = false;
+    private bool _isLoaded = false;
+    
     private void Start()
     {
         // Initialize the AR components
@@ -58,14 +59,14 @@ public class ObjectManager : MonoBehaviour
     private void Update()
     {
         // Spawn objects every 20 frames if the maximum number of objects has not been reached and surface is water
-        if (_spawnedObjects.Count < maxObjectCount && Time.frameCount % 20 == 0 && isLoaded)
+        if (_spawnedObjects.Count < maxObjectCount && Time.frameCount % 20 == 0 && _isLoaded)
         {
             if (switchToggle.IsOn) SpawnObjects(false);
             else SpawnObjects(true);
         }
     }
     
-    public void SetPrefabLoaded() => isLoaded = true;
+    public void SetPrefabLoaded() => _isLoaded = true;
 
     /// <summary>
     /// Method that spawns objects in the scene in a random location on a detected plane.
@@ -81,8 +82,8 @@ public class ObjectManager : MonoBehaviour
 
             // Get spawn position and check if it is valid
             var spawnPosition = hitPose.position;
-            if (y == 0f) y = spawnPosition.y;
-            else spawnPosition.y = y;
+            if (_y == 0f) _y = spawnPosition.y;
+            else spawnPosition.y = _y;
             if (!IsPointValid(spawnPosition)) return;
 
             // Generate a random rotation around the y-axis only
@@ -92,13 +93,11 @@ public class ObjectManager : MonoBehaviour
             spawnRotation = Quaternion.FromToRotation(Vector3.up, hitPose.up) * spawnRotation;
 
             // Select prefabs from list and spawn them, adding them to the list of spawned objects.
-            // TODO: Download prefabs from db as AssetBundle instead of hardcoding them.
             var objectList = isLand ? landModels : waterModels;
             var objectToSpawn = objectList[Random.Range(0, objectList.Count)];
             objectToSpawn.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             var spawnedObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
             AddObject(spawnedObject);
-            Debug.Log($"{spawnedObject.name}");
 
             // Add a click handler to the spawned object
             var clickHandler = spawnedObject.AddComponent<ObjectClickHandler>();
@@ -107,8 +106,11 @@ public class ObjectManager : MonoBehaviour
             // Add a species component to the spawned object
             var species = spawnedObject.AddComponent<Species>();
             var modelName = spawnedObject.name.Replace("(Clone)", "");
-            species.SetInfo(_speciesInfo[modelName]["name"], 
-                _speciesInfo[modelName]["description"], _speciesInfo[modelName]["link"]);
+            species.SetInfo(
+                _speciesInfo[modelName]["name"], 
+                _speciesInfo[modelName]["description"], 
+                _speciesInfo[modelName]["link"]
+                );
         }
     }
 
@@ -139,7 +141,7 @@ public class ObjectManager : MonoBehaviour
             Destroy(spawnedObject);
         }
         _spawnedObjects.Clear();
-        y = 0f;
+        _y = 0f;
     }
     
     /// <summary>
@@ -152,7 +154,6 @@ public class ObjectManager : MonoBehaviour
         Destroy(obj);
     }
     
-
     private void OnApplicationPause(bool pause)
     {
         if (pause) DeleteObjects();

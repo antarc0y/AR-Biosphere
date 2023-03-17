@@ -11,7 +11,6 @@ public class SwitchToggle : MonoBehaviour {
    [SerializeField] RectTransform uiHandleRectTransform ;
    [SerializeField] Color backgroundActiveColor ;
    [SerializeField] Color handleActiveColor ;
-   public static Surface surface  = new Surface();
 
    Image backgroundImage, handleImage ;
 
@@ -55,11 +54,8 @@ public class SwitchToggle : MonoBehaviour {
       backgroundImage.DOColor (on ? backgroundActiveColor : backgroundDefaultColor, .6f) ;
 
       // changes toggle button color upon clicking
-      handleImage.DOColor (on ? handleActiveColor : handleDefaultColor, .4f) ;
-
-      // change surface every time the user clicks the toggle, defaults to land
-      surface.ChangeSurface();
-   }
+      handleImage.DOColor (on ? handleActiveColor : handleDefaultColor, .4f);
+    }
     
    public bool IsOn => toggle.isOn;
 
