@@ -1,59 +1,58 @@
 using UnityEngine;
+using DG.Tweening;
 
-/// <summary>
-/// Class that handles click events on spawned objects.
-/// </summary>
 public class ObjectClickHandler : MonoBehaviour
 {
     public ObjectManager objectManager;
     public GameObject spawnedObject;
 
     // Zoom settings
-    public float zoomDistance = 1f;
-    public float zoomFOV = 30f;
+    public float zoomDistance = 1.5f;
+    public float zoomDuration = 0.5f;
 
     // Private state
     private bool isZoomedIn = false;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
-    
 
-    /// <summary>
-    /// Method that handles mouse down events on spawned objects. Right now removes the clicked object from the scene.
-    /// </summary>
-    public void OnMouseDown()
+public void OnMouseDown()
+{
+    if (!isZoomedIn)
     {
-        // Get the position and forward vector of the AR camera
-        Vector3 cameraPosition = Camera.main.transform.position;
-        Vector3 cameraForward = Camera.main.transform.forward;
+        originalPosition = spawnedObject.transform.position;
+        originalRotation = spawnedObject.transform.rotation;
 
-        if (!isZoomedIn)
-        {
-            // Store the original position and rotation of the object
-            originalPosition = spawnedObject.transform.position;
-            originalRotation = spawnedObject.transform.rotation;
+        // Animate zooming in
+        spawnedObject.transform.SetParent(Camera.main.transform); // set the spawnedObject as a child of the main camera
+        spawnedObject.transform.DOLocalMove(Vector3.forward * zoomDistance, zoomDuration)
+            .SetEase(Ease.InOutQuad)
+            .SetUpdate(true)
+            .OnComplete(() =>
+            {
+                isZoomedIn = true;
+            });
 
-            // Make the object a child of the camera and set its position and rotation relative to the camera
-            spawnedObject.transform.SetParent(Camera.main.transform);
-            spawnedObject.transform.localPosition = Vector3.forward * zoomDistance;
-            spawnedObject.transform.localRotation = Quaternion.identity;
+        spawnedObject.transform.DOLocalRotateQuaternion(Quaternion.Euler(0f, -180f, 0f), zoomDuration)
+            .SetEase(Ease.InOutQuad)
+            .SetUpdate(true);
 
-            // Zoom in the camera
-            Camera.main.fieldOfView = zoomFOV;
-
-            isZoomedIn = true;
-        }
-        else
-        {
-            // Zoom out the camera
-            Camera.main.fieldOfView = -zoomFOV;
-
-            // Make the object not a child of the camera and restore its original position and rotation
-            spawnedObject.transform.SetParent(null);
-            spawnedObject.transform.position = originalPosition;
-            spawnedObject.transform.rotation = originalRotation;
-
-            isZoomedIn = false;
-        }
     }
+    else
+    {
+        // Animate zooming out
+        spawnedObject.transform.SetParent(null);
+        spawnedObject.transform.DOLocalMove(originalPosition, zoomDuration)
+            .SetEase(Ease.InOutQuad)
+            .SetUpdate(true)
+            .OnComplete(() =>
+            {
+                isZoomedIn = false;
+            });
+
+        spawnedObject.transform.DOLocalRotateQuaternion(originalRotation, zoomDuration)
+            .SetEase(Ease.InOutQuad)
+            .SetUpdate(true);
+    }
+}
+
 }
