@@ -153,6 +153,7 @@ public class Database : MonoBehaviour
             // Add to list of prefabs
             if (isLand) _landPrefabs.Add(asset);
             else _waterPrefabs.Add(asset);
+            bundle.Unload(false);
         }
     }
 }
