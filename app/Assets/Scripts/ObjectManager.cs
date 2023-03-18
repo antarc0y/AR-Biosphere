@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using Random = UnityEngine.Random;
+using TMPro;
 
 /// <summary>
 /// Class that handles spawning and deleting objects in the scene.
@@ -27,6 +28,9 @@ public class ObjectManager : MonoBehaviour
     private Camera _mainCamera;
     private ARRaycastManager _raycastManager;
     private ARPlaneManager _planeManager;
+
+    // todo: make private? what type?
+    //public TextMeshProUGUI tempPopup;
     
 
     /// <summary>
@@ -34,17 +38,24 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     [SerializeField]
     private int maxObjectCount = 5;
+    private bool isFocused = false;
     
     /// <summary>
     /// y position of the spawned objects. This is used to ensure that the objects are spawned on the same plane.
     /// </summary>
     private float y = 0f;
 
+    public GameObject FloatingTextPrefab;
+    public Animator objectPopUp;
+    public TextMeshProUGUI objectPopUpText;
+
+
     private void Awake()
     {
         // Initialize the AR components
         _raycastManager = GetComponent<ARRaycastManager>();
         _planeManager = GetComponent<ARPlaneManager>();
+        //tempPopup.SetText("animal name here");
         Debug.Log($"{switchToggle == null}");
         if (!_mainCamera)
         {
@@ -108,6 +119,27 @@ public class ObjectManager : MonoBehaviour
         }
     }
 
+    public void ShowFloatingText(string text, Vector3 position)
+    {
+        if (FloatingTextPrefab) {
+            var go = Instantiate(FloatingTextPrefab, position, Quaternion.identity, transform);
+            go.GetComponent<TextMesh>().text = text;
+        }
+    }
+
+    public void ShowObjectPopUp(string name)
+    {   
+        isFocused = true;
+        objectPopUpText.SetText("Random info about " + name + ".");
+        objectPopUp.SetBool("visible", true);
+    }
+
+    public void HideObjectPopUp()
+    {
+        isFocused = false;
+        objectPopUp.SetBool("visible", false);
+    }
+
     
     /// <summary>
     /// Method that checks if a point is a valid location for spawning an object.
@@ -130,6 +162,11 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     public void DeleteObjects()
     {
+        if (isFocused) 
+        {
+            HideObjectPopUp();
+        }
+        
         foreach (var spawnedObject in _spawnedObjects)
         {
             Destroy(spawnedObject);
