@@ -6,18 +6,14 @@ using UnityEngine.TestTools;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation;
-
-
+using UnityEngine.UI;
 
 namespace blankAR_ui_test
 {
     public class ui_test : InputTestFixture
     {
         public Mouse mouse;
-        private ObjectManager _objectManager;
-
-        [SerializeField]
-        private SwitchToggle switchToggle;
+        public Toggle toggle;
 
         public override void Setup()
         {
@@ -72,26 +68,26 @@ namespace blankAR_ui_test
             Assert.AreEqual(0, _objectManager.ObjectCount);
         }
 
-
-
-
-
         [UnityTest]
         public IEnumerator switch_button_test()
         {
             // Arrange
             var surface = new Surface();
             GameObject switch_handler = GameObject.Find("Canvas/SwitchHandler/Switch background/Toggle Button");
+            Toggle switch_value = GameObject.Find("Canvas/SwitchHandler").GetComponent<Toggle>();
+
+            // Assert land
             bool isLand = surface.IsLand();
+            Assert.IsTrue(!switch_value.isOn);
 
             // Act
             ClickUI(switch_handler);
+            surface.ChangeSurface();
             yield return new WaitForSeconds(2f);
 
-            // Assert
+            // Assert water
             bool isWater = surface.IsWater();
-            Assert.AreNotEqual(isLand, isWater);
+            Assert.IsTrue(switch_value.isOn);
         }
-
     }
 }
