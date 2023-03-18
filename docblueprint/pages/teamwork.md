@@ -2,7 +2,7 @@
 
 ## Team Canvas
 Below is the team canvas for our team
-![TeamCanvas](../images/teamcanvas2.png)
+![TeamCanvas](../images/teamcanvas4.png)
 
 | **Sprints** | **Product Owner 🧑‍💼 ** | **Scrum Master ✏️** |
 | ------------| ------------------| -----------------| 
