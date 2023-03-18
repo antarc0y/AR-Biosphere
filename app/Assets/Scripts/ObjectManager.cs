@@ -40,8 +40,6 @@ public class ObjectManager : MonoBehaviour
     /// y position of the spawned objects. This is used to ensure that the objects are spawned on the same plane.
     /// </summary>
     private float _y = 0f;
-
-    private bool _isLoaded = false;
     
     private void Start()
     {
@@ -49,7 +47,7 @@ public class ObjectManager : MonoBehaviour
         _raycastManager = GetComponent<ARRaycastManager>();
         _database = GetComponent<Database>();
         
-        _database.SetUp(SetPrefabLoaded, landModels, waterModels, _speciesInfo);
+        _database.SetUp(landModels, waterModels, _speciesInfo);
         if (!_mainCamera)
         {
             _mainCamera = Camera.main;
@@ -59,21 +57,22 @@ public class ObjectManager : MonoBehaviour
     private void Update()
     {
         // Spawn objects every 20 frames if the maximum number of objects has not been reached and surface is water
-        if (_spawnedObjects.Count < maxObjectCount && Time.frameCount % 20 == 0 && _isLoaded)
+        if (_spawnedObjects.Count < maxObjectCount && Time.frameCount % 20 == 0)
         {
             if (switchToggle.IsOn) SpawnObjects(false);
             else SpawnObjects(true);
         }
     }
     
-    public void SetPrefabLoaded() => _isLoaded = true;
-
     /// <summary>
     /// Method that spawns objects in the scene in a random location on a detected plane.
     /// </summary>
     private void SpawnObjects(bool isLand)
     {
         List<ARRaycastHit> hits = new();
+        var objectList = isLand ? landModels : waterModels;
+        if (objectList.Count == 0) return;
+
         // Cast ray from a random point within the screen to detect planes
         if (_raycastManager.Raycast(new Vector2(Random.Range(0, Screen.width), Random.Range(0, Screen.height)),
                 hits, TrackableType.PlaneWithinPolygon))
@@ -93,7 +92,6 @@ public class ObjectManager : MonoBehaviour
             spawnRotation = Quaternion.FromToRotation(Vector3.up, hitPose.up) * spawnRotation;
 
             // Select prefabs from list and spawn them, adding them to the list of spawned objects.
-            var objectList = isLand ? landModels : waterModels;
             var objectToSpawn = objectList[Random.Range(0, objectList.Count-1)];
             objectToSpawn.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             var spawnedObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);

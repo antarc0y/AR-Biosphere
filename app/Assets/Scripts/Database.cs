@@ -4,20 +4,36 @@ using Firebase.Extensions;
 using UnityEngine;
 using Firebase.Storage;
 using Firebase.Firestore;
-using UnityEngine.Events;
 using UnityEngine.Networking;
 
 public class Database : MonoBehaviour
 {
     private StorageReference _reference;
+    
+    /// <summary>
+    /// Location of the user. Hardcoded for now.
+    /// </summary>
     private const string location = "ualberta";
+    
+    /// <summary>
+    /// Name of the species to spawn
+    /// </summary>
     private List<string> species;
     private FirebaseFirestore db;
+    
+    /// <summary>
+    /// List of prefabs to spawn from
+    /// </summary>
     private List<GameObject> _landPrefabs, _waterPrefabs;
+    
+    /// <summary>
+    /// Dictionary containing species info
+    /// </summary>
     private Dictionary<string, Dictionary<string, string>> _info;
 
     private void Awake()
     {
+        // Initialize Firebase
         var storage = FirebaseStorage.DefaultInstance;
         db = FirebaseFirestore.DefaultInstance;
         
@@ -28,9 +44,16 @@ public class Database : MonoBehaviour
 #endif
     }
 
-    public void SetUp(UnityAction callback, List<GameObject> landPrefabs, List<GameObject> waterPrefabs, 
+    /// <summary>
+    /// Called from ObjectManager.cs. Downloads info from Firestore and models from Firebase Storage.
+    /// </summary>
+    /// <param name="landPrefabs">List of prefabs to populate for land species </param>
+    /// <param name="waterPrefabs"> List of prefabs to populate for water species</param>
+    /// <param name="info"> Dictionary of information for each species</param>
+    public void SetUp(List<GameObject> landPrefabs, List<GameObject> waterPrefabs, 
         Dictionary<string, Dictionary<string, string>> info)
     {
+        // Get names of species at location
         db.Collection("locations").Document(location).GetSnapshotAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsFaulted)
@@ -43,7 +66,7 @@ public class Database : MonoBehaviour
                 if (snapshot.Exists)
                 {
                     species = snapshot.GetValue<List<string>>("species");
-                    GetSpecies(callback);
+                    GetSpecies();
                 }
                 else Debug.Log("No such document!");
             }
@@ -54,7 +77,10 @@ public class Database : MonoBehaviour
         _info = info;
     }
     
-    private void GetSpecies(UnityAction callback)
+    /// <summary>
+    /// Get species info for each species at location.
+    /// </summary>
+    private void GetSpecies()
     {
         foreach (var speciesName in species)
         {
@@ -64,21 +90,27 @@ public class Database : MonoBehaviour
                 else
                 {
                     var snapshot = task.Result;
-                    if (snapshot.Exists) ReadValues(snapshot, speciesName);
+                    if (snapshot.Exists) LoadInfo(snapshot, speciesName);
                     else Debug.Log("No such document!");
                 }
             });
         }
-        callback();
     }
 
-    private void ReadValues(DocumentSnapshot snapshot, string speciesName)
+    
+    /// <summary>
+    /// Load info from Firestore and download model from Firebase Storage.
+    /// </summary>
+    /// <param name="snapshot"> DocumentSnapshot to load info from</param>
+    /// <param name="speciesName"> Name of species prefab to download</param>
+    private void LoadInfo(DocumentSnapshot snapshot, string speciesName)
     {
         var assetName = snapshot.GetValue<string>("assetName");
         var description = snapshot.GetValue<string>("description");
         var isLand = snapshot.GetValue<bool>("isLand");
         var link = snapshot.GetValue<string>("link");
 
+        // Create dictionary for species info
         _info[assetName] = new Dictionary<string, string>()
         {
             {"name", speciesName},
@@ -86,6 +118,7 @@ public class Database : MonoBehaviour
             {"link", link}
         };
         
+        // Download model from Firebase Storage
         _reference.Child(speciesName).GetDownloadUrlAsync().ContinueWithOnMainThread( t => {
             if (!t.IsFaulted && !t.IsCanceled) {
                 var url = t.Result.ToString();
@@ -94,9 +127,15 @@ public class Database : MonoBehaviour
         });
     }
 
+    /// <summary>
+    /// Coroutine to download model from Firebase Storage.
+    /// </summary>
+    /// <param name="url"> Download URL</param>
+    /// <param name="assetName"> Name of asset to load from AssetBundle</param>
+    /// <param name="isLand"> Whether species is on land</param>
+    /// <returns></returns>
     private IEnumerator DownloadFile(string url, string assetName, bool isLand)
     {
-        // Debug.Log("assetName: " + assetName);
         var www = UnityWebRequestAssetBundle.GetAssetBundle(url, 1, 0);
         yield return www.SendWebRequest();
         
@@ -109,8 +148,9 @@ public class Database : MonoBehaviour
             // Get downloaded asset bundle
             var bundle = DownloadHandlerAssetBundle.GetContent(www);
             var x = bundle.GetAllAssetNames();
-            if (assetName == "FishV2") Debug.Log("x[0]: " + x[0]);
             var asset = bundle.LoadAsset<GameObject>(assetName);
+            
+            // Add to list of prefabs
             if (isLand) _landPrefabs.Add(asset);
             else _waterPrefabs.Add(asset);
         }
