@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -6,6 +7,8 @@ public class ObjectClickHandler : MonoBehaviour
 {
     public ObjectManager objectManager;
     public GameObject spawnedObject;
+    public int tapCount = 0;
+    public float doubleClickThreshold = 0.3f;
 
     // Zoom settings
     public float zoomDistance = 1.5f;
@@ -21,10 +24,56 @@ public class ObjectClickHandler : MonoBehaviour
     private Vector3 originalPosition;
     private Quaternion originalRotation;
 
+    private float lastClickTime = 0f;
+
     public void OnMouseDown()
+    {
+        float timeSinceLastClick = Time.time - lastClickTime;
+
+        if (timeSinceLastClick < doubleClickThreshold)
+        {
+            // Handle double click
+            HandleDoubleClick();
+            tapCount = 0;
+        }
+        else
+        {
+            // Handle single click
+            tapCount++;
+            StartCoroutine(DoubleClickCoroutine());
+        }
+
+        lastClickTime = Time.time;
+    }
+
+    private IEnumerator DoubleClickCoroutine()
+    {
+        yield return new WaitForSeconds(doubleClickThreshold);
+
+        if (tapCount == 1)
+        {
+            // Handle single click
+            HandleSingleClick();
+        }
+
+        tapCount = 0;
+    }
+
+    private void HandleSingleClick()
     {
         if (!isZoomedIn)
         {
+            objectManager.ShowFloatingText(name, transform.position);
+        }
+    }
+
+    private void HandleDoubleClick()
+    {
+        if (!isZoomedIn)
+        {
+            objectManager.ShowObjectPopUp(name);
+
+            //Store original position and rotation for when the user zooms out
             originalPosition = spawnedObject.transform.position;
             originalRotation = spawnedObject.transform.rotation;
 
@@ -38,7 +87,7 @@ public class ObjectClickHandler : MonoBehaviour
                     isZoomedIn = true;
                 });
 
-            spawnedObject.transform.DOLocalRotateQuaternion(Quaternion.Euler(0f, -180f, 0f), zoomDuration)
+            spawnedObject.transform.DOLocalRotateQuaternion(Quaternion.Euler(0f, 180f, 0f), zoomDuration)
                 .SetEase(Ease.InOutQuad)
                 .SetUpdate(true);
 
@@ -52,6 +101,8 @@ public class ObjectClickHandler : MonoBehaviour
         }
         else
         {
+            objectManager.HideObjectPopUp();
+
             // Animate zooming out
             spawnedObject.transform.SetParent(null);
             spawnedObject.transform.DOLocalMove(originalPosition, zoomDuration)
