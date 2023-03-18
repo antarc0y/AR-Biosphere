@@ -6,6 +6,7 @@ public class ObjectClickHandler : MonoBehaviour
 {
     public ObjectManager objectManager;
     public GameObject spawnedObject;
+    public int tapCount = 0;
 
     // Zoom settings
     public float zoomDistance = 1.5f;
@@ -23,7 +24,8 @@ public class ObjectClickHandler : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (!isZoomedIn)
+        //objectManager.tempPopup.SetText(name);
+        //if (!isZoomedIn)
         {
             originalPosition = spawnedObject.transform.position;
             originalRotation = spawnedObject.transform.rotation;
@@ -41,6 +43,7 @@ public class ObjectClickHandler : MonoBehaviour
             spawnedObject.transform.DOLocalRotateQuaternion(Quaternion.Euler(0f, -180f, 0f), zoomDuration)
                 .SetEase(Ease.InOutQuad)
                 .SetUpdate(true);
+        tapCount++;
 
             // Enable the blur effect
             if (blurBackground != null)
@@ -71,6 +74,12 @@ public class ObjectClickHandler : MonoBehaviour
             {
                 blurBackground.gameObject.SetActive(false);
             }
+        }
+        objectManager.ShowFloatingText(name, transform.position);
+
+        if (tapCount >= 2){ 
+            objectManager.ShowObjectPopUp(name);
+            tapCount = 0;
         }
     }
 }

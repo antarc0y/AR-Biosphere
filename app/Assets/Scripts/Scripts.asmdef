@@ -3,7 +3,9 @@
     "rootNamespace": "",
     "references": [
         "Unity.XR.ARFoundation",
-        "Unity.XR.ARSubsystems"
+        "Unity.XR.ARSubsystems",
+        "Unity.TextMeshPro",
+        "Unity.TextMeshPro.Editor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
