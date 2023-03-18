@@ -87,7 +87,7 @@ public class ObjectClickHandler : MonoBehaviour
                     isZoomedIn = true;
                 });
 
-            spawnedObject.transform.DOLocalRotateQuaternion(Quaternion.Euler(0f, -180f, 0f), zoomDuration)
+            spawnedObject.transform.DOLocalRotateQuaternion(Quaternion.Euler(0f, 180f, 0f), zoomDuration)
                 .SetEase(Ease.InOutQuad)
                 .SetUpdate(true);
 
