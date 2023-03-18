@@ -33,7 +33,7 @@ namespace location_ui_test
         [UnityTest]
         public IEnumerator back_button_test()
         {
-            back_button = GameObject.Find("Canvas/BackButton");
+            back_button = GameObject.Find("Canvas/Back Button");
             Assert.That(SceneManager.GetActiveScene().name, Is.EqualTo("user_location"));
 
             ClickUI(back_button);
