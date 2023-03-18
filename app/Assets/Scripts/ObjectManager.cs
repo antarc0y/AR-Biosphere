@@ -92,7 +92,7 @@ public class ObjectManager : MonoBehaviour
             spawnRotation = Quaternion.FromToRotation(Vector3.up, hitPose.up) * spawnRotation;
 
             // Select prefabs from list and spawn them, adding them to the list of spawned objects.
-            var objectToSpawn = objectList[Random.Range(0, objectList.Count-1)];
+            var objectToSpawn = objectList[Random.Range(0, objectList.Count)];
             objectToSpawn.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             var spawnedObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
             AddObject(spawnedObject);
