@@ -38,6 +38,7 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     [SerializeField]
     private int maxObjectCount = 5;
+    private bool isFocused = false;
     
     /// <summary>
     /// y position of the spawned objects. This is used to ensure that the objects are spawned on the same plane.
@@ -128,12 +129,14 @@ public class ObjectManager : MonoBehaviour
 
     public void ShowObjectPopUp(string name)
     {   
+        isFocused = true;
         objectPopUpText.SetText("Random info about " + name + ".");
         objectPopUp.SetBool("visible", true);
     }
 
     public void HideObjectPopUp()
     {
+        isFocused = false;
         objectPopUp.SetBool("visible", false);
     }
 
@@ -159,7 +162,10 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     public void DeleteObjects()
     {
-        HideObjectPopUp();
+        if (isFocused) 
+        {
+            HideObjectPopUp();
+        }
         
         foreach (var spawnedObject in _spawnedObjects)
         {
