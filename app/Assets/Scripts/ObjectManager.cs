@@ -142,6 +142,8 @@ public class ObjectManager : MonoBehaviour
         }
         _spawnedObjects.Clear();
         _y = 0f;
+        y = 0f;
+        Debug.Log("Object count after deletion: " + _spawnedObjects.Count);
     }
     
     /// <summary>
@@ -154,6 +156,7 @@ public class ObjectManager : MonoBehaviour
         Destroy(obj);
     }
     
+
     private void OnApplicationPause(bool pause)
     {
         if (pause) DeleteObjects();
