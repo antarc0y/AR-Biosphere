@@ -94,7 +94,7 @@ public class ObjectManager : MonoBehaviour
 
             // Select prefabs from list and spawn them, adding them to the list of spawned objects.
             var objectList = isLand ? landModels : waterModels;
-            var objectToSpawn = objectList[Random.Range(0, objectList.Count)];
+            var objectToSpawn = objectList[Random.Range(0, objectList.Count-1)];
             objectToSpawn.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             var spawnedObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
             AddObject(spawnedObject);
