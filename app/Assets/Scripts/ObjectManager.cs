@@ -159,6 +159,8 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     public void DeleteObjects()
     {
+        HideObjectPopUp();
+        
         foreach (var spawnedObject in _spawnedObjects)
         {
             Destroy(spawnedObject);
