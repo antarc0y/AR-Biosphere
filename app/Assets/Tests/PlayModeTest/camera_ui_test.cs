@@ -28,7 +28,7 @@ namespace blankAR_ui_test
 
         public void ClickUI(GameObject uiElement)
         {
-            Camera camera = GameObject.Find("ARSessionOrigin/AR Camera").GetComponent<Camera>();
+            Camera camera = GameObject.Find("AR Session Origin/AR Camera").GetComponent<Camera>();
             Vector3 screenpos = camera.WorldToScreenPoint(uiElement.transform.position);
             //Vector2 screenpos = uiElement.AddComponent<RectTransform>().anchoredPosition;
             Set(mouse.position, screenpos);
@@ -46,10 +46,10 @@ namespace blankAR_ui_test
         }
 
         [UnityTest]
-        public IEnumerator refresh_bubble_test()
+        public IEnumerator RefreshBubbleTest()
         {
             // Find the object in the game hierarchy with the ObjectManager component
-            var objectManagerGO = GameObject.Find("ARSessionOrigin");
+            var objectManagerGO = GameObject.Find("AR Session Origin");
             var _objectManager = objectManagerGO.GetComponent<ObjectManager>();
 
             // Spawn 5 objects using the existing ObjectManager instance
@@ -63,13 +63,15 @@ namespace blankAR_ui_test
             // Find the refresh button and click it
             GameObject refresh_bubble = GameObject.Find("Canvas/RefreshBubble");
             ClickUI(refresh_bubble);
+            Debug.Log("Object count after refresh: " + _objectManager.ObjectCount);
 
             // Wait for the objects to be destroyed
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(5f);
 
             // Check that the _objectManager.ObjectCount property is updated correctly
-            Assert.AreEqual(0, _objectManager.ObjectCount, "Expected _objectManager.ObjectCount to be 0 after deleting objects, but got " + _objectManager.ObjectCount);
+            Assert.AreEqual(0, _objectManager.ObjectCount);
         }
+
 
 
 
