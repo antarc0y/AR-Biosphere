@@ -136,6 +136,7 @@ public class ObjectManager : MonoBehaviour
         }
         _spawnedObjects.Clear();
         y = 0f;
+        Debug.Log("Object count after deletion: " + _spawnedObjects.Count);
     }
     
     /// <summary>
