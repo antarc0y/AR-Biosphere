@@ -227,4 +227,59 @@
     - Everyone received help in building and running the project
     - Debugging support to solve the problem of clicking models
     - Received help on how to make models not spawn on top of eachother
+
+??? abstract "Mar 6 / Sprint 3 demo + internal meeting "
+
+    ## Main Purpose 🕰️
+
+    - Demo sprint 3, receive feedback
+    - Discuss planning for sprint 4
+
+    ## Attendance 👨‍💻
     
+    - The entire biosphere team, Yazeed
+
+    ## Important Takeaways❗
+
+    - Assigned new product owner and scrum master
+    - Broad distribution of tasks: 
+        - Models spawn improvement: Kevin + V
+        - Database: Mohammad + Huy
+        - Display environment information pop up box: Yui + Raunak
+
+??? abstract "Mar 11 / Internal Meeting "
+
+    ## Main Purpose 🕰️
+
+    - Further discuss sprint 4 task progress
+
+    ## Attendance 👨‍💻
+    
+    - The entire biosphere team
+
+    ## Important Takeaways❗
+
+    - Assigned detailed tasks
+    - We should improve model focusing by checking raycast color
+    - Focus on testing
+    - Look for more models
+
+??? abstract "Mar 13 / Internal Meeting + Client Meeting "
+
+    ## Main Purpose 🕰️
+
+    - Further discuss sprint 4 task progress
+    - Demo app to client
+
+    ## Attendance 👨‍💻
+    
+    - The entire biosphere team, Paula (client portion)
+
+    ## Important Takeaways❗
+
+    - Consider removing the bird sounds from the home page
+    - more UI testing
+    - Client likes the app, would prefer to have one model that is a local species
+    - The information for each model should include binomial nomenclature, 2-3 sentences description, and an info link
+    - Client would prefer to have user findings be save-able for later viewing
+    - Consider a whack-a-model game mode where user can whack invasive species
