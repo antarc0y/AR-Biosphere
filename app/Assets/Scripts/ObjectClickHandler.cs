@@ -17,8 +17,9 @@ public class ObjectClickHandler : MonoBehaviour
     {
         if (!objectManager)
         {
-            objectManager = GetComponentInParent<ObjectManager>();
+            objectManager = FindObjectOfType<ObjectManager>();
         }
+        Debug.Log($"objectmanager is {objectManager == null}");
     }
 
     // Zoom settings
