@@ -2,14 +2,14 @@
 
 ## Team Canvas
 Below is the team canvas for our team
-![TeamCanvas](../images/teamcanvas2.png)
+![TeamCanvas](../images/teamcanvas4.png)
 
 | **Sprints** | **Product Owner 🧑‍💼 ** | **Scrum Master ✏️** |
 | ------------| ------------------| -----------------| 
 | 1 | Kevin Sha      | Mohammad Hammad          |
 | 2 | Vaibhav Chugh         | Huy Ta         |
 | 3 | Raunak Argawal        | Yui Han          | 
-| 4 | TBD         | TBD       |
+| 4 | Kevin Sha         | Mohammad Hammad       |
 | 5 | TBD      | TBD         | 
 
 
