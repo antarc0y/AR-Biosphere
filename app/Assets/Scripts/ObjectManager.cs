@@ -131,10 +131,10 @@ public class ObjectManager : MonoBehaviour
         }
     }
 
-    public void ShowObjectPopUp(string name)
+    public void ShowObjectPopUp(string name, string info)
     {   
         isFocused = true;
-        objectPopUpText.SetText("Random info about " + name + ".");
+        objectPopUpText.SetText(name + ":\n" + info);
         objectPopUp.SetBool("visible", true);
     }
 
