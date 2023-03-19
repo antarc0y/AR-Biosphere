@@ -72,21 +72,17 @@ namespace blankAR_ui_test
         public IEnumerator switch_button_test()
         {
             // Arrange
-            var surface = new Surface();
             GameObject switch_handler = GameObject.Find("Canvas/SwitchHandler/Switch background/Toggle Button");
             Toggle switch_value = GameObject.Find("Canvas/SwitchHandler").GetComponent<Toggle>();
 
             // Assert land
-            bool isLand = surface.IsLand();
             Assert.IsTrue(!switch_value.isOn);
 
             // Act
             ClickUI(switch_handler);
-            surface.ChangeSurface();
             yield return new WaitForSeconds(2f);
 
             // Assert water
-            bool isWater = surface.IsWater();
             Assert.IsTrue(switch_value.isOn);
         }
     }

@@ -3,12 +3,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+/// <summary>
+/// Class that handles click events on spawned objects.
+/// </summary>
 public class ObjectClickHandler : MonoBehaviour
 {
-    public ObjectManager objectManager;
+    private static ObjectManager objectManager;
+    private Species species;
     public GameObject spawnedObject;
     public int tapCount = 0;
     public float doubleClickThreshold = 0.3f;
+
+    private void Start()
+    {
+        if (!objectManager)
+        {
+            objectManager = FindObjectOfType<ObjectManager>();
+        }
+        species = GetComponentInParent<Species>();
+        Debug.Log($"objectmanager is {objectManager == null}");
+    }
 
     // Zoom settings
     public float zoomDistance = 1.5f;
@@ -23,11 +37,17 @@ public class ObjectClickHandler : MonoBehaviour
     private bool isZoomedIn = false;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
-
+    
     private float lastClickTime = 0f;
 
+    /// <summary>
+    /// Method that handles mouse down events on spawned objects. Right now removes the clicked object from the scene.
+    /// </summary>
     public void OnMouseDown()
     {
+        var species = spawnedObject.GetComponent<Species>();
+        Debug.Log("Clicked on " + species.speciesName + species.description + species.link);
+
         float timeSinceLastClick = Time.time - lastClickTime;
 
         if (timeSinceLastClick < doubleClickThreshold)
@@ -71,7 +91,7 @@ public class ObjectClickHandler : MonoBehaviour
     {
         if (!isZoomedIn)
         {
-            objectManager.ShowObjectPopUp(name);
+            objectManager.ShowObjectPopUp(name, species.description);
 
             //Store original position and rotation for when the user zooms out
             originalPosition = spawnedObject.transform.position;
