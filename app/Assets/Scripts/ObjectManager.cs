@@ -135,8 +135,8 @@ public class ObjectManager : MonoBehaviour
     public void ShowObjectPopUp(string name, string binomial, string info, string link)
     {   
         isFocused = true;
-        string formattedText = "<u>" + name + " (" + binomial + ")</u>\n" +
-                               "Fun fact: " + info + "\n" +
+        string formattedText = name + " (<i>" + binomial + "</i>)\n" +
+                               info + "\n" +
                                "More info:" + link;
         objectPopUpText.SetText(formattedText);
         objectPopUp.SetBool("visible", true);
