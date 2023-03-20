@@ -116,7 +116,8 @@ public class ObjectManager : MonoBehaviour
             var species = spawnedObject.AddComponent<Species>();
             var modelName = spawnedObject.name.Replace("(Clone)", "");
             species.SetInfo(
-                _speciesInfo[modelName]["name"], 
+                _speciesInfo[modelName]["name"],
+                _speciesInfo[modelName]["binomial"],
                 _speciesInfo[modelName]["description"], 
                 _speciesInfo[modelName]["link"]
                 );
@@ -131,12 +132,16 @@ public class ObjectManager : MonoBehaviour
         }
     }
 
-    public void ShowObjectPopUp(string name, string info)
+    public void ShowObjectPopUp(string name, string binomial, string info, string link)
     {   
         isFocused = true;
-        objectPopUpText.SetText(name + ":\n" + info);
+        string formattedText = "<u>" + name + " (" + binomial + ")</u>\n" +
+                               "Fun fact: " + info + "\n" +
+                               "More info:" + link;
+        objectPopUpText.SetText(formattedText);
         objectPopUp.SetBool("visible", true);
     }
+
 
     public void HideObjectPopUp()
     {
