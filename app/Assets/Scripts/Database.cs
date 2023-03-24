@@ -106,6 +106,7 @@ public class Database : MonoBehaviour
     private void LoadInfo(DocumentSnapshot snapshot, string speciesName)
     {
         var assetName = snapshot.GetValue<string>("assetName");
+        var binomial = snapshot.GetValue<string>("binomial");
         var description = snapshot.GetValue<string>("description");
         var isLand = snapshot.GetValue<bool>("isLand");
         var link = snapshot.GetValue<string>("link");
@@ -114,6 +115,7 @@ public class Database : MonoBehaviour
         _info[assetName] = new Dictionary<string, string>()
         {
             {"name", speciesName},
+            {"binomial", binomial},
             {"description", description},
             {"link", link}
         };

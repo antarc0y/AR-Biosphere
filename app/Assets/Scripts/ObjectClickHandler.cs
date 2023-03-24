@@ -83,7 +83,7 @@ public class ObjectClickHandler : MonoBehaviour
     {
         if (!isZoomedIn)
         {
-            objectManager.ShowFloatingText(name, transform.position);
+            objectManager.ShowFloatingText(species.speciesName, transform.position);
         }
     }
 
@@ -91,7 +91,7 @@ public class ObjectClickHandler : MonoBehaviour
     {
         if (!isZoomedIn)
         {
-            objectManager.ShowObjectPopUp(name, species.description);
+            objectManager.ShowObjectPopUp(species.speciesName, species.binomial, species.description, species.link);
 
             //Store original position and rotation for when the user zooms out
             originalPosition = spawnedObject.transform.position;
