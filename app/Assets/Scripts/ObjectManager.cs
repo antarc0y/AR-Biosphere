@@ -40,7 +40,7 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     [SerializeField]
     private int maxObjectCount = 5;
-    private bool isFocused = false;
+    public bool popUpIsBeingShown = false;
     
     /// <summary>
     /// y position of the spawned objects. This is used to ensure that the objects are spawned on the same plane.
@@ -50,6 +50,8 @@ public class ObjectManager : MonoBehaviour
     public GameObject FloatingTextPrefab;
     public Animator objectPopUp;
     public TextMeshProUGUI objectPopUpText;
+
+    public ObjectClickHandler clickHandler;
 
 
     private void Start()
@@ -109,7 +111,7 @@ public class ObjectManager : MonoBehaviour
             AddObject(spawnedObject);
 
             // Add a click handler to the spawned object
-            var clickHandler = spawnedObject.AddComponent<ObjectClickHandler>();
+            clickHandler = spawnedObject.AddComponent<ObjectClickHandler>();
             clickHandler.spawnedObject = spawnedObject;
             
             // Add a species component to the spawned object
@@ -135,7 +137,7 @@ public class ObjectManager : MonoBehaviour
 
     public void ShowObjectPopUp(string name, string binomial, string info, string link)
     {   
-        isFocused = true;
+        popUpIsBeingShown = true;
         string formattedText = name + " (<i>" + binomial + "</i>)\n" +
                                info + "\n" +
                                "More info:" + link;
@@ -146,7 +148,8 @@ public class ObjectManager : MonoBehaviour
 
     public void HideObjectPopUp()
     {
-        isFocused = false;
+        clickHandler.unfocusModel(false);
+        popUpIsBeingShown = false;
         objectPopUp.SetBool("visible", false);
     }
 
@@ -172,7 +175,7 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     public void DeleteObjects()
     {
-        if (isFocused) 
+        if (popUpIsBeingShown) 
         {
             HideObjectPopUp();
         }

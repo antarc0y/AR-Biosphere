@@ -15,16 +15,10 @@ public class ObjectClickHandler : MonoBehaviour
     public float doubleClickThreshold = 0.3f;
 
     // Focus settings
-    private float focusDistance = 1.5f;
     private float focusAnimationDuration = 0.5f;
     private bool isFocused = false;
     private Vector3 originalPosition;   // Both this and originalRotation are used to remember original position and rotation when the user focuses on a model
     private Quaternion originalRotation;
-
-    // Blur settings
-    public Image blurBackground;
-    public float blurStrength = 0.5f;
-    public float blurSize = 4f;
 
     // Double click tracker
     private float lastClickTime = 0f;
@@ -91,6 +85,17 @@ public class ObjectClickHandler : MonoBehaviour
     {
         if (!isFocused)
         {
+            focusModel();
+        }
+        
+        else
+        {
+            unfocusModel(true);
+        }
+    }
+
+    public void focusModel()
+    {
             objectManager.ShowObjectPopUp(species.speciesName, species.binomial, species.description, species.link);
 
             //Store original position and rotation for when the user zooms out
@@ -112,18 +117,14 @@ public class ObjectClickHandler : MonoBehaviour
             spawnedObject.transform.DOLocalRotateQuaternion(Quaternion.Euler(0f, 180f, 0f), focusAnimationDuration)
                 .SetEase(Ease.InOutQuad)
                 .SetUpdate(true);
+    }
 
-            // Enable the blur effect
-            if (blurBackground != null)
+    public void unfocusModel(bool calledFromDoubleClick)
+    {
+            if (calledFromDoubleClick)
             {
-                blurBackground.material.SetFloat("_BlurStrength", blurStrength);
-                blurBackground.material.SetFloat("_BlurSize", blurSize);
-                blurBackground.gameObject.SetActive(true);
+                objectManager.HideObjectPopUp();    // unfocusModel can be called from HideObjectPopup leading to infinite recursion, this if statement prevents that.
             }
-        }
-        else
-        {
-            objectManager.HideObjectPopUp();
 
             // Animate zooming out
             spawnedObject.transform.SetParent(null);
@@ -138,12 +139,5 @@ public class ObjectClickHandler : MonoBehaviour
             spawnedObject.transform.DOLocalRotateQuaternion(originalRotation, focusAnimationDuration)
                 .SetEase(Ease.InOutQuad)
                 .SetUpdate(true);
-
-            // Disable the blur effect
-            if (blurBackground != null)
-            {
-                blurBackground.gameObject.SetActive(false);
-            }
-        }
     }
 }
