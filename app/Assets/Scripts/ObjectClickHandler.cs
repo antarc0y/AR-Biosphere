@@ -46,7 +46,7 @@ public class ObjectClickHandler : MonoBehaviour
     public void OnMouseDown()
     {
         var species = spawnedObject.GetComponent<Species>();
-        Debug.Log("Clicked on " + species.speciesName + species.description + species.link);
+        Debug.Log("Clicked on " + species.speciesName + species.description + species.link + species.focusDistance);
 
         float timeSinceLastClick = Time.time - lastClickTime;
 
@@ -98,14 +98,16 @@ public class ObjectClickHandler : MonoBehaviour
             originalRotation = spawnedObject.transform.rotation;
 
             // Animate zooming in
+            Vector3 focusedPosition = new Vector3(0, 0, species.focusDistance);
             spawnedObject.transform.SetParent(Camera.main.transform); // set the spawnedObject as a child of the main camera
-            spawnedObject.transform.DOLocalMove(Vector3.forward * focusDistance, focusAnimationDuration)
+            spawnedObject.transform.DOLocalMove(focusedPosition, focusAnimationDuration)
                 .SetEase(Ease.InOutQuad)
                 .SetUpdate(true)
                 .OnComplete(() =>
                 {
                     isFocused = true;
                 });
+
 
             spawnedObject.transform.DOLocalRotateQuaternion(Quaternion.Euler(0f, 180f, 0f), focusAnimationDuration)
                 .SetEase(Ease.InOutQuad)

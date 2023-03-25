@@ -119,7 +119,8 @@ public class ObjectManager : MonoBehaviour
                 _speciesInfo[modelName]["name"],
                 _speciesInfo[modelName]["binomial"],
                 _speciesInfo[modelName]["description"], 
-                _speciesInfo[modelName]["link"]
+                _speciesInfo[modelName]["link"],
+                float.Parse(_speciesInfo[modelName]["focusDistance"])
                 );
         }
     }
