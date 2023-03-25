@@ -14,6 +14,22 @@ public class ObjectClickHandler : MonoBehaviour
     public int tapCount = 0;
     public float doubleClickThreshold = 0.3f;
 
+    // Focus settings
+    private float focusDistance = 1.5f;
+    private float focusAnimationDuration = 0.5f;
+    private bool isFocused = false;
+    private Vector3 originalPosition;   // Both this and originalRotation are used to remember original position and rotation when the user focuses on a model
+    private Quaternion originalRotation;
+
+    // Blur settings
+    public Image blurBackground;
+    public float blurStrength = 0.5f;
+    public float blurSize = 4f;
+
+    // Double click tracker
+    private float lastClickTime = 0f;
+
+
     private void Start()
     {
         if (!objectManager)
@@ -23,22 +39,6 @@ public class ObjectClickHandler : MonoBehaviour
         species = GetComponentInParent<Species>();
         Debug.Log($"objectmanager is {objectManager == null}");
     }
-
-    // Zoom settings
-    public float zoomDistance = 1.5f;
-    public float zoomDuration = 0.5f;
-
-    // Blur settings
-    public Image blurBackground;
-    public float blurStrength = 0.5f;
-    public float blurSize = 4f;
-
-    // Private state
-    private bool isZoomedIn = false;
-    private Vector3 originalPosition;
-    private Quaternion originalRotation;
-    
-    private float lastClickTime = 0f;
 
     /// <summary>
     /// Method that handles mouse down events on spawned objects. Right now removes the clicked object from the scene.
@@ -81,7 +81,7 @@ public class ObjectClickHandler : MonoBehaviour
 
     private void HandleSingleClick()
     {
-        if (!isZoomedIn)
+        if (!isFocused)
         {
             objectManager.ShowFloatingText(species.speciesName, transform.position);
         }
@@ -89,7 +89,7 @@ public class ObjectClickHandler : MonoBehaviour
 
     private void HandleDoubleClick()
     {
-        if (!isZoomedIn)
+        if (!isFocused)
         {
             objectManager.ShowObjectPopUp(species.speciesName, species.binomial, species.description, species.link);
 
@@ -99,15 +99,15 @@ public class ObjectClickHandler : MonoBehaviour
 
             // Animate zooming in
             spawnedObject.transform.SetParent(Camera.main.transform); // set the spawnedObject as a child of the main camera
-            spawnedObject.transform.DOLocalMove(Vector3.forward * zoomDistance, zoomDuration)
+            spawnedObject.transform.DOLocalMove(Vector3.forward * focusDistance, focusAnimationDuration)
                 .SetEase(Ease.InOutQuad)
                 .SetUpdate(true)
                 .OnComplete(() =>
                 {
-                    isZoomedIn = true;
+                    isFocused = true;
                 });
 
-            spawnedObject.transform.DOLocalRotateQuaternion(Quaternion.Euler(0f, 180f, 0f), zoomDuration)
+            spawnedObject.transform.DOLocalRotateQuaternion(Quaternion.Euler(0f, 180f, 0f), focusAnimationDuration)
                 .SetEase(Ease.InOutQuad)
                 .SetUpdate(true);
 
@@ -125,15 +125,15 @@ public class ObjectClickHandler : MonoBehaviour
 
             // Animate zooming out
             spawnedObject.transform.SetParent(null);
-            spawnedObject.transform.DOLocalMove(originalPosition, zoomDuration)
+            spawnedObject.transform.DOLocalMove(originalPosition, focusAnimationDuration)
                 .SetEase(Ease.InOutQuad)
                 .SetUpdate(true)
                 .OnComplete(() =>
                 {
-                    isZoomedIn = false;
+                    isFocused = false;
                 });
 
-            spawnedObject.transform.DOLocalRotateQuaternion(originalRotation, zoomDuration)
+            spawnedObject.transform.DOLocalRotateQuaternion(originalRotation, focusAnimationDuration)
                 .SetEase(Ease.InOutQuad)
                 .SetUpdate(true);
 
