@@ -110,6 +110,7 @@ public class Database : MonoBehaviour
         var description = snapshot.GetValue<string>("description");
         var isLand = snapshot.GetValue<bool>("isLand");
         var link = snapshot.GetValue<string>("link");
+        var focusDistance = snapshot.GetValue<float>("focusDistance");
 
         // Create dictionary for species info
         _info[assetName] = new Dictionary<string, string>()
@@ -117,7 +118,8 @@ public class Database : MonoBehaviour
             {"name", speciesName},
             {"binomial", binomial},
             {"description", description},
-            {"link", link}
+            {"link", link},
+            {"focusDistance", focusDistance.ToString()}
         };
         
         // Download model from Firebase Storage
