@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.UI;
+using UnityEditor.Animations;
+using JetBrains.Annotations;
 
 namespace blankAR_ui_test
 {
@@ -20,6 +22,8 @@ namespace blankAR_ui_test
             base.Setup();
             SceneManager.LoadScene("BlankAR");
             mouse = InputSystem.AddDevice<Mouse>();
+            //GameObject popup_panel = GameObject.Find("Canvas/DialogUI");
+            //popup_panel.SetActive(false);
         }
 
         public void ClickUI(GameObject uiElement)
