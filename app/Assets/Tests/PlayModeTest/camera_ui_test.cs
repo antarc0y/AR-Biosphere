@@ -89,5 +89,34 @@ namespace blankAR_ui_test
             // Assert water
             Assert.IsTrue(switch_value.isOn);
         }
+
+        [UnityTest]
+        public IEnumerator info_button_open()
+        {
+            GameObject info_button = GameObject.Find("Canvas/InformationButton");
+            GameObject di = GameObject.Find("Canvas/DialogUI");
+            ClickUI(info_button);
+            yield return new WaitForSeconds(2f);
+            Assert.IsTrue(di.activeSelf);
+        }
+
+        [UnityTest]
+        public IEnumerator info_button_close()
+        {
+            GameObject info_button = GameObject.Find("Canvas/InformationButton");
+            
+            DialogUI di = GameObject.Find("Canvas/DialogUI").GetComponent<DialogUI>();
+            
+            ClickUI(info_button);
+            yield return new WaitForSeconds(2f);
+            GameObject close_button = GameObject.Find("Canvas/DialogUI/CloseButton");
+            ClickUI(close_button);
+
+            yield return new WaitForSeconds(2f);
+            Assert.IsFalse(di.status);
+
+        }
+
+
     }
 }

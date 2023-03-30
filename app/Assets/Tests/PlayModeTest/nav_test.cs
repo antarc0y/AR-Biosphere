@@ -112,4 +112,33 @@ public class nav_test
         
     }
 
+    [UnityTest]
+
+    public IEnumerator info_button_open()
+    {
+        SceneManager.LoadScene("BlankAR");
+        yield return null;
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("BlankAR"));
+
+        DialogUI dialogui = GameObject.Find("Canvas/DialogUI").GetComponent<DialogUI>();
+        dialogui.open_popup();
+        yield return null;
+        Assert.IsTrue(dialogui.status);
+    }
+
+    [UnityTest]
+    public IEnumerator info_button_close()
+    {
+        SceneManager.LoadScene("BlankAR");
+        yield return null;
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("BlankAR"));
+
+        DialogUI dialogui = GameObject.Find("Canvas/DialogUI").GetComponent<DialogUI>();
+        dialogui.open_popup();
+        yield return null;
+        Assert.IsTrue(dialogui.status);
+        dialogui.close_popup();
+        yield return null;
+        Assert.IsFalse(dialogui.status);
+    }
 }
