@@ -4,12 +4,17 @@ using DG.Tweening;
 
 public class ToggleBehavior : MonoBehaviour
 {
-    public float fadeDuration = 0.5f;
+    // Components
+    private Image heartImage;
+    private Toggle toggle;
+
+    // Like button brief expand variables
     public float scaleDuration = 0.2f;
     public float heartInflateScaleAmount = 0.2f;
     public float originalHeartScale;
-    private Image heartImage;
-    private Toggle toggle;
+
+    // Color change variables
+    public float fadeDuration = 0.5f;
     private Color targetColor;
     private Color originalColor;
 
@@ -21,15 +26,13 @@ public class ToggleBehavior : MonoBehaviour
         heartImage = GetComponent<Image>();
         originalHeartScale = heartImage.transform.localScale.x;
 
-        if (heartImage == null)
-        {
-            Debug.LogError("ToggleBehavior script must be attached to an Image component!");
-        }
-
         originalColor = heartImage.color;
         targetColor = originalColor;
     }
 
+    /// <summary>
+    /// Handles the switching of the like button's value. Changes color to red if on, white if off.
+    /// </summary>
     void OnToggleValueChanged(bool isOn)
     {
         if (heartImage != null)
@@ -44,10 +47,13 @@ public class ToggleBehavior : MonoBehaviour
                 targetColor = originalColor;
             }
 
+            // This is responsible for the brief-expand effect when clicking on the like button. It simply works by animating the heart getting bigger, and when that animation finishes, it makes the heart smaller again also via an animation.
             heartImage.transform.DOScale(originalHeartScale + heartInflateScaleAmount, scaleDuration).SetEase(Ease.OutQuad).OnComplete(() =>
             {
                 heartImage.transform.DOScale(originalHeartScale, scaleDuration).SetEase(Ease.OutQuad);
             });
+
+            // Animation for changing heart color
             heartImage.CrossFadeColor(targetColor, fadeDuration, true, true);
         }
     }
