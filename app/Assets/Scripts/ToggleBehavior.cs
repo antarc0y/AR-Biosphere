@@ -4,8 +4,6 @@ using DG.Tweening;
 
 public class ToggleBehavior : MonoBehaviour
 {
-    public Sprite whiteHeartSprite;
-    public Sprite redHeartSprite;
     public float fadeDuration = 0.5f;
     public float scaleDuration = 0.2f;
     public float maxScale = 1.2f;
