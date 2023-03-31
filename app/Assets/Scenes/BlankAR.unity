@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402185, g: 0.49316472, b: 0.57223153, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2188,8 +2188,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1389559749}
   m_HandleRect: {fileID: 1389559748}
   m_Direction: 2
-  m_Value: 1.0000007
-  m_Size: 0.7100442
+  m_Value: 1.0000017
+  m_Size: 0.787444
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3638,6 +3638,7 @@ GameObject:
   - component: {fileID: 1962679184}
   - component: {fileID: 1962679183}
   - component: {fileID: 1962679185}
+  - component: {fileID: 1962679186}
   m_Layer: 5
   m_Name: Like Button
   m_TagString: Untagged
@@ -3722,7 +3723,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3752,6 +3753,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &1962679186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962679180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796f2b61acf17124888a15f32a1031ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 0.5
+  scaleDuration: 0.2
+  heartInflateScaleAmount: 0.2
+  originalHeartScale: 0
 --- !u!1 &2059166737
 GameObject:
   m_ObjectHideFlags: 0
