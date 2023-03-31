@@ -6,9 +6,8 @@ public class ToggleBehavior : MonoBehaviour
 {
     public float fadeDuration = 0.5f;
     public float scaleDuration = 0.2f;
-    public float maxScale;
-    public float originalScale;
-
+    public float heartInflateScaleAmount = 0.2f;
+    public float originalHeartScale;
     private Image heartImage;
     private Toggle toggle;
     private Color targetColor;
@@ -20,9 +19,7 @@ public class ToggleBehavior : MonoBehaviour
         toggle.onValueChanged.AddListener(OnToggleValueChanged);
 
         heartImage = GetComponent<Image>();
-        originalScale = heartImage.transform.localScale.x;
-
-        maxScale = originalScale + 0.2f;
+        originalHeartScale = heartImage.transform.localScale.x;
 
         if (heartImage == null)
         {
@@ -46,10 +43,10 @@ public class ToggleBehavior : MonoBehaviour
             {
                 targetColor = originalColor;
             }
-            
-            heartImage.transform.DOScale(maxScale, scaleDuration).SetEase(Ease.OutQuad).OnComplete(() =>
+
+            heartImage.transform.DOScale(originalHeartScale + heartInflateScaleAmount, scaleDuration).SetEase(Ease.OutQuad).OnComplete(() =>
             {
-                heartImage.transform.DOScale(originalScale, scaleDuration).SetEase(Ease.OutQuad);
+                heartImage.transform.DOScale(originalHeartScale, scaleDuration).SetEase(Ease.OutQuad);
             });
             heartImage.CrossFadeColor(targetColor, fadeDuration, true, true);
         }
