@@ -9,13 +9,13 @@ public class Navigation : MonoBehaviour
     public static Animator transition;
     public float transitionTime = 1f;
     // Start is called before the first frame update
-    void Start()
-    {
-        transition = GetComponentInChildren<Animator>();
+    //void Start()
+    //{
+       // transition = GetComponent<Animator>();
 
         // Log the Animator component to the console
-        Debug.Log("Animator component: " + transition);
-    }
+       // Debug.Log("Animator component: " + transition);
+    //}
 
     static public void GoToNextScene() 
     {
