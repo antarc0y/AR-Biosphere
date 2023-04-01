@@ -19,11 +19,18 @@ public class Navigation : MonoBehaviour
 
     static public void GoToNextScene() 
     {
-        // play animation
-        transition.SetTrigger("start");
-        
-        // load scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (transition != null)
+        {
+            // play animation
+            transition.SetTrigger("start");
+
+            // load scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+       else
+        {
+            Debug.LogWarning("animator is not initialized");
+        }
         
     }
 
