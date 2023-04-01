@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 using DG.Tweening;
+using Firebase;
+using Firebase.Firestore;
+using Firebase.Extensions;
 
 public class ToggleBehavior : MonoBehaviour
 {
@@ -17,6 +21,11 @@ public class ToggleBehavior : MonoBehaviour
     public float fadeDuration = 0.5f;
     private Color targetColor;
     private Color originalColor;
+    
+
+    // Database-related variables
+    private string uniqueIdentifier;
+    FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
 
     void Start()
     {
@@ -28,6 +37,8 @@ public class ToggleBehavior : MonoBehaviour
 
         originalColor = heartImage.color;
         targetColor = originalColor;
+
+        uniqueIdentifier = SystemInfo.deviceUniqueIdentifier;    // Unique device identifier
     }
 
     /// <summary>
@@ -40,6 +51,7 @@ public class ToggleBehavior : MonoBehaviour
             if (isOn)
             {
                 targetColor = Color.red;
+                handleLiking();
 
             }
             else
@@ -58,5 +70,20 @@ public class ToggleBehavior : MonoBehaviour
         }
     }
 
-
+    void handleLiking()
+    {
+        DocumentReference docRef = db.Collection("inventories").Document(uniqueIdentifier);
+        docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
+        {
+            DocumentSnapshot snapshot = task.Result;
+            if (snapshot.Exists) {
+                Dictionary<string, object> city = snapshot.ToDictionary();
+                foreach (KeyValuePair<string, object> pair in city) {
+                Debug.Log("AAAAAAAAAAAAAAAAAA" + pair.ToString());
+                }
+            } else {
+                Debug.Log("Document" + snapshot.Id + "does not exist!");
+            }
+        });
+    }
 }
