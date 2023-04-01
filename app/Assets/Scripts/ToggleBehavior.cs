@@ -27,6 +27,10 @@ public class ToggleBehavior : MonoBehaviour
     private string uniqueIdentifier;
     FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
 
+    // Needed to detect the current focused item
+    private static ObjectManager objectManager;
+
+
     void Start()
     {
         toggle = GetComponent<Toggle>();
@@ -39,6 +43,11 @@ public class ToggleBehavior : MonoBehaviour
         targetColor = originalColor;
 
         uniqueIdentifier = SystemInfo.deviceUniqueIdentifier;    // Unique device identifier
+
+        if (!objectManager)
+        {
+            objectManager = FindObjectOfType<ObjectManager>();
+        }
     }
 
     /// <summary>
@@ -48,15 +57,17 @@ public class ToggleBehavior : MonoBehaviour
     {
         if (heartImage != null)
         {
+            string model = objectManager.currentFocused.speciesName;
             if (isOn)
             {
                 targetColor = Color.red;
-                handleLiking();
+                handleLiking(model);
 
             }
             else
             {
                 targetColor = originalColor;
+                handleUnliking(model);
             }
 
             // This is responsible for the brief-expand effect when clicking on the like button. It simply works by animating the heart getting bigger, and when that animation finishes, it makes the heart smaller again also via an animation.
@@ -70,19 +81,68 @@ public class ToggleBehavior : MonoBehaviour
         }
     }
 
-    void handleLiking()
+    void get()
     {
         DocumentReference docRef = db.Collection("inventories").Document(uniqueIdentifier);
         docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
         {
             DocumentSnapshot snapshot = task.Result;
             if (snapshot.Exists) {
-                Dictionary<string, object> city = snapshot.ToDictionary();
-                foreach (KeyValuePair<string, object> pair in city) {
-                Debug.Log("AAAAAAAAAAAAAAAAAA" + pair.ToString());
+                Dictionary<string, object> inventory = snapshot.ToDictionary();
+                if (inventory.TryGetValue("models", out object modelsObj) && modelsObj is List<object> models) {
+                    foreach (object modelObj in models) {
+                        if (modelObj is string model) {
+                            Debug.Log("Model: " + model);
+                        }
+                    }
                 }
             } else {
-                Debug.Log("Document" + snapshot.Id + "does not exist!");
+                Debug.Log("Document " + snapshot.Id + " does not exist " + "for device " + uniqueIdentifier);
+            }
+        });
+    }
+
+    /// <summary>
+    /// Adds the model to the list of liked models in the database for that user's device. This is Union operation,
+    /// meaning that models already in the list will not be added again.
+    /// </summary>
+    async void handleLiking(string model)
+    {
+        DocumentReference docRef = db.Collection("inventories").Document(uniqueIdentifier);
+
+        DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+
+        //Create user inventory if one does not exist
+        if (!snapshot.Exists)
+        {
+            await docRef.SetAsync(new { models = new List<string>() });
+        }
+
+        docRef.UpdateAsync("models", FieldValue.ArrayUnion(model)).ContinueWithOnMainThread(task =>
+        {
+            if (task.Exception != null)
+            {
+                Debug.LogError("Error liking model: " + task.Exception);
+            }
+            else
+            {
+                Debug.Log("Model liked successfully: " + model);
+            }
+        });
+    }
+
+    /// <summary>
+    /// Removes the model for the list of liked models in the database for that user's device.
+    /// </summary>
+    void handleUnliking(string model)
+    {
+        DocumentReference docRef = db.Collection("inventories").Document(uniqueIdentifier);
+        docRef.UpdateAsync("models", FieldValue.ArrayRemove(model)).ContinueWithOnMainThread(task =>
+        {
+            if (task.Exception != null) {
+                Debug.LogError("Error unliking model: " + task.Exception);
+            } else {
+                Debug.Log("Model unliked successfully: " + model);
             }
         });
     }

@@ -3,6 +3,7 @@
 public class Species : MonoBehaviour
 {
     public string speciesName;
+    public string speciesNameCapitalized;
     public string description;
     public string link;
     public string binomial;
@@ -10,7 +11,8 @@ public class Species : MonoBehaviour
     
     public void SetInfo(string _speciesName, string _binomial, string _desc, string _link, float _focusDistance)
     {
-        speciesName = char.ToUpper(_speciesName[0]) + _speciesName.Substring(1);
+        speciesName = _speciesName;
+        speciesNameCapitalized = char.ToUpper(_speciesName[0]) + _speciesName.Substring(1);
         description = _desc;
         link = _link;
         binomial = _binomial;

@@ -41,6 +41,7 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     private int maxObjectCount = 5;
     public bool popUpIsBeingShown = false;
+    public Species currentFocused;
     
     /// <summary>
     /// y position of the spawned objects. This is used to ensure that the objects are spawned on the same plane.
@@ -135,12 +136,14 @@ public class ObjectManager : MonoBehaviour
         }
     }
 
-    public void ShowObjectPopUp(string name, string binomial, string info, string link)
-    {   
+    public void ShowObjectPopUp(Species species)
+    {
         popUpIsBeingShown = true;
-        string formattedText = name + " (<i>" + binomial + "</i>)\n" +
-                               info + "\n" +
-                               "More info:" + link;
+        currentFocused = species;
+
+        string formattedText = species.speciesNameCapitalized + " (<i>" + species.binomial + "</i>)\n" +
+                               species.description + "\n" +
+                               "More info:" + species.link;
         objectPopUpText.SetText(formattedText);
         objectPopUp.SetBool("visible", true);
     }
