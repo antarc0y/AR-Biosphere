@@ -8,8 +8,9 @@ public class Species : MonoBehaviour
     public string link;
     public string binomial;
     public float focusDistance;
+    public bool isLiked;
     
-    public void SetInfo(string _speciesName, string _binomial, string _desc, string _link, float _focusDistance)
+    public void SetInfo(string _speciesName, string _binomial, string _desc, string _link, float _focusDistance, bool _isLiked)
     {
         speciesName = _speciesName;
         speciesNameCapitalized = char.ToUpper(_speciesName[0]) + _speciesName.Substring(1);
@@ -17,5 +18,6 @@ public class Species : MonoBehaviour
         link = _link;
         binomial = _binomial;
         focusDistance = _focusDistance;
+        isLiked = _isLiked;
     }
 }

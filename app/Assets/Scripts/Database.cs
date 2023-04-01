@@ -131,6 +131,34 @@ public class Database : MonoBehaviour
         });
     }
 
+
+    /// <summary>
+    /// Load info from Firestore and download model from Firebase Storage.
+    /// </summary>
+    /// <param name="snapshot"> DocumentSnapshot to load info from</param>
+    /// <param name="speciesName"> Name of species prefab to download</param>
+    private bool getIsLiked(string speciesName)
+    {        
+        DocumentReference docRef = db.Collection("inventories").Document(uniqueIdentifier);
+        docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
+        {
+            DocumentSnapshot snapshot = task.Result;
+            if (snapshot.Exists) {
+                Dictionary<string, object> inventory = snapshot.ToDictionary();
+                if (inventory.TryGetValue("models", out object modelsObj) && modelsObj is List<object> models) {
+                    foreach (object modelObj in models) {
+                        if (modelObj is string model) {
+                            Debug.Log("Model: " + model);
+                        }
+                    }
+                }
+            } else {
+                Debug.Log("Document " + snapshot.Id + " does not exist " + "for device " + uniqueIdentifier);
+            }
+        });
+    }
+
+
     /// <summary>
     /// Coroutine to download model from Firebase Storage.
     /// </summary>

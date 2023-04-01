@@ -81,27 +81,6 @@ public class ToggleBehavior : MonoBehaviour
         }
     }
 
-    void get()
-    {
-        DocumentReference docRef = db.Collection("inventories").Document(uniqueIdentifier);
-        docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
-        {
-            DocumentSnapshot snapshot = task.Result;
-            if (snapshot.Exists) {
-                Dictionary<string, object> inventory = snapshot.ToDictionary();
-                if (inventory.TryGetValue("models", out object modelsObj) && modelsObj is List<object> models) {
-                    foreach (object modelObj in models) {
-                        if (modelObj is string model) {
-                            Debug.Log("Model: " + model);
-                        }
-                    }
-                }
-            } else {
-                Debug.Log("Document " + snapshot.Id + " does not exist " + "for device " + uniqueIdentifier);
-            }
-        });
-    }
-
     /// <summary>
     /// Adds the model to the list of liked models in the database for that user's device. This is Union operation,
     /// meaning that models already in the list will not be added again.
