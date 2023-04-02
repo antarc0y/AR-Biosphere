@@ -40,7 +40,7 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     [SerializeField]
     private int maxObjectCount = 5;
-    public bool popUpIsBeingShown = false;
+    private bool popUpIsBeingShown = false;
     
     /// <summary>
     /// y position of the spawned objects. This is used to ensure that the objects are spawned on the same plane.
@@ -51,7 +51,7 @@ public class ObjectManager : MonoBehaviour
     public Animator objectPopUp;
     public TextMeshProUGUI objectPopUpText;
 
-    public ObjectClickHandler clickHandler;
+    internal ObjectClickHandler clickHandler { set; get; }
 
 
     private void Start()
@@ -106,12 +106,11 @@ public class ObjectManager : MonoBehaviour
 
             // Select prefabs from list and spawn them, adding them to the list of spawned objects.
             var objectToSpawn = objectList[Random.Range(0, objectList.Count)];
-            objectToSpawn.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             var spawnedObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
             AddObject(spawnedObject);
 
             // Add a click handler to the spawned object
-            clickHandler = spawnedObject.AddComponent<ObjectClickHandler>();
+            var clickHandler = spawnedObject.AddComponent<ObjectClickHandler>();
             clickHandler.spawnedObject = spawnedObject;
             
             // Add a species component to the spawned object
@@ -148,7 +147,8 @@ public class ObjectManager : MonoBehaviour
 
     public void HideObjectPopUp()
     {
-        clickHandler.unfocusModel(false);
+        if (!clickHandler) return;
+        clickHandler.UnfocusModel(false);
         popUpIsBeingShown = false;
         objectPopUp.SetBool("visible", false);
     }
@@ -186,7 +186,6 @@ public class ObjectManager : MonoBehaviour
         }
         _spawnedObjects.Clear();
         _y = 0f;
-        // Debug.Log("Object count after deletion: " + _spawnedObjects.Count);
     }
     
     /// <summary>

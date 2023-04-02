@@ -123,11 +123,13 @@ public class Database : MonoBehaviour
         };
         
         // Download model from Firebase Storage
-        _reference.Child(speciesName).GetDownloadUrlAsync().ContinueWithOnMainThread( t => {
-            if (!t.IsFaulted && !t.IsCanceled) {
-                var url = t.Result.ToString();
-                StartCoroutine(DownloadFile(url, assetName, isLand));
-            }
+        _reference.Child(speciesName.Replace(' ', '_')).GetDownloadUrlAsync()
+            .ContinueWithOnMainThread( t => {
+                if (!t.IsFaulted && !t.IsCanceled)
+                {
+                    var url = t.Result.ToString();
+                    StartCoroutine(DownloadFile(url, assetName, isLand));
+                }
         });
     }
 
@@ -154,10 +156,14 @@ public class Database : MonoBehaviour
             var x = bundle.GetAllAssetNames();
             var asset = bundle.LoadAsset<GameObject>(assetName);
             
-            // Add to list of prefabs
-            if (isLand) _landPrefabs.Add(asset);
-            else _waterPrefabs.Add(asset);
-            bundle.Unload(false);
+            if (asset == null) Debug.Log($"Null asset: {assetName}, {x[0]}");
+            else
+            {
+                // Add to list of prefabs
+                if (isLand) _landPrefabs.Add(asset);
+                else _waterPrefabs.Add(asset);
+                bundle.Unload(false);
+            }
         }
     }
 }
