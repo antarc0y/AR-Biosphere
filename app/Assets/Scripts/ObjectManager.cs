@@ -27,6 +27,8 @@ public class ObjectManager : MonoBehaviour
     
     private Camera _mainCamera;
     private ARRaycastManager _raycastManager;
+    private ToggleBehavior likeToggle;
+
 
     // todo: make private? what type?
     //public TextMeshProUGUI tempPopup;
@@ -65,6 +67,10 @@ public class ObjectManager : MonoBehaviour
         if (!_mainCamera)
         {
             _mainCamera = Camera.main;
+        }
+        if (!likeToggle)
+        {
+            likeToggle = FindObjectOfType<ToggleBehavior>();
         }
     }
     
@@ -124,7 +130,7 @@ public class ObjectManager : MonoBehaviour
                 _speciesInfo[modelName]["description"], 
                 _speciesInfo[modelName]["link"],
                 float.Parse(_speciesInfo[modelName]["focusDistance"]),
-                true
+                bool.Parse(_speciesInfo[modelName]["isLiked"])
                 );
         }
     }
@@ -141,6 +147,10 @@ public class ObjectManager : MonoBehaviour
     {
         popUpIsBeingShown = true;
         currentFocused = species;
+
+        likeToggle.toggleChangedByUser = false;
+        likeToggle.toggle.isOn = species.isLiked;
+        likeToggle.toggleChangedByUser = true;
 
         string formattedText = species.speciesNameCapitalized + " (<i>" + species.binomial + "</i>)\n" +
                                species.description + "\n" +
