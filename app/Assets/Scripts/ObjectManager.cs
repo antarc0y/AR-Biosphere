@@ -27,9 +27,6 @@ public class ObjectManager : MonoBehaviour
     
     private Camera _mainCamera;
     private ARRaycastManager _raycastManager;
-
-    // todo: make private? what type?
-    //public TextMeshProUGUI tempPopup;
     
     private Database _database;
     
@@ -51,6 +48,9 @@ public class ObjectManager : MonoBehaviour
     public Animator objectPopUp;
     public TextMeshProUGUI objectPopUpText;
 
+    /// <summary>
+    /// The ClickHandler attached to the object that is currently being focused on.
+    /// </summary>
     internal ObjectClickHandler clickHandler { set; get; }
 
 
@@ -110,8 +110,8 @@ public class ObjectManager : MonoBehaviour
             AddObject(spawnedObject);
 
             // Add a click handler to the spawned object
-            var clickHandler = spawnedObject.AddComponent<ObjectClickHandler>();
-            clickHandler.spawnedObject = spawnedObject;
+            var handler = spawnedObject.AddComponent<ObjectClickHandler>();
+            handler.SetUp(spawnedObject, objectToSpawn.transform.position, objectToSpawn.transform.rotation);
             
             // Add a species component to the spawned object
             var species = spawnedObject.AddComponent<Species>();
@@ -120,8 +120,7 @@ public class ObjectManager : MonoBehaviour
                 _speciesInfo[modelName]["name"],
                 _speciesInfo[modelName]["binomial"],
                 _speciesInfo[modelName]["description"], 
-                _speciesInfo[modelName]["link"],
-                float.Parse(_speciesInfo[modelName]["focusDistance"])
+                _speciesInfo[modelName]["link"]
                 );
         }
     }
