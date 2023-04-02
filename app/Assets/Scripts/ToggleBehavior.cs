@@ -9,7 +9,9 @@ public class ToggleBehavior : MonoBehaviour
 {
     // Components
     private Image heartImage;
-    private Toggle toggle;
+    public Toggle toggle;
+    public bool toggleChangedByUser = true;
+
 
     // Like button brief expand variables
     public float scaleDuration = 0.2f;
@@ -58,17 +60,18 @@ public class ToggleBehavior : MonoBehaviour
     {
         if (heartImage != null)
         {
-            string model = objectManager.currentFocused.speciesName;
             if (isOn)
             {
                 targetColor = Color.red;
-                handleLiking(model);
+                if (toggleChangedByUser)
+                    handleLiking();
 
             }
             else
             {
                 targetColor = originalColor;
-                handleUnliking(model);
+                if (toggleChangedByUser)
+                    handleUnliking();
             }
 
             // This is responsible for the brief-expand effect when clicking on the like button. It simply works by animating the heart getting bigger, and when that animation finishes, it makes the heart smaller again also via an animation.
@@ -86,8 +89,10 @@ public class ToggleBehavior : MonoBehaviour
     /// Adds the model to the list of liked models in the database for that user's device. This is Union operation,
     /// meaning that models already in the list will not be added again.
     /// </summary>
-    async void handleLiking(string model)
+    async void handleLiking()
     {
+        string modelName = objectManager.currentFocused.speciesName;
+
         DocumentReference docRef = db.Collection("inventories").Document(uniqueIdentifier);
 
         DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
@@ -98,7 +103,7 @@ public class ToggleBehavior : MonoBehaviour
             await docRef.SetAsync(new { models = new List<string>() });
         }
 
-        docRef.UpdateAsync("models", FieldValue.ArrayUnion(model)).ContinueWithOnMainThread(task =>
+        docRef.UpdateAsync("models", FieldValue.ArrayUnion(modelName)).ContinueWithOnMainThread(task =>
         {
             if (task.Exception != null)
             {
@@ -106,7 +111,8 @@ public class ToggleBehavior : MonoBehaviour
             }
             else
             {
-                Debug.Log("Model liked successfully: " + model);
+                objectManager.currentFocused.isLiked = true;
+                Debug.Log("Model liked successfully: " + modelName);
             }
         });
     }
@@ -114,15 +120,18 @@ public class ToggleBehavior : MonoBehaviour
     /// <summary>
     /// Removes the model for the list of liked models in the database for that user's device.
     /// </summary>
-    void handleUnliking(string model)
+    void handleUnliking()
     {
+        string modelName = objectManager.currentFocused.speciesName;
+
         DocumentReference docRef = db.Collection("inventories").Document(uniqueIdentifier);
-        docRef.UpdateAsync("models", FieldValue.ArrayRemove(model)).ContinueWithOnMainThread(task =>
+        docRef.UpdateAsync("models", FieldValue.ArrayRemove(modelName)).ContinueWithOnMainThread(task =>
         {
             if (task.Exception != null) {
                 Debug.LogError("Error unliking model: " + task.Exception);
             } else {
-                Debug.Log("Model unliked successfully: " + model);
+                objectManager.currentFocused.isLiked = false;
+                Debug.Log("Model unliked successfully: " + modelName);
             }
         });
     }

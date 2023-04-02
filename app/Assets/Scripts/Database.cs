@@ -122,7 +122,7 @@ public class Database : MonoBehaviour
                 else
                 {
                     var snapshot = task.Result;
-                    if (snapshot.Exists) LoadInfo(snapshot, speciesName);
+                    if (snapshot.Exists) LoadInfo(snapshot, speciesName, inventory);
                     else Debug.Log("No such document!");
                 }
             });
@@ -134,7 +134,7 @@ public class Database : MonoBehaviour
     /// </summary>
     /// <param name="snapshot"> DocumentSnapshot to load info from</param>
     /// <param name="speciesName"> Name of species prefab to download</param>
-    private void LoadInfo(DocumentSnapshot snapshot, string speciesName)
+    private void LoadInfo(DocumentSnapshot snapshot, string speciesName, List<string> inventory)
     {
         var assetName = snapshot.GetValue<string>("assetName");
         var binomial = snapshot.GetValue<string>("binomial");
@@ -150,7 +150,8 @@ public class Database : MonoBehaviour
             {"binomial", binomial},
             {"description", description},
             {"link", link},
-            {"focusDistance", focusDistance.ToString()}
+            {"focusDistance", focusDistance.ToString()},
+            {"isLiked", inventory.Contains(speciesName).ToString()}
         };
 
         // Download model from Firebase Storage
