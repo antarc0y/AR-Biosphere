@@ -19,7 +19,9 @@ public class Navigation : MonoBehaviour
 
     void Start()
     {
-        transition = GetComponent<Animator>();
+        GameObject sceneLoader = GameObject.Find("SceneLoader");     
+        transition = sceneLoader.GetComponent<Animator>();
+        Debug.Log(transition);
     }
 
     static public void GoToNextScene() 
