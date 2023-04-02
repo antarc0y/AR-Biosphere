@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using DG.Tweening;
-using Firebase;
 using Firebase.Firestore;
 using Firebase.Extensions;
 
@@ -25,7 +24,7 @@ public class ToggleBehavior : MonoBehaviour
 
     // Database-related variables
     private string uniqueIdentifier;
-    FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+    FirebaseFirestore db;
 
     // Needed to detect the current focused item
     private static ObjectManager objectManager;
@@ -48,6 +47,8 @@ public class ToggleBehavior : MonoBehaviour
         {
             objectManager = FindObjectOfType<ObjectManager>();
         }
+
+        db = FirebaseFirestore.DefaultInstance;
     }
 
     /// <summary>
