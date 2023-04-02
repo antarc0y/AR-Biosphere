@@ -19,6 +19,7 @@ public class ObjectClickHandler : MonoBehaviour
     private bool isFocused = false;
     private Vector3 originalPosition;   // Both this and originalRotation are used to remember original position and rotation when the user focuses on a model
     private Quaternion originalRotation;
+    private Camera mainCamera;
 
     // Double click tracker
     private float lastClickTime = 0f;
@@ -30,8 +31,8 @@ public class ObjectClickHandler : MonoBehaviour
         {
             objectManager = FindObjectOfType<ObjectManager>();
         }
+        mainCamera = Camera.main;
         species = GetComponentInParent<Species>();
-        Debug.Log($"objectmanager is {objectManager == null}");
     }
 
     /// <summary>
@@ -39,10 +40,9 @@ public class ObjectClickHandler : MonoBehaviour
     /// </summary>
     public void OnMouseDown()
     {
-        var species = spawnedObject.GetComponent<Species>();
-        Debug.Log("Clicked on " + species.speciesName + species.description + species.link + species.focusDistance);
+        species = spawnedObject.GetComponent<Species>();
 
-        float timeSinceLastClick = Time.time - lastClickTime;
+        var timeSinceLastClick = Time.time - lastClickTime;
 
         if (timeSinceLastClick < doubleClickThreshold)
         {
@@ -85,59 +85,66 @@ public class ObjectClickHandler : MonoBehaviour
     {
         if (!isFocused)
         {
+            if (objectManager.clickHandler != null)
+            {
+                objectManager.clickHandler.UnfocusModel(false);
+            }
+            objectManager.clickHandler = this;
             focusModel();
         }
         
         else
         {
-            unfocusModel(true);
+            UnfocusModel(true);
         }
     }
 
     public void focusModel()
     {
-            objectManager.ShowObjectPopUp(species.speciesName, species.binomial, species.description, species.link);
+        objectManager.ShowObjectPopUp(species.speciesName, species.binomial, species.description, species.link);
 
-            //Store original position and rotation for when the user zooms out
-            originalPosition = spawnedObject.transform.position;
-            originalRotation = spawnedObject.transform.rotation;
+        //Store original position and rotation for when the user zooms out
+        originalPosition = spawnedObject.transform.position;
+        originalRotation = spawnedObject.transform.rotation;
 
-            // Animate zooming in
-            Vector3 focusedPosition = new Vector3(0, 0, species.focusDistance);
-            spawnedObject.transform.SetParent(Camera.main.transform); // set the spawnedObject as a child of the main camera
-            spawnedObject.transform.DOLocalMove(focusedPosition, focusAnimationDuration)
-                .SetEase(Ease.InOutQuad)
-                .SetUpdate(true)
-                .OnComplete(() =>
-                {
-                    isFocused = true;
-                });
+        // Animate zooming in
+        Vector3 focusedPosition = new Vector3(0, 0, species.focusDistance);
+        spawnedObject.transform.SetParent(mainCamera.transform); // set the spawnedObject as a child of the main camera
+        spawnedObject.transform.DOLocalMove(focusedPosition, focusAnimationDuration)
+            .SetEase(Ease.InOutQuad)
+            .SetUpdate(true)
+            .OnComplete(() =>
+            {
+                isFocused = true;
+            });
 
 
-            spawnedObject.transform.DOLocalRotateQuaternion(Quaternion.Euler(0f, 180f, 0f), focusAnimationDuration)
-                .SetEase(Ease.InOutQuad)
-                .SetUpdate(true);
+        spawnedObject.transform.DOLocalRotateQuaternion(Quaternion.Euler(0f, 180f, 0f), focusAnimationDuration)
+            .SetEase(Ease.InOutQuad)
+            .SetUpdate(true);
     }
 
-    public void unfocusModel(bool calledFromDoubleClick)
+    public void UnfocusModel(bool calledFromDoubleClick)
     {
-            if (calledFromDoubleClick)
+        if (calledFromDoubleClick)
+        {
+            objectManager.HideObjectPopUp();    // unfocusModel can be called from HideObjectPopup leading to infinite recursion, this if statement prevents that.
+        }
+
+        // Animate zooming out
+        spawnedObject.transform.SetParent(null);
+        spawnedObject.transform.DOLocalMove(originalPosition, focusAnimationDuration)
+            .SetEase(Ease.InOutQuad)
+            .SetUpdate(true)
+            .OnComplete(() =>
             {
-                objectManager.HideObjectPopUp();    // unfocusModel can be called from HideObjectPopup leading to infinite recursion, this if statement prevents that.
-            }
+                isFocused = false;
+            });
 
-            // Animate zooming out
-            spawnedObject.transform.SetParent(null);
-            spawnedObject.transform.DOLocalMove(originalPosition, focusAnimationDuration)
-                .SetEase(Ease.InOutQuad)
-                .SetUpdate(true)
-                .OnComplete(() =>
-                {
-                    isFocused = false;
-                });
-
-            spawnedObject.transform.DOLocalRotateQuaternion(originalRotation, focusAnimationDuration)
-                .SetEase(Ease.InOutQuad)
-                .SetUpdate(true);
+        spawnedObject.transform.DOLocalRotateQuaternion(originalRotation, focusAnimationDuration)
+            .SetEase(Ease.InOutQuad)
+            .SetUpdate(true);
+        
+        objectManager.clickHandler = null;
     }
 }
