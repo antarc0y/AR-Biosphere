@@ -6,14 +6,39 @@ using UnityEngine.SceneManagement;
 
 public class Navigation : MonoBehaviour
 {
+    public static Animator transition;
+    public float transitionTime = 1f;
     // Start is called before the first frame update
+    //void Start()
+    //{
+       // transition = GetComponent<Animator>();
+
+        // Log the Animator component to the console
+       // Debug.Log("Animator component: " + transition);
+    //}
+
     static public void GoToNextScene() 
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+        if (transition != null)
+        {
+            // play animation
+            transition.SetTrigger("start");
+
+            // load scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+       else
+        {
+            Debug.LogWarning("animator is not initialized");
+        }
+        
     }
 
     static public void GoToPreviousScene()
     {
+        // play animation
+        transition.SetTrigger("start");
+        // load scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
