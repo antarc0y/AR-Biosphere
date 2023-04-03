@@ -4,12 +4,20 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Firebase.Firestore;
 using Firebase.Extensions;
+using System.Collections;
 
 public class ToggleBehavior : MonoBehaviour
 {
+    // disclamer: since specie models are only displayed one at a time using the same dialog box components
+    // all models share the same Like toggle object
+    // thus if user likes a model, and closes the dialog box to view another model
+    // the Like toggle needs to be switched off by the script again during switching model view
+
     // Components
     private Image heartImage;
     public Toggle toggle;
+    // this bool variable is to prevent the toggle event listener from being called
+    // when the script needs to turn it off when the user views a different model
     public bool toggleChangedByUser = true;
 
 
