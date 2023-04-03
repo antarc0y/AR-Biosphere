@@ -8,24 +8,18 @@ public class Navigation : MonoBehaviour
 {
     public static Animator transition;
     public float transitionTime = 1f;
-    // Start is called before the first frame update
-    //void Start()
-    //{
-    // transition = GetComponent<Animator>();
-
-    // Log the Animator component to the console
-    // Debug.Log("Animator component: " + transition);
-    //}
 
     void Start()
     {
         GameObject sceneLoader = GameObject.Find("SceneLoader");     
         transition = sceneLoader.GetComponent<Animator>();
-        Debug.Log(transition);
     }
 
     static public void GoToNextScene() 
     {
+        GameObject sceneLoader = GameObject.Find("SceneLoader");
+        transition = sceneLoader.GetComponent<Animator>();
+
         if (transition != null)
         {
             
@@ -39,11 +33,17 @@ public class Navigation : MonoBehaviour
         {
             Debug.LogWarning("animator is not initialized");
         }
-        
+
+        // re-assign the animator since its now at a new scene
+        transition = sceneLoader.GetComponent<Animator>();
+
     }
 
     static public void GoToPreviousScene()
     {
+        GameObject sceneLoader = GameObject.Find("SceneLoader");
+        transition = sceneLoader.GetComponent<Animator>();
+
         if (transition != null)
         {
             // play animation
@@ -55,6 +55,8 @@ public class Navigation : MonoBehaviour
         {
             Debug.LogWarning("animator is not initialized");
         }
+        // re-assign the animator since its now at a new scene
+        transition = sceneLoader.GetComponent<Animator>();
     }
 
     // if back button (Android navigation) is pressed
