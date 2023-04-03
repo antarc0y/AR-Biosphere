@@ -6,7 +6,9 @@ on:
 jobs:
   activation:
     name: Request manual activation file 🔑
-    runs-on: ubuntu-latest
+    runs-on:
+      - self-hosted
+      - label-1
     steps:
       # Request manual activation file
       - name: Request manual activation file
