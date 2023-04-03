@@ -32,7 +32,7 @@ The `Assets/Editor/BuildAssetBundles.cs` script is used for the build process.
 
 Tutorial: https://youtu.be/twzfpuaM-Js
 
-**Note**: the current script for database does not handle offline connection and the layout of the database requires a large number of reads. This is something that could be improved.
+**Note**: the current script for database does not handle offline connection. This is something that could be improved.
 
 # Scripts
 Runtime C# scripts can be found in the `Assets/Scripts` folder. 
