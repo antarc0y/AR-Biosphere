@@ -1,5 +1,6 @@
 name: Acquire activation file
 on:
+workflow_dispatch: {}
   push:
     branch:
       - testing-2
