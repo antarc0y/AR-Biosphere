@@ -65,7 +65,7 @@ public class ObjectManager : MonoBehaviour
         _raycastManager = GetComponent<ARRaycastManager>();
         _database = GetComponent<Database>();
         
-        _database.SetUp(landModels, waterModels, _speciesInfo, likedModels);
+        _database.SetUp(landModels, waterModels, _speciesInfo);
         if (!_mainCamera)
         {
             _mainCamera = Camera.main;
@@ -134,6 +134,11 @@ public class ObjectManager : MonoBehaviour
                 float.Parse(_speciesInfo[modelName]["focusDistance"]),
                 bool.Parse(_speciesInfo[modelName]["isLiked"])
                 );
+
+            if (species.isLiked)
+            {
+                likedObjects.Add(species);
+            }
         }
     }
 
