@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 53060412}
   - component: {fileID: 53060416}
   m_Layer: 5
-  m_Name: IventoryButton
+  m_Name: InventoryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2939,6 +2939,7 @@ GameObject:
   - component: {fileID: 1543433186}
   - component: {fileID: 1543433185}
   - component: {fileID: 1543433184}
+  - component: {fileID: 1543433188}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -3071,6 +3072,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543433182}
   m_CullTransparentMesh: 1
+--- !u!95 &1543433188
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543433182}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c777ca82a1655ce419427a719ac0ffa5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1659859597
 GameObject:
   m_ObjectHideFlags: 0
@@ -3610,6 +3631,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1927218991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927218985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ad62e1e163190458bd625827bdcd05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionTime: 1
 --- !u!1 &1962679180
 GameObject:
   m_ObjectHideFlags: 0
@@ -3750,6 +3784,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796f2b61acf17124888a15f32a1031ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toggle: {fileID: 0}
+  toggleChangedByUser: 1
   scaleDuration: 0.2
   heartInflateScaleAmount: 0.2
   originalHeartScale: 0

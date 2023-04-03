@@ -28,6 +28,7 @@ public class Navigation : MonoBehaviour
     {
         if (transition != null)
         {
+            
             // play animation
             transition.SetTrigger("start");
 
@@ -43,10 +44,17 @@ public class Navigation : MonoBehaviour
 
     static public void GoToPreviousScene()
     {
-        // play animation
-        transition.SetTrigger("start");
-        // load scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        if (transition != null)
+        {
+            // play animation
+            transition.SetTrigger("start");
+            // load scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
+        else
+        {
+            Debug.LogWarning("animator is not initialized");
+        }
     }
 
     // if back button (Android navigation) is pressed

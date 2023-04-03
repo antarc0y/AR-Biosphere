@@ -281,6 +281,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f0958993978824ca16085b3ff3ab2f, type: 3}
+--- !u!1 &594561509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9102528865414566222, guid: 66f0958993978824ca16085b3ff3ab2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 594561508}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &594561510
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594561509}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c777ca82a1655ce419427a719ac0ffa5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &642271188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,6 +1026,7 @@ GameObject:
   - component: {fileID: 2047610482}
   - component: {fileID: 2047610481}
   - component: {fileID: 2047610484}
+  - component: {fileID: 2047610485}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -1135,3 +1162,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionTime: 1
+--- !u!95 &2047610485
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047610478}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c777ca82a1655ce419427a719ac0ffa5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
