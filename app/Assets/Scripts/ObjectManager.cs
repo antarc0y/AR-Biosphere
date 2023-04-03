@@ -21,6 +21,8 @@ public class ObjectManager : MonoBehaviour
     /// List of spawned objects in the scene
     /// </summary>
     private List<GameObject> _spawnedObjects = new();
+
+    public List<Species> likedObjects = new();
     
     [SerializeField]
     private SwitchToggle switchToggle;
@@ -63,7 +65,7 @@ public class ObjectManager : MonoBehaviour
         _raycastManager = GetComponent<ARRaycastManager>();
         _database = GetComponent<Database>();
         
-        _database.SetUp(landModels, waterModels, _speciesInfo);
+        _database.SetUp(landModels, waterModels, _speciesInfo, likedModels);
         if (!_mainCamera)
         {
             _mainCamera = Camera.main;

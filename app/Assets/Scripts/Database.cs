@@ -97,6 +97,7 @@ public class Database : MonoBehaviour
                 if (snapshotInventory.Exists)
                 {
                     List<string> inventory = snapshotInventory.GetValue<List<string>>("models");
+                    Debug.Log(inventory[0]);
                     GetSpecies(inventory);
                 }
                 else
