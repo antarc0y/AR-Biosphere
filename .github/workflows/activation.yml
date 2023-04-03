@@ -9,6 +9,7 @@ jobs:
     name: Request manual activation file 🔑
     runs-on: ubuntu-latest
       - self-hosted
+      - gh-runner-1
     steps:
       # Request manual activation file
 #       - name: Request manual activation file
