@@ -15,6 +15,8 @@ Some of the notable objects in the hierarchy include:
  * `AR Session Origin` and `AR Session`: These objects manage the AR scene and contain an AR camera.
  * `Canvas`: The UI canvas that contains all the UI elements. Should go with an `EventSystem` object.
  * Custom objects: These are the objects that we create in the project ourselves.
+
+**Note**: Git can't resolve merge conflicts in scenes, neither does Unity Editor (There may be a plugin for this). So if you are working on a scene, make sure to commit your changes before pulling from the remote repository and be careful when working with other people on the same scene.
 ## Prefabs
 Prefabs are reusable objects that can be instantiated in the scene. They are useful for creating objects that are used multiple times in the scene.
 
