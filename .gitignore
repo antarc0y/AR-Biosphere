@@ -43,6 +43,8 @@
 # /Assets/StreamingAssets/
 
 app/Assets/AssetBundles/
+app/ProjectSettings/AndroidResolverDependencies.xml
 
 # app/Assets/StreamingAssets/google-services-desktop.json
 # app/Assets/google-services.json.meta
+app/ProjectSettings/AndroidResolverDependencies.xml
