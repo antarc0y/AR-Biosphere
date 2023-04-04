@@ -117,6 +117,12 @@ public class InventoryList : MonoBehaviour
             RectTransform buttonRectTransform = button.GetComponent<RectTransform>();
             buttonRectTransform.anchoredPosition = new Vector2(0f, y);
             y -= buttonHeight;
+
+            // Add an onClick listener to the button
+            Button buttonComponent = button.GetComponent<Button>();
+            buttonComponent.onClick.AddListener(() => {
+                Application.OpenURL(species.link);
+            });
         }
     }
 }
