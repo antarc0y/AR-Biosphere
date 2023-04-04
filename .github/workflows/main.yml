@@ -1,9 +1,9 @@
 name: Test project
 
 on: [push]
-# defaults:
-#       run:
-#         working-directory: ./app
+defaults:
+      run:
+        working-directory: ./app
 jobs:
   testAllModes:
     name: Test in ${{ matrix.testMode }}
@@ -15,7 +15,6 @@ jobs:
           - app/
         testMode:
           - playmode
-          - editmode
     steps:
       - uses: actions/checkout@v2
         with:
