@@ -1,8 +1,8 @@
-using Codice.Client.Commands;
-using System.Collections;
-using System.Collections.Generic;
+//using Codice.Client.Commands;
+//using System.Collections;
+//using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 
 public class DialogUI : MonoBehaviour
 {
