@@ -18,7 +18,7 @@ jobs:
           - playmode
     steps:
       - name: cleanup
-        run: sudo chown -R $USER:$USER /home/github/actions-runner/_work/ar_biosphere/ar_biosphere
+        run: sudo chown -R $USER:$USER $GITHUB_WORKSPACE
       - uses: actions/checkout@v2
         with:
           lfs: true
