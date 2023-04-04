@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2072,8 +2072,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1389559749}
   m_HandleRect: {fileID: 1389559748}
   m_Direction: 2
-  m_Value: 0.99999964
-  m_Size: 0.71004415
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3156,11 +3156,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   landModels: []
   waterModels: []
+  likedObjects: []
   switchToggle: {fileID: 2064411223}
-  maxObjectCount: 1
+  maxObjectCount: 5
   popUpIsBeingShown: 0
   currentFocused: {fileID: 0}
-  maxObjectCount: 5
   FloatingTextPrefab: {fileID: 2398445852469248477, guid: bd1fb84b4db450a438bea7f7a9ddff79,
     type: 3}
   objectPopUp: {fileID: 1368874962}
