@@ -23,7 +23,7 @@ public class Database : MonoBehaviour
     /// <summary>
     /// Names of the liked species
     /// </summary>
-    List<string> inventory;
+    public List<string> inventory;
 
     private FirebaseFirestore db;
 
