@@ -48,7 +48,7 @@ namespace location_ui_test
             Assert.That(SceneManager.GetActiveScene().name, Is.EqualTo("user_location"));
             ClickUI(camera_button);
             yield return new WaitForSeconds(2f);
-            Assert.That(SceneManager.GetActiveScene().name, Is.EqualTo("BlankAR"));
+            Assert.That(SceneManager.GetActiveScene().name, Is.EqualTo("AR_Scene"));
         }
 
     }

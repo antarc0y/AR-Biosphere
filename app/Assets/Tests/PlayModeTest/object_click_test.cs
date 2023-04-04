@@ -19,7 +19,7 @@ namespace click_object_test
         public override void Setup()
         {
             base.Setup();
-            SceneManager.LoadScene("BlankAR");
+            SceneManager.LoadScene("AR_Scene");
             mouse = InputSystem.AddDevice<Mouse>();
             //GameObject popup_panel = GameObject.Find("Canvas/DialogUI");
             //popup_panel.SetActive(false);
