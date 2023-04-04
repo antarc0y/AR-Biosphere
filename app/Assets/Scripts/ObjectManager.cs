@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using Random = UnityEngine.Random;
@@ -27,9 +26,6 @@ public class ObjectManager : MonoBehaviour
     
     private Camera _mainCamera;
     private ARRaycastManager _raycastManager;
-
-    // todo: make private? what type?
-    //public TextMeshProUGUI tempPopup;
     
     private Database _database;
     
@@ -51,9 +47,11 @@ public class ObjectManager : MonoBehaviour
     public Animator objectPopUp;
     public TextMeshProUGUI objectPopUpText;
 
+    /// <summary>
+    /// The ClickHandler attached to the object that is currently being focused on.
+    /// </summary>
     internal ObjectClickHandler clickHandler { set; get; }
-
-
+    
     private void Start()
     {
         // Initialize the AR components
@@ -99,7 +97,7 @@ public class ObjectManager : MonoBehaviour
             if (!IsPointValid(spawnPosition)) return;
 
             // Generate a random rotation around the y-axis only
-            Quaternion spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+            var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
 
             // Align the spawned object with the detected plane
             spawnRotation = Quaternion.FromToRotation(Vector3.up, hitPose.up) * spawnRotation;
@@ -110,8 +108,8 @@ public class ObjectManager : MonoBehaviour
             AddObject(spawnedObject);
 
             // Add a click handler to the spawned object
-            var clickHandler = spawnedObject.AddComponent<ObjectClickHandler>();
-            clickHandler.spawnedObject = spawnedObject;
+            var handler = spawnedObject.AddComponent<ObjectClickHandler>();
+            handler.SetUp(spawnedObject, objectToSpawn.transform.position, objectToSpawn.transform.rotation);
             
             // Add a species component to the spawned object
             var species = spawnedObject.AddComponent<Species>();
@@ -120,8 +118,7 @@ public class ObjectManager : MonoBehaviour
                 _speciesInfo[modelName]["name"],
                 _speciesInfo[modelName]["binomial"],
                 _speciesInfo[modelName]["description"], 
-                _speciesInfo[modelName]["link"],
-                float.Parse(_speciesInfo[modelName]["focusDistance"])
+                _speciesInfo[modelName]["link"]
                 );
         }
     }
@@ -198,12 +195,12 @@ public class ObjectManager : MonoBehaviour
         Destroy(obj);
     }
     
-
     private void OnApplicationPause(bool pause)
     {
         if (pause) DeleteObjects();
     }
     
     public int ObjectCount => _spawnedObjects.Count;
+    
     public void AddObject(GameObject obj) => _spawnedObjects.Add(obj);
 }
