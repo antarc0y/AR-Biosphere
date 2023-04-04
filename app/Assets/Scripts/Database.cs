@@ -41,6 +41,7 @@ public class Database : MonoBehaviour
 
     private void Awake()
     {
+
         uniqueIdentifier = SystemInfo.deviceUniqueIdentifier;    // Unique device identifier
 
         // Initialize Firebase
@@ -95,14 +96,13 @@ public class Database : MonoBehaviour
                 if (snapshotInventory.Exists)
                 {
                     inventory = snapshotInventory.GetValue<List<string>>("models");
-                    Debug.Log(inventory[0]);
-                    GetSpecies(inventory);
+                    GetSpecies();
                 }
                 else
                 {
                     inventory = new List<string>();    // If the user's inventory document is not found, that means his collection is empty and he does not have one
                     Debug.Log("No existing inventory for device " + uniqueIdentifier);
-                    GetSpecies(inventory);
+                    GetSpecies();
                 }
             }
         });
@@ -111,7 +111,7 @@ public class Database : MonoBehaviour
     /// <summary>
     /// Get species info for each species at location.
     /// </summary>
-    private void GetSpecies(List<string> inventory)
+    private void GetSpecies()
     {
         foreach (var speciesName in species)
         {

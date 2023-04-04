@@ -62,6 +62,16 @@ public class ObjectManager : MonoBehaviour
     
     private void Start()
     {
+        //
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
         // Initialize the AR components
         _raycastManager = GetComponent<ARRaycastManager>();
         _database = GetComponent<Database>();
@@ -133,9 +143,11 @@ public class ObjectManager : MonoBehaviour
                 _speciesInfo[modelName]["link"],
                 bool.Parse(_speciesInfo[modelName]["isLiked"])
                 );
+                
 
             if (species.isLiked)
             {
+                Debug.Log(species.speciesName);
                 likedObjects.Add(species);
             }
         }
