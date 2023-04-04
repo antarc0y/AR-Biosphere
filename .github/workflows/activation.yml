@@ -8,8 +8,9 @@
 #         run: echo "Hello World!"
 
 name: Acquire activation file
-on:
-  workflow_dispatch: {}
+on: push 
+  branch:
+      - testing-2
 jobs:
   activation:
     name: Request manual activation file 🔑
