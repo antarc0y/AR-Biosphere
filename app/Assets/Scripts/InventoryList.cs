@@ -9,9 +9,12 @@ public class InventoryList : MonoBehaviour
     [SerializeField] private RectTransform listViewTransform;
     [SerializeField] private GameObject buttonPrefab;
     private static ObjectManager objectManager;
+    List<string> likedStrings;
     private List<Species> inventory = new List<Species>();
+    int loadedSpeciesCount = 0; // Need to track how many have been loaded so far, only want to display buttons once ALL species have been loaded.
     private FirebaseFirestore db;
     private string uniqueIdentifier;
+
 
 
     private void Start()
@@ -35,12 +38,12 @@ public class InventoryList : MonoBehaviour
                 var snapshotInventory = task.Result;
                 if (snapshotInventory.Exists)
                 {
-                    List<string> likedStrings = snapshotInventory.GetValue<List<string>>("models");
+                    likedStrings = snapshotInventory.GetValue<List<string>>("models");
                     GetSpeciesInfo(likedStrings);
                 }
                 else
                 {
-                    List<string> likedStrings = new List<string>();    // If the user's inventory document is not found, that means his collection is empty and he does not have one
+                    likedStrings = new List<string>();    // If the user's inventory document is not found, that means his collection is empty and he does not have one
                     Debug.Log("No existing inventory for device " + uniqueIdentifier);
                     GetSpeciesInfo(likedStrings);
                 }
@@ -57,11 +60,18 @@ public class InventoryList : MonoBehaviour
         {
             db.Collection("species").Document(speciesName).Listen(snapshot =>
             {
-                if (snapshot.Exists) LoadInfo(snapshot, speciesName);
-                else Debug.Log("No such document!");
+                if (snapshot.Exists)
+                {
+                    LoadInfo(snapshot, speciesName);
+                }
+                else
+                {
+                    Debug.Log("No such document!");
+                }
             });
         }
     }
+
 
     /// <summary>
     /// Load info from Firestore and download model from Firebase Storage.
@@ -77,6 +87,13 @@ public class InventoryList : MonoBehaviour
         Species species = new Species();
         species.SetInfo(speciesName, binomial, description, link, true);
         inventory.Add(species);
+
+        loadedSpeciesCount++;
+        // Check if all species have been loaded
+        if (loadedSpeciesCount == likedStrings.Count)
+        {
+            displayButtons();
+        }
     }
 
     private void displayButtons() {
@@ -85,15 +102,15 @@ public class InventoryList : MonoBehaviour
         float y = -buttonHeight / 2f;
         foreach (var species in inventory)
         {
-            Debug.Log("You have liked: "+species.speciesName);
             // Create a new button instance from the prefab
             GameObject button = Instantiate(buttonPrefab, listViewTransform);
 
             // Set the text of the button to display the model name and link
-            Text modelNameText = button.transform.Find("modelName").GetComponent<Text>();
+            TMPro.TextMeshProUGUI modelNameText = button.transform.Find("Model Name").GetComponent<TMPro.TextMeshProUGUI>();
             modelNameText.text = species.speciesName;
+            Debug.Log(modelNameText.text);
 
-            Text linkText = button.transform.Find("link").GetComponent<Text>();
+            TMPro.TextMeshProUGUI linkText = button.transform.Find("Link").GetComponent<TMPro.TextMeshProUGUI>();
             linkText.text = species.link;
 
             // Set the position of the button based on its height

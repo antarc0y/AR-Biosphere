@@ -93,7 +93,6 @@ public class ObjectManager : MonoBehaviour
         List<ARRaycastHit> hits = new();
         var objectList = isLand ? landModels : waterModels;
         if (objectList.Count == 0) return;
-                                                Debug.Log("BBBBBBBBBBBBBBBBBBBB");
 
         // Cast ray from a random point within the screen to detect planes
         if (_raycastManager.Raycast(new Vector2(Random.Range(0, Screen.width), Random.Range(0, Screen.height)),
