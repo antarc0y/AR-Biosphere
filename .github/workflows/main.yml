@@ -17,10 +17,10 @@ jobs:
         testMode:
           - playmode
     steps:
-      -name: cleanup
+      - name: cleanup
         run: |
           sudo chown -R $USER:$USER /home/github/actions-runner/_work/ar_biosphere/ar_biosphere
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
           with:
             lfs: true
       - uses: actions/cache@v2
