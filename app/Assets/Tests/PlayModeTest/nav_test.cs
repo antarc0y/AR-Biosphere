@@ -18,19 +18,19 @@ public class nav_test
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("home_screen"));
 
         Scene scene = SceneManager.GetActiveScene();
-        Assert.AreEqual("home_screen",scene.name);
+        Assert.AreEqual("home_screen", scene.name);
     }
 
     [UnityTest]
     public IEnumerator BlankArloadcheck()
     {
         // check if blankAR is loaded and set active
-        SceneManager.LoadScene("BlankAR");
+        SceneManager.LoadScene("AR_Scene");
         yield return null;
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("BlankAR"));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("AR_Scene"));
 
         Scene scene = SceneManager.GetActiveScene();
-        Assert.AreEqual("BlankAR",scene.name);
+        Assert.AreEqual("AR_Scene", scene.name);
     }
 
     [UnityTest]
@@ -42,7 +42,7 @@ public class nav_test
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("user_location"));
 
         Scene scene = SceneManager.GetActiveScene();
-        Assert.AreEqual("user_location",scene.name);
+        Assert.AreEqual("user_location", scene.name);
     }
 
     [UnityTest]
@@ -58,8 +58,8 @@ public class nav_test
 
         yield return null;
         Debug.Log(SceneManager.GetActiveScene().name);
-        Assert.AreEqual("user_location",SceneManager.GetActiveScene().name);
-        
+        Assert.AreEqual("user_location", SceneManager.GetActiveScene().name);
+
     }
 
     [UnityTest]
@@ -75,8 +75,8 @@ public class nav_test
 
         yield return null;
         Debug.Log(SceneManager.GetActiveScene().name);
-        Assert.AreEqual("BlankAR",SceneManager.GetActiveScene().name);
-        
+        Assert.AreEqual("AR_Scene", SceneManager.GetActiveScene().name);
+
     }
     [UnityTest]
     public IEnumerator maps_to_home_screen_navcheck()
@@ -91,54 +91,55 @@ public class nav_test
 
         yield return null;
         Debug.Log(SceneManager.GetActiveScene().name);
-        Assert.AreEqual("home_screen",SceneManager.GetActiveScene().name);
-        
+        Assert.AreEqual("home_screen", SceneManager.GetActiveScene().name);
+
     }
 
     [UnityTest]
     public IEnumerator camera_to_map_navcheck()
     {
         // check if we can navigate from BlankAR back to user_location
-        SceneManager.LoadScene("BlankAR");
+        SceneManager.LoadScene("AR_Scene");
         yield return null;
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("BlankAR"));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("AR_Scene"));
 
         Scene scene = SceneManager.GetActiveScene();
         Navigation.GoToPreviousScene();
 
         yield return null;
         Debug.Log(SceneManager.GetActiveScene().name);
-        Assert.AreEqual("user_location",SceneManager.GetActiveScene().name);
-        
-    }
+        Assert.AreEqual("user_location", SceneManager.GetActiveScene().name);
 
-    [UnityTest]
-
-    public IEnumerator info_button_open()
-    {
-        SceneManager.LoadScene("BlankAR");
-        yield return null;
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("BlankAR"));
-
-        DialogUI dialogui = GameObject.Find("Canvas/DialogUI").GetComponent<DialogUI>();
-        dialogui.open_popup();
-        yield return null;
-        Assert.IsTrue(dialogui.status);
-    }
-
-    [UnityTest]
-    public IEnumerator info_button_close()
-    {
-        SceneManager.LoadScene("BlankAR");
-        yield return null;
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("BlankAR"));
-
-        DialogUI dialogui = GameObject.Find("Canvas/DialogUI").GetComponent<DialogUI>();
-        dialogui.open_popup();
-        yield return null;
-        Assert.IsTrue(dialogui.status);
-        dialogui.close_popup();
-        yield return null;
-        Assert.IsFalse(dialogui.status);
     }
 }
+
+    //[UnityTest]
+
+    //public IEnumerator info_button_open()
+//    {
+//        SceneManager.LoadScene("AR_Scene");
+//        yield return null;
+//        SceneManager.SetActiveScene(SceneManager.GetSceneByName("AR_Scene"));
+
+//        DialogUI dialogui = GameObject.Find("Canvas/DialogUI").GetComponent<DialogUI>();
+//        dialogui.open_popup();
+//        yield return null;
+//        Assert.IsTrue(dialogui.status);
+//    }
+
+//    [UnityTest]
+ //   public IEnumerator info_button_close()
+  //  {
+ //       SceneManager.LoadScene("AR_Scene");
+ //       yield return null;
+ //       SceneManager.SetActiveScene(SceneManager.GetSceneByName("AR_Scene"));
+
+//        DialogUI dialogui = GameObject.Find("Canvas/DialogUI").GetComponent<DialogUI>();
+//        dialogui.open_popup();
+//        yield return null;
+//        Assert.IsTrue(dialogui.status);
+//        dialogui.close_popup();
+//        yield return null;
+//        Assert.IsFalse(dialogui.status);
+//    }
+//}

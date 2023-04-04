@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using Random = UnityEngine.Random;
@@ -27,9 +26,6 @@ public class ObjectManager : MonoBehaviour
     
     private Camera _mainCamera;
     private ARRaycastManager _raycastManager;
-
-    // todo: make private? what type?
-    //public TextMeshProUGUI tempPopup;
     
     private Database _database;
     
@@ -40,7 +36,7 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     [SerializeField]
     private int maxObjectCount = 5;
-    private bool isFocused = false;
+    private bool popUpIsBeingShown = false;
     
     /// <summary>
     /// y position of the spawned objects. This is used to ensure that the objects are spawned on the same plane.
@@ -51,7 +47,11 @@ public class ObjectManager : MonoBehaviour
     public Animator objectPopUp;
     public TextMeshProUGUI objectPopUpText;
 
-
+    /// <summary>
+    /// The ClickHandler attached to the object that is currently being focused on.
+    /// </summary>
+    internal ObjectClickHandler clickHandler { set; get; }
+    
     private void Start()
     {
         // Initialize the AR components
@@ -97,20 +97,19 @@ public class ObjectManager : MonoBehaviour
             if (!IsPointValid(spawnPosition)) return;
 
             // Generate a random rotation around the y-axis only
-            Quaternion spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+            var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
 
             // Align the spawned object with the detected plane
             spawnRotation = Quaternion.FromToRotation(Vector3.up, hitPose.up) * spawnRotation;
 
             // Select prefabs from list and spawn them, adding them to the list of spawned objects.
             var objectToSpawn = objectList[Random.Range(0, objectList.Count)];
-            objectToSpawn.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             var spawnedObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
             AddObject(spawnedObject);
 
             // Add a click handler to the spawned object
-            var clickHandler = spawnedObject.AddComponent<ObjectClickHandler>();
-            clickHandler.spawnedObject = spawnedObject;
+            var handler = spawnedObject.AddComponent<ObjectClickHandler>();
+            handler.SetUp(spawnedObject, objectToSpawn.transform.position, objectToSpawn.transform.rotation);
             
             // Add a species component to the spawned object
             var species = spawnedObject.AddComponent<Species>();
@@ -134,7 +133,7 @@ public class ObjectManager : MonoBehaviour
 
     public void ShowObjectPopUp(string name, string binomial, string info, string link)
     {   
-        isFocused = true;
+        popUpIsBeingShown = true;
         string formattedText = name + " (<i>" + binomial + "</i>)\n" +
                                info + "\n" +
                                "More info:" + link;
@@ -145,7 +144,9 @@ public class ObjectManager : MonoBehaviour
 
     public void HideObjectPopUp()
     {
-        isFocused = false;
+        if (!clickHandler) return;
+        clickHandler.UnfocusModel(false);
+        popUpIsBeingShown = false;
         objectPopUp.SetBool("visible", false);
     }
 
@@ -171,7 +172,7 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     public void DeleteObjects()
     {
-        if (isFocused) 
+        if (popUpIsBeingShown) 
         {
             HideObjectPopUp();
         }
@@ -182,7 +183,6 @@ public class ObjectManager : MonoBehaviour
         }
         _spawnedObjects.Clear();
         _y = 0f;
-        // Debug.Log("Object count after deletion: " + _spawnedObjects.Count);
     }
     
     /// <summary>
@@ -195,12 +195,12 @@ public class ObjectManager : MonoBehaviour
         Destroy(obj);
     }
     
-
     private void OnApplicationPause(bool pause)
     {
         if (pause) DeleteObjects();
     }
     
     public int ObjectCount => _spawnedObjects.Count;
+    
     public void AddObject(GameObject obj) => _spawnedObjects.Add(obj);
 }

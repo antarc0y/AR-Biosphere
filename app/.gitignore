@@ -74,6 +74,18 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 /[Aa]ssets/InitTestScene*.unity.meta
+/[Aa]ssets/InitTestScene*
 
 # Too large
-/[Aa]ssets/[Ff]irebase/[Pp]lugins/
+/[Aa]ssets/ExternalDependencyManager
+/[Aa]ssets/[Ff]irebase
+/Assets/Plugins/tvOS/
+/Assets/Plugins/iOS/
+/Assets/Plugins/Android/
+
+/[Aa]ssets/ExternalDependencyManager.meta
+/[Aa]ssets/[Ff]irebase.meta
+/Assets/Plugins/tvOS.meta
+/Assets/Plugins/iOS.meta
+/Assets/Plugins/Android.meta
+/ProjectSettings/AndroidResolverDependencies.xml

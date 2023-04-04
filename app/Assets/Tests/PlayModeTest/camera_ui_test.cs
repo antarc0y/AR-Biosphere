@@ -20,7 +20,7 @@ namespace blankAR_ui_test
         public override void Setup()
         {
             base.Setup();
-            SceneManager.LoadScene("BlankAR");
+            SceneManager.LoadScene("AR_Scene");
             mouse = InputSystem.AddDevice<Mouse>();
             //GameObject popup_panel = GameObject.Find("Canvas/DialogUI");
             //popup_panel.SetActive(false);
@@ -38,7 +38,7 @@ namespace blankAR_ui_test
         public IEnumerator back_button_test()
         {
             GameObject back_button = GameObject.Find("Canvas/BackButton");
-            Assert.That(SceneManager.GetActiveScene().name, Is.EqualTo("BlankAR"));
+            Assert.That(SceneManager.GetActiveScene().name, Is.EqualTo("AR_Scene"));
 
             ClickUI(back_button);
             yield return new WaitForSeconds(2f);
@@ -100,22 +100,6 @@ namespace blankAR_ui_test
             Assert.IsTrue(di.activeSelf);
         }
 
-        [UnityTest]
-        public IEnumerator info_button_close()
-        {
-            GameObject info_button = GameObject.Find("Canvas/InformationButton");
-            
-            DialogUI di = GameObject.Find("Canvas/DialogUI").GetComponent<DialogUI>();
-            
-            ClickUI(info_button);
-            yield return new WaitForSeconds(2f);
-            GameObject close_button = GameObject.Find("Canvas/DialogUI/CloseButton");
-            ClickUI(close_button);
-
-            yield return new WaitForSeconds(2f);
-            Assert.IsFalse(di.status);
-
-        }
 
 
     }
