@@ -15,6 +15,7 @@
 /app/[Aa]ssets/Plugins/Editor/TextureImporterInspector.cs
 /app/[Aa]ssets/Plugins/MaterialEditor.cs
 /app/[Aa]ssets/Plugins/TextureImporterInspector.cs
+/app//[Aa]ssets/InitTestScene*
 
 # Visual Studio cache directory
 /app/[Tt]emp/
