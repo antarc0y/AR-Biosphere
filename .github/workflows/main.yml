@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - app/Assets/Tests/PlayModeTest
+          - ar-biosphere/app/
         testMode:
           - playmode
     steps:
