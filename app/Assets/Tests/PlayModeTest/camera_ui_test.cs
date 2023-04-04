@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.UI;
+using UnityEditor.Animations;
+using JetBrains.Annotations;
 
 namespace blankAR_ui_test
 {
@@ -18,8 +20,10 @@ namespace blankAR_ui_test
         public override void Setup()
         {
             base.Setup();
-            SceneManager.LoadScene("BlankAR");
+            SceneManager.LoadScene("AR_Scene");
             mouse = InputSystem.AddDevice<Mouse>();
+            //GameObject popup_panel = GameObject.Find("Canvas/DialogUI");
+            //popup_panel.SetActive(false);
         }
 
         public void ClickUI(GameObject uiElement)
@@ -34,7 +38,7 @@ namespace blankAR_ui_test
         public IEnumerator back_button_test()
         {
             GameObject back_button = GameObject.Find("Canvas/BackButton");
-            Assert.That(SceneManager.GetActiveScene().name, Is.EqualTo("BlankAR"));
+            Assert.That(SceneManager.GetActiveScene().name, Is.EqualTo("AR_Scene"));
 
             ClickUI(back_button);
             yield return new WaitForSeconds(2f);
@@ -85,5 +89,18 @@ namespace blankAR_ui_test
             // Assert water
             Assert.IsTrue(switch_value.isOn);
         }
+
+        [UnityTest]
+        public IEnumerator info_button_open()
+        {
+            GameObject info_button = GameObject.Find("Canvas/InformationButton");
+            GameObject di = GameObject.Find("Canvas/DialogUI");
+            ClickUI(info_button);
+            yield return new WaitForSeconds(2f);
+            Assert.IsTrue(di.activeSelf);
+        }
+
+
+
     }
 }
