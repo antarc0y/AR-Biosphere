@@ -15,6 +15,7 @@ jobs:
           - app/
         testMode:
           - playmode
+          - editmode
     steps:
       - uses: actions/checkout@v2
         with:
