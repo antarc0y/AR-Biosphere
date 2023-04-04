@@ -20,8 +20,6 @@ public class ObjectManager : MonoBehaviour
     /// List of spawned objects in the scene
     /// </summary>
     private List<GameObject> _spawnedObjects = new();
-
-    public List<Species> likedObjects = new();
     
     [SerializeField]
     private SwitchToggle switchToggle;
@@ -62,16 +60,6 @@ public class ObjectManager : MonoBehaviour
     
     private void Start()
     {
-        //
-        if (FindObjectsOfType(GetType()).Length > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-
         // Initialize the AR components
         _raycastManager = GetComponent<ARRaycastManager>();
         _database = GetComponent<Database>();
@@ -105,6 +93,7 @@ public class ObjectManager : MonoBehaviour
         List<ARRaycastHit> hits = new();
         var objectList = isLand ? landModels : waterModels;
         if (objectList.Count == 0) return;
+                                                Debug.Log("BBBBBBBBBBBBBBBBBBBB");
 
         // Cast ray from a random point within the screen to detect planes
         if (_raycastManager.Raycast(new Vector2(Random.Range(0, Screen.width), Random.Range(0, Screen.height)),
@@ -136,6 +125,7 @@ public class ObjectManager : MonoBehaviour
             // Add a species component to the spawned object
             var species = spawnedObject.AddComponent<Species>();
             var modelName = spawnedObject.name.Replace("(Clone)", "");
+            
             species.SetInfo(
                 _speciesInfo[modelName]["name"],
                 _speciesInfo[modelName]["binomial"],
@@ -143,13 +133,6 @@ public class ObjectManager : MonoBehaviour
                 _speciesInfo[modelName]["link"],
                 bool.Parse(_speciesInfo[modelName]["isLiked"])
                 );
-                
-
-            if (species.isLiked)
-            {
-                Debug.Log(species.speciesName);
-                likedObjects.Add(species);
-            }
         }
     }
 
