@@ -41,7 +41,11 @@ public class Database : MonoBehaviour
         // Initialize Firebase
         var storage = FirebaseStorage.DefaultInstance;
         db = FirebaseFirestore.DefaultInstance;
-
+        
+        // Use this if models are not downloaded/spawned
+        // if(Caching.ClearCache()) Debug.Log("Cache cleared");
+        // else Debug.Log("Cache not cleared");
+        
 #if UNITY_IOS
             _reference = storage.GetReferenceFromUrl("gs://ar-biosphere-cfeaa.appspot.com/iOS/");
 #else
@@ -59,23 +63,12 @@ public class Database : MonoBehaviour
         Dictionary<string, Dictionary<string, string>> info)
     {
         // Get names of species at location
-        db.Collection("locations").Document(location).GetSnapshotAsync().ContinueWithOnMainThread(task =>
-        {
-            if (task.IsFaulted)
+        db.Collection("locations").Document(location)
+            .Listen(snapshot =>
             {
-                Debug.Log("Error getting location doc: " + task.Exception);
-            }
-            else
-            {
-                var snapshot = task.Result;
-                if (snapshot.Exists)
-                {
-                    species = snapshot.GetValue<List<string>>("species");
-                    GetSpeciesWithLikeChecking();
-                }
-                else Debug.Log("No such document!");
-            }
-        });
+                species = snapshot.GetValue<List<string>>("species");
+                GetSpecies();
+            });
 
         _landPrefabs = landPrefabs;
         _waterPrefabs = waterPrefabs;
@@ -117,15 +110,10 @@ public class Database : MonoBehaviour
     {
         foreach (var speciesName in species)
         {
-            db.Collection("species").Document(speciesName).GetSnapshotAsync().ContinueWithOnMainThread(task =>
+            db.Collection("species").Document(speciesName).Listen(snapshot =>
             {
-                if (task.IsFaulted) Debug.Log("Error getting species doc: " + task.Exception);
-                else
-                {
-                    var snapshot = task.Result;
-                    if (snapshot.Exists) LoadInfo(snapshot, speciesName, inventory);
-                    else Debug.Log("No such document!");
-                }
+                if (snapshot.Exists) LoadInfo(snapshot, speciesName);
+                else Debug.Log("No such document!");
             });
         }
     }
@@ -142,7 +130,6 @@ public class Database : MonoBehaviour
         var description = snapshot.GetValue<string>("description");
         var isLand = snapshot.GetValue<bool>("isLand");
         var link = snapshot.GetValue<string>("link");
-        var focusDistance = snapshot.GetValue<float>("focusDistance");
 
         // Create dictionary for species info
         _info[assetName] = new Dictionary<string, string>()
@@ -151,22 +138,16 @@ public class Database : MonoBehaviour
             {"binomial", binomial},
             {"description", description},
             {"link", link},
-            {"focusDistance", focusDistance.ToString()},
-            {"isLiked", inventory.Contains(speciesName).ToString()}
         };
 
         // Download model from Firebase Storage
-        _reference.Child(speciesName).GetDownloadUrlAsync().ContinueWithOnMainThread(t =>
-        {
-            if (!t.IsFaulted && !t.IsCanceled)
-            {
-                var url = t.Result.ToString();
-                StartCoroutine(DownloadFile(url, assetName, isLand));
-            }
-            else
-            {
-                Debug.Log("Downloading model failed");
-            }
+        _reference.Child(speciesName.Replace(' ', '_')).GetDownloadUrlAsync()
+            .ContinueWithOnMainThread( t => {
+                if (!t.IsFaulted && !t.IsCanceled)
+                {
+                    var url = t.Result.ToString();
+                    StartCoroutine(DownloadFile(url, assetName, isLand));
+                }
         });
     }
 
@@ -188,15 +169,22 @@ public class Database : MonoBehaviour
         }
         else
         {
-            // Get downloaded asset bundle
+            // Get downloaded asset bundle. Note that asset bundles are downloaded and stored in app cache, so they will not be downloaded again.
+            // Unity checks the cache before downloading, differentiating between different versions by version number or hash. 
+            // See UnityWebRequestAssetBundle.GetAssetBundle for more info.
+            // Cache can be cleared by calling Caching.ClearCache() or in the app settings.
             var bundle = DownloadHandlerAssetBundle.GetContent(www);
             var x = bundle.GetAllAssetNames();
             var asset = bundle.LoadAsset<GameObject>(assetName);
-
-            // Add to list of prefabs
-            if (isLand) _landPrefabs.Add(asset);
-            else _waterPrefabs.Add(asset);
-            bundle.Unload(false);
+            
+            if (asset == null) Debug.Log($"Null asset: {assetName}, {x[0]}");
+            else
+            {
+                // Add to list of prefabs
+                if (isLand) _landPrefabs.Add(asset);
+                else _waterPrefabs.Add(asset);
+                bundle.Unload(false);
+            }
         }
     }
 }

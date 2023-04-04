@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
@@ -13,10 +11,7 @@ public class PopupUIManager : MonoBehaviour
     {
         get
         {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<PopupUIManager>();
-            }
+            if (instance == null) instance = FindObjectOfType<PopupUIManager>();
             return instance;
         }
     }
