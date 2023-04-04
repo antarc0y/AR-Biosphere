@@ -18,11 +18,10 @@ jobs:
           - playmode
     steps:
       - name: cleanup
-        run: |
-          sudo chown -R $USER:$USER /home/github/actions-runner/_work/ar_biosphere/ar_biosphere
+        run: sudo chown -R $USER:$USER /home/github/actions-runner/_work/ar_biosphere/ar_biosphere
       - uses: actions/checkout@v2
-          with:
-            lfs: true
+        with:
+          lfs: true
       - uses: actions/cache@v2
         with:
           path: ${{ matrix.projectPath }}/Library
