@@ -5,12 +5,12 @@ using UnityEngine;
 public class FloatingText : MonoBehaviour
 {
     public float DestroyTime = 3f;
-    private Vector3 Offset = new(0, 2, 0);
+    private Vector3 Offset = new(0, -0.05f, 0);
     
     void Start()
     {
         Destroy(gameObject, DestroyTime);
-        // transform.localPosition += Offset;
+        transform.localPosition += Offset;
     }
 
 }
