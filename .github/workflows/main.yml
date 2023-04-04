@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - app/
+          - app/Assets/Tests/PlayModeTest
         testMode:
           - playmode
     steps:
