@@ -108,10 +108,6 @@ public class InventoryList : MonoBehaviour
             // Set the text of the button to display the model name and link
             TMPro.TextMeshProUGUI modelNameText = button.transform.Find("Model Name").GetComponent<TMPro.TextMeshProUGUI>();
             modelNameText.text = species.speciesName;
-            Debug.Log(modelNameText.text);
-
-            TMPro.TextMeshProUGUI linkText = button.transform.Find("Link").GetComponent<TMPro.TextMeshProUGUI>();
-            linkText.text = species.link;
 
             // Set the position of the button based on its height
             RectTransform buttonRectTransform = button.GetComponent<RectTransform>();
