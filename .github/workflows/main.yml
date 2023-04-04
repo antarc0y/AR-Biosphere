@@ -28,6 +28,8 @@ jobs:
           key: Library-${{ matrix.projectPath }}
           restore-keys: |
             Library-
+      - name: dockerrun
+        run: docker run hello-world
       - uses: game-ci/unity-test-runner@v2
         id: tests
         env:
