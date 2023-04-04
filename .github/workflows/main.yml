@@ -28,62 +28,26 @@ jobs:
           key: Library-${{ matrix.projectPath }}
           restore-keys: |
             Library-
-      - name: dockerrun
-        run: docker run hello-world
-      - uses: game-ci/unity-test-runner@v2
-        id: tests
-        env:
-         UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        with:
-          projectPath: ${{ matrix.projectPath }}
-          testMode: ${{ matrix.testMode }}
-          artifactsPath: ${{ matrix.testMode }}-artifacts
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: ${{ matrix.testMode }} Test Results
-          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: Test results for ${{ matrix.testMode }}
-          path: ${{ steps.tests.outputs.artifactsPath }}
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: Coverage results for ${{ matrix.testMode }}
-          path: ${{ steps.tests.outputs.coveragePath }}
-#name: Build project
-
-# on: [push]
-# defaults:
-#       run:
-#         working-directory: ./app
-# jobs:
-#   buildForAllSupportedPlatforms:
-#     name: Build for ${{ matrix.targetPlatform }}
-#     runs-on: self-hosted
-    
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         targetPlatform:
-#           - iOS # Build an iOS player.
-#           - Android # Build an Android .apk standalone app.
-#     steps:
-#       - uses: actions/checkout@v3
-#         with:
-#           fetch-depth: 0
-#           lfs: true
-#       - uses: actions/cache@v3
-#         with:
-#           path: ./app/Library
-#           key: Library-${{ matrix.targetPlatform }}
-#           restore-keys: Library-
-#       - uses: game-ci/unity-builder@v2
+#       - name: dockerrun
+#         run: docker run hello-world
+#       - uses: game-ci/unity-test-runner@v2
+#         id: tests
 #         env:
-#           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+#          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 #         with:
-#           targetPlatform: ${{ matrix.targetPlatform }}
-#       - uses: actions/upload-artifact@v2
+#           projectPath: ${{ matrix.projectPath }}
+#           testMode: ${{ matrix.testMode }}
+#           artifactsPath: ${{ matrix.testMode }}-artifacts
+#           githubToken: ${{ secrets.GITHUB_TOKEN }}
+#           checkName: ${{ matrix.testMode }} Test Results
+#           coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
+#       - uses: actions/upload-artifact@v3
+#         if: always()
 #         with:
-#           name: Build-${{ matrix.targetPlatform }}
-#           path: build/${{ matrix.targetPlatform }}
+#           name: Test results for ${{ matrix.testMode }}
+#           path: ${{ steps.tests.outputs.artifactsPath }}
+#       - uses: actions/upload-artifact@v3
+#         if: always()
+#         with:
+#           name: Coverage results for ${{ matrix.testMode }}
+#           path: ${{ steps.tests.outputs.coveragePath }}
