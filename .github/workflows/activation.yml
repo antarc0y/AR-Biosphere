@@ -8,8 +8,9 @@
 #         run: echo "Hello World!"
 
 name: Acquire activation file
-on: push 
-  branch:
+on: 
+  push: 
+    branch:
       - testing-2
 jobs:
   activation:
