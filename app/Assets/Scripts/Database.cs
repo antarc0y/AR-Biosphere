@@ -20,6 +20,11 @@ public class Database : MonoBehaviour
     /// </summary>
     private List<string> species;
 
+    /// <summary>
+    /// Names of the liked species
+    /// </summary>
+    List<string> inventory;
+
     private FirebaseFirestore db;
 
     /// <summary>
@@ -67,7 +72,7 @@ public class Database : MonoBehaviour
             .Listen(snapshot =>
             {
                 species = snapshot.GetValue<List<string>>("species");
-                GetSpecies();
+                GetSpeciesWithLikeChecking();
             });
 
         _landPrefabs = landPrefabs;
@@ -89,13 +94,13 @@ public class Database : MonoBehaviour
                 var snapshotInventory = task.Result;
                 if (snapshotInventory.Exists)
                 {
-                    List<string> inventory = snapshotInventory.GetValue<List<string>>("models");
+                    inventory = snapshotInventory.GetValue<List<string>>("models");
                     Debug.Log(inventory[0]);
                     GetSpecies(inventory);
                 }
                 else
                 {
-                    List<string> inventory = new List<string>();    // If the user's inventory document is not found, that means his collection is empty and he does not have one
+                    inventory = new List<string>();    // If the user's inventory document is not found, that means his collection is empty and he does not have one
                     Debug.Log("No existing inventory for device " + uniqueIdentifier);
                     GetSpecies(inventory);
                 }
@@ -123,7 +128,7 @@ public class Database : MonoBehaviour
     /// </summary>
     /// <param name="snapshot"> DocumentSnapshot to load info from</param>
     /// <param name="speciesName"> Name of species prefab to download</param>
-    private void LoadInfo(DocumentSnapshot snapshot, string speciesName, List<string> inventory)
+    private void LoadInfo(DocumentSnapshot snapshot, string speciesName)
     {
         var assetName = snapshot.GetValue<string>("assetName");
         var binomial = snapshot.GetValue<string>("binomial");
@@ -138,6 +143,7 @@ public class Database : MonoBehaviour
             {"binomial", binomial},
             {"description", description},
             {"link", link},
+            {"isLiked", inventory.Contains(speciesName).ToString()}
         };
 
         // Download model from Firebase Storage

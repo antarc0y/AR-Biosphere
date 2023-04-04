@@ -94,7 +94,9 @@ public class ObjectManager : MonoBehaviour
     {
         List<ARRaycastHit> hits = new();
         var objectList = isLand ? landModels : waterModels;
+        Debug.Log("111111111111111111111111111111111");
         if (objectList.Count == 0) return;
+        Debug.Log("555555555555555555555555555555555");
 
         // Cast ray from a random point within the screen to detect planes
         if (_raycastManager.Raycast(new Vector2(Random.Range(0, Screen.width), Random.Range(0, Screen.height)),
@@ -126,12 +128,12 @@ public class ObjectManager : MonoBehaviour
             // Add a species component to the spawned object
             var species = spawnedObject.AddComponent<Species>();
             var modelName = spawnedObject.name.Replace("(Clone)", "");
+        Debug.Log("2222222222222222222222222222");
             species.SetInfo(
                 _speciesInfo[modelName]["name"],
                 _speciesInfo[modelName]["binomial"],
                 _speciesInfo[modelName]["description"], 
                 _speciesInfo[modelName]["link"],
-                float.Parse(_speciesInfo[modelName]["focusDistance"]),
                 bool.Parse(_speciesInfo[modelName]["isLiked"])
                 );
 
@@ -139,6 +141,7 @@ public class ObjectManager : MonoBehaviour
             {
                 likedObjects.Add(species);
             }
+                    Debug.Log("3333333333333333333333333333333333");
         }
     }
 
