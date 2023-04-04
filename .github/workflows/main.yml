@@ -6,6 +6,7 @@ jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
+      - self-hosted
     strategy:
       fail-fast: false
       matrix:
