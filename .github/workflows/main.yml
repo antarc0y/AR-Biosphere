@@ -5,6 +5,8 @@ on: [push]
 jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
+    runs:
+      using: 'node16'
     runs-on:
       - self-hosted
     strategy:
