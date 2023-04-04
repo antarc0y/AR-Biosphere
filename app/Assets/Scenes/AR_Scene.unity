@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -163,7 +163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -183.85942}
+  m_AnchoredPosition: {x: 0, y: -183.85944}
   m_SizeDelta: {x: -64.671, y: -546.716}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &142974546
@@ -371,9 +371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ebdf95ede1a404eb86cea45ad0ca43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pop_up_panel: {fileID: 0}
-  dialogUI: {fileID: 142974548}
-  status: 0
 --- !u!114 &158183865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,9 +383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ebdf95ede1a404eb86cea45ad0ca43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pop_up_panel: {fileID: 142974543}
-  dialogUI: {fileID: 0}
-  status: 0
 --- !u!1 &206705558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,7 +1257,7 @@ Canvas:
   m_GameObject: {fileID: 743392557}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1354141926}
   m_PlaneDistance: 10
   m_PixelPerfect: 1
@@ -2056,7 +2050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -250.00005}
+  m_AnchoredPosition: {x: 0, y: -250.00006}
   m_SizeDelta: {x: -80, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1368874962
@@ -2549,9 +2543,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ebdf95ede1a404eb86cea45ad0ca43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pop_up_panel: {fileID: 142974543}
-  dialogUI: {fileID: 142974548}
-  status: 0
 --- !u!1 &1543433182
 GameObject:
   m_ObjectHideFlags: 0
