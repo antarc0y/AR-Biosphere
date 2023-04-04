@@ -1,14 +1,14 @@
 name: Build project
 
 on: [push]
-
+defaults:
+      run:
+        working-directory: ./app
 jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: self-hosted
-    defaults:
-      run:
-        working-directory: ./app
+    
     strategy:
       fail-fast: false
       matrix:
@@ -22,7 +22,7 @@ jobs:
           lfs: true
       - uses: actions/cache@v3
         with:
-          path: Library
+          path: ./app/Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
       - uses: game-ci/unity-builder@v2
