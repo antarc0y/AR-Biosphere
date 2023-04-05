@@ -21,10 +21,10 @@ This app is family oriented, it is intended to be used by the general public tha
 
 
 ### Test Coverage
-This app includes tests that covers all interactable UI elements of every scene, nagivation tests in between scenes, and tests for the Object Manager that handles AR models on screen.
+The app includes tests that covers interactable UI elements of every scene, navigation tests in between scenes, and tests for the Object Manager that handles AR models on screen. The tests are located in the app/Assets/Tests/PlaymodeTests. 
 
 ### Technologies
-Most of  this app is build using Unity, we used Editor versions 2021.3.19f1. The database we use to store our 3D models is Firebase with SDK version 10.5.  We used the GoogleMaps API to access location settings.
+Most of  this app is build using Unity, we used Editor versions 2021.3.19f1. The database we use to store our 3D models is Firebase with SDK version 10.5.  We used the GoogleMaps API to access location settings. We used Nunit framework to perform unit testing and InputTestFixture for UI tests. Also integrated CI for checking the changed when anything is pushed on main and Sonarqube code analysis.
 
 ## Github repository
 The Unity project exists in the app folder, all main components are stored in Assets with in app. 
