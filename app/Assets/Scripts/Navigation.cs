@@ -6,15 +6,62 @@ using UnityEngine.SceneManagement;
 
 public class Navigation : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static Animator transition;
+    public float transitionTime = 1f;
+
+    void Start()
+    {
+        GameObject sceneLoader = GameObject.Find("SceneLoader");     
+        transition = sceneLoader.GetComponent<Animator>();
+        
+    }
+
     static public void GoToNextScene() 
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+        GameObject sceneLoader = GameObject.Find("SceneLoader");
+        transition = sceneLoader.GetComponent<Animator>();
+
+        if (transition != null)
+        {
+            
+            // play animation
+            transition.SetTrigger("start");
+
+            // load scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+            // re-assign the animator since its now at a new scene
+            sceneLoader = GameObject.Find("SceneLoader");
+            transition = sceneLoader.GetComponent<Animator>();
+        }
+       else
+        {
+            Debug.LogWarning("animator is not initialized");
+        }
+
     }
 
     static public void GoToPreviousScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        GameObject sceneLoader = GameObject.Find("SceneLoader");
+        transition = sceneLoader.GetComponent<Animator>();
+
+        if (transition != null)
+        {
+            // play animation
+            transition.SetTrigger("start");
+            // load scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+
+            // re-assign the animator since its now at a new scene
+            sceneLoader = GameObject.Find("SceneLoader");
+            transition = sceneLoader.GetComponent<Animator>();
+        }
+        else
+        {
+            Debug.LogWarning("animator is not initialized");
+        }
+
     }
 
     // if back button (Android navigation) is pressed

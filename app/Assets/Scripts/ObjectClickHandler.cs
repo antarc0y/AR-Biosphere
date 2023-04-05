@@ -87,7 +87,7 @@ public class ObjectClickHandler : MonoBehaviour
     {
         if (!isFocused)
         {
-            objectManager.ShowFloatingText(species.speciesName, transform.position);
+            objectManager.ShowFloatingText(species.speciesNameCapitalized, transform.position);
         }
     }
 
@@ -107,7 +107,7 @@ public class ObjectClickHandler : MonoBehaviour
 
     public void focusModel()
     {
-        objectManager.ShowObjectPopUp(species.speciesName, species.binomial, species.description, species.link);
+        objectManager.ShowObjectPopUp(species);
 
         //Store original position and rotation for when the user zooms out
         originalPosition = spawnedObject.transform.position;

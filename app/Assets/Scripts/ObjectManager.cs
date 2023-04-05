@@ -27,6 +27,11 @@ public class ObjectManager : MonoBehaviour
     
     private Camera _mainCamera;
     private ARRaycastManager _raycastManager;
+    private ToggleBehavior likeToggle;
+
+
+    // todo: make private? what type?
+    //public TextMeshProUGUI tempPopup;
     public Button PopupButton;
     
     private Database _database;
@@ -38,7 +43,8 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     [SerializeField]
     private int maxObjectCount = 5;
-    private bool popUpIsBeingShown = false;
+    public bool popUpIsBeingShown = false;
+    public Species currentFocused;
     
     /// <summary>
     /// y position of the spawned objects. This is used to ensure that the objects are spawned on the same plane.
@@ -64,6 +70,10 @@ public class ObjectManager : MonoBehaviour
         if (!_mainCamera)
         {
             _mainCamera = Camera.main;
+        }
+        if (!likeToggle)
+        {
+            likeToggle = FindObjectOfType<ToggleBehavior>();
         }
     }
     
@@ -116,11 +126,13 @@ public class ObjectManager : MonoBehaviour
             // Add a species component to the spawned object
             var species = spawnedObject.AddComponent<Species>();
             var modelName = spawnedObject.name.Replace("(Clone)", "");
+            
             species.SetInfo(
                 _speciesInfo[modelName]["name"],
                 _speciesInfo[modelName]["binomial"],
                 _speciesInfo[modelName]["description"], 
-                _speciesInfo[modelName]["link"]
+                _speciesInfo[modelName]["link"],
+                bool.Parse(_speciesInfo[modelName]["isLiked"])
                 );
         }
     }
@@ -133,12 +145,18 @@ public class ObjectManager : MonoBehaviour
         }
     }
 
-    public void ShowObjectPopUp(string name, string binomial, string info, string link)
-    {   
+    public void ShowObjectPopUp(Species species)
+    {
         popUpIsBeingShown = true;
-        string formattedText = name + " (<i>" + binomial + "</i>)\n" +
-                               info + "\n" +
-                               "More info: <link=google.ca>click this please lol</link>" + link;
+        currentFocused = species;
+
+        likeToggle.toggleChangedByUser = false;
+        likeToggle.toggle.isOn = species.isLiked;
+        likeToggle.toggleChangedByUser = true;
+
+        string formattedText = species.speciesNameCapitalized + " (<i>" + species.binomial + "</i>)\n" +
+                               species.description + "\n" +
+                               "More info: <link=google.ca>click this please lol</link>" + species.link;
         objectPopUpText.SetText(formattedText);
         objectPopUp.SetBool("visible", true);
         PopupButton.onClick.RemoveAllListeners();
