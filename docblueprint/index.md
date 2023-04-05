@@ -5,6 +5,11 @@ The Aquatic Biosphere Project of Canada engages individuals of all ages and back
 
 When a user first opens the product, they will confirm their location in order to ensure the accuracy of the displayed information. The product will then open the device camera, and the user will be free to use it to scan their environment. When the user brings a relevant object into the camera view, the product will augment the object with the appropriate AR objects. Note that the product will only be tailored to environments within the University of Alberta North Campus.
 
+## Product Documentation
+- **To view the User Manual:** sdfsdf
+- **To view the project job description:** [click here](https://github.com/UAlberta-CMPUT401/ar-biosphere/blob/main/Job%20Description.pdf).
+
+
 ## Project Glossary
 - **augment** - add additional virtual objects into the camera view so that the objects look as if they are there in 3d space
 - **camera view** - the live camera feed of a device that is made visible on the device’s screen
