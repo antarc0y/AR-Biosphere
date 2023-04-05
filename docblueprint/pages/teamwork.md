@@ -10,7 +10,7 @@ Below is the team canvas for our team
 | 2 | Vaibhav Chugh         | Huy Ta         |
 | 3 | Raunak Argawal        | Yui Han          | 
 | 4 | Kevin Sha         | Mohammad Hammad       |
-| 5 | TBD      | TBD         | 
+| 5 | Yui Han     | Kevin Sha         | 
 
 
 ## Belbin Roles
