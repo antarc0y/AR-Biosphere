@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using TMPro;
 
@@ -31,6 +32,7 @@ public class ObjectManager : MonoBehaviour
 
     // todo: make private? what type?
     //public TextMeshProUGUI tempPopup;
+    public Button PopupButton;
     
     private Database _database;
     
@@ -154,11 +156,16 @@ public class ObjectManager : MonoBehaviour
 
         string formattedText = species.speciesNameCapitalized + " (<i>" + species.binomial + "</i>)\n" +
                                species.description + "\n" +
-                               "More info:" + species.link;
+                               "More info: <link=google.ca>click this please lol</link>" + species.link;
         objectPopUpText.SetText(formattedText);
         objectPopUp.SetBool("visible", true);
+        PopupButton.onClick.RemoveAllListeners();
+        PopupButton.onClick.AddListener(OpenLink);
     }
 
+    private void OpenLink() {
+        Application.OpenURL(clickHandler.species.link);
+    }
 
     public void HideObjectPopUp()
     {
@@ -168,6 +175,9 @@ public class ObjectManager : MonoBehaviour
         objectPopUp.SetBool("visible", false);
     }
 
+    public void OpenPopupLink(){
+        Application.OpenURL("https://www.aquaticbiosphere.ca/opportunity");
+    }
     
     /// <summary>
     /// Method that checks if a point is a valid location for spawning an object.

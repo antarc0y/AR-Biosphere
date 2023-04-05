@@ -9,7 +9,7 @@ using DG.Tweening;
 public class ObjectClickHandler : MonoBehaviour
 {
     private static ObjectManager objectManager;
-    private Species species;
+    public Species species;
     public GameObject spawnedObject;
     public int tapCount = 0;
     public float doubleClickThreshold = 0.3f;
@@ -151,5 +151,9 @@ public class ObjectClickHandler : MonoBehaviour
             .SetUpdate(true);
         
         objectManager.clickHandler = null;
+    }
+
+    public void LinkClicked() {
+        Application.OpenURL(species.link);
     }
 }

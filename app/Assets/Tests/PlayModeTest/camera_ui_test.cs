@@ -19,6 +19,7 @@ namespace blankAR_ui_test
 
         public override void Setup()
         {
+            //setup the scene to AR_scene and add a mouse for clickability
             base.Setup();
             SceneManager.LoadScene("AR_Scene");
             mouse = InputSystem.AddDevice<Mouse>();
@@ -28,6 +29,7 @@ namespace blankAR_ui_test
 
         public void ClickUI(GameObject uiElement)
         {
+            //click on an element by finding its position with respectr to the camera in scene.
             Camera camera = GameObject.Find("AR Session Origin/AR Camera").GetComponent<Camera>();
             Vector3 screenpos = camera.WorldToScreenPoint(uiElement.transform.position);
             //Vector2 screenpos = uiElement.AddComponent<RectTransform>().anchoredPosition;
@@ -37,6 +39,7 @@ namespace blankAR_ui_test
         [UnityTest]
         public IEnumerator back_button_test()
         {
+            //the back button to navigate from AR_scene to user_location
             GameObject back_button = GameObject.Find("Canvas/BackButton");
             Assert.That(SceneManager.GetActiveScene().name, Is.EqualTo("AR_Scene"));
 
@@ -93,10 +96,12 @@ namespace blankAR_ui_test
         [UnityTest]
         public IEnumerator info_button_open()
         {
+            //tests the opening of the UI popup.
             GameObject info_button = GameObject.Find("Canvas/InformationButton");
             GameObject di = GameObject.Find("Canvas/DialogUI");
             ClickUI(info_button);
             yield return new WaitForSeconds(2f);
+            //assert if the ui popup is open
             Assert.IsTrue(di.activeSelf);
         }
 
