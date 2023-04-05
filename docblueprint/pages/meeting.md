@@ -283,3 +283,52 @@
     - The information for each model should include binomial nomenclature, 2-3 sentences description, and an info link
     - Client would prefer to have user findings be save-able for later viewing
     - Consider a whack-a-model game mode where user can whack invasive species
+
+??? abstract "Mar 20 / Sprint 4 Demo + client meeting "
+     ## Main Purpose 🕰️
+
+    - Receive feedback for sprint 4, planning for sprint 5
+    - Demo app to client, ask for final feedback
+
+
+    ## Attendance 👨‍💻
+
+    - The entire biosphere team, Yazeed (sprint 4 demo), Paula (client portion)
+
+    ## Important Takeaways❗
+
+    - Client prefers to have the ability to save model information
+    - Deliver app to client as an APK, and she would like a video demonstration of the app
+    - Client likes the app, would prefer to have one model that is a local species
+
+??? abstract "Mar 26 / Internal meeting "
+     ## Main Purpose 🕰️
+
+    - Further discuss and distribute sprint 5 tasks
+
+
+    ## Attendance 👨‍💻
+
+    - The entire biosphere team
+
+    ## Important Takeaways❗
+
+    - Create an inventory for models, save them by clicking a like button
+    - Look for more models that represent client's preference
+    - Improve UI and scale elements accordingly
+
+??? abstract "Apr 03 / Internal meeting "
+     ## Main Purpose 🕰️
+
+    - Finalizing sprint 5 deliverables
+
+    ## Attendance 👨‍💻
+
+    - The entire biosphere team, Yazeed
+
+    ## Important Takeaways❗
+
+    - Testing with sonarqube
+    - Include APK in Github release
+    - Put installing instructions in user manual
+   
