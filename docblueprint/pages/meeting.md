@@ -316,3 +316,19 @@
     - Create an inventory for models, save them by clicking a like button
     - Look for more models that represent client's preference
     - Improve UI and scale elements accordingly
+
+??? abstract "Apr 03 / Internal meeting "
+     ## Main Purpose 🕰️
+
+    - Finalizing sprint 5 deliverables
+
+    ## Attendance 👨‍💻
+
+    - The entire biosphere team, Yazeed
+
+    ## Important Takeaways❗
+
+    - Testing with sonarqube
+    - Include APK in Github release
+    - Put installing instructions in user manual
+   
