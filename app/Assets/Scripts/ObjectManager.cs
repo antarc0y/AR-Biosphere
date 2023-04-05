@@ -156,7 +156,7 @@ public class ObjectManager : MonoBehaviour
 
         string formattedText = species.speciesNameCapitalized + " (<i>" + species.binomial + "</i>)\n" +
                                species.description + "\n" +
-                               "More info: <link=google.ca>click this please lol</link>" + species.link;
+                               "More info: " + species.link;
         objectPopUpText.SetText(formattedText);
         objectPopUp.SetBool("visible", true);
         PopupButton.onClick.RemoveAllListeners();
