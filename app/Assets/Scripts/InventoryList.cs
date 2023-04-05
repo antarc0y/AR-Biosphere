@@ -112,13 +112,14 @@ public class InventoryList : MonoBehaviour
             // Set the position of the button based on its height
             RectTransform buttonRectTransform = button.GetComponent<RectTransform>();
             buttonRectTransform.anchoredPosition = new Vector2(0f, y);
-            y -= buttonHeight;
+            y -= buttonHeight + 25;
 
             // Add an onClick listener to the button
             Button buttonComponent = button.GetComponent<Button>();
             buttonComponent.onClick.AddListener(() => {
                 Application.OpenURL(species.link);
             });
+
         }
     }
 }
