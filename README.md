@@ -24,6 +24,11 @@ This app is family oriented, it is intended to be used by the general public tha
 This app includes tests that covers all interactable UI elements of every scene, nagivation tests in between scenes, and tests for the Object Manager that handles AR models on screen.
 
 ### Technologies
-Most of  this app is build using Unity, we used Editor versions 2021.3.19f1. The database we use to store our 3D models is Firebase with SDK version 10.5. 
+Most of  this app is build using Unity, we used Editor versions 2021.3.19f1. The database we use to store our 3D models is Firebase with SDK version 10.5.  We used the GoogleMaps API to access location settings.
+
+## Github repository
+The Unity project exists in the app folder, all main components are stored in Assets with in app. 
+The docsblueprint folder contains all MkDocs images, pages, and .html files. 
+The User Manual and Job Description are PDF files within the first page of the code. 
 
 
