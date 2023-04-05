@@ -5,6 +5,8 @@ This project was built with Unity 2021.03.19f1. You should use the same version 
 This project also uses Firebase, which is not included in the repository because of size and dependency issues. To import it to your local project, follow the instructions in the [Firebase Unity SDK](https://firebase.google.com/docs/unity/setup) documentation.
 (Step 1-3 are already done in the repository, so you only need to follow step 4.)
 
+**Note**: If you have dependency errors follow this https://stackoverflow.com/a/57361245/12374111
+
 # Project Structure
 The Unity project is located in the `app/` folder.
 Most of the workflow is done in the `app/Assets/` folder.
