@@ -12,3 +12,15 @@ The project's `goal` is to build a prototype (proof of concept) of an [Augmented
 This project is a first stage prototype of a larger concept to integrate AR experiences for public engagement and learning. Ultimately AR will be incorporated into a variety of spaces, within the scope of this project and in partnership with other attractions and tourism regions who are expressing interest in creating a connected platform for visitor engagement within local natural biomes.
 
 
+### About
+This app is supported on Android and iOS mobile devices, its highlight featuers are 3D interactable models of land and aquatic species with informative content for general educational purposes. After launching, users will be shown their current location. Users begin their AR experiencing by accessing the camera through the app, they may select their current environmental surface as land or water, this will determine the types of species they will find. AR models of various species will spawn on camera at different rates, users can interact with the model by double clicking to display an information panel about that model. They can also navigate to online pages through an embedded link, note that internet is required for this step. The models discovered by the user can be saved to an inventory with their links, to ensure that users can re-visit them when they have internet access. 
+
+
+### Usage
+This app is family oriented, it is intended to be used by the general public that takes interest in learning about aquatic species and their ecosystems. For example, the app can be used when individuals explore their local natural systems. Our app aims to enhance interest and understanding of natural ecosystems and their species, as well as promote aquatic conservation through public engagement. In this first prototype, the availability of free, accessible 3D models are unfortunately limited. 
+
+
+### Test Coverage
+This app includes tests that covers all interactable UI elements of every scene, nagivation tests in between scenes, and tests for the Object Manager that handles AR models on screen.
+
+

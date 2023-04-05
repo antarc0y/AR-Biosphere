@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using TMPro;
 
@@ -15,7 +15,7 @@ public class ObjectManager : MonoBehaviour
     /// List of prefabs to spawn from
     /// </summary>
     [SerializeField]
-    private List<GameObject> objectList = new();
+    private List<GameObject> landModels = new(), waterModels = new();
     
     /// <summary>
     /// List of spawned objects in the scene
@@ -27,39 +27,53 @@ public class ObjectManager : MonoBehaviour
     
     private Camera _mainCamera;
     private ARRaycastManager _raycastManager;
-    private ARPlaneManager _planeManager;
+    private ToggleBehavior likeToggle;
+
 
     // todo: make private? what type?
     //public TextMeshProUGUI tempPopup;
+    public Button PopupButton;
     
+    private Database _database;
+    
+    private Dictionary<string, Dictionary<string, string>> _speciesInfo = new();
 
     /// <summary>
     /// Maximum number of objects that can be spawned
     /// </summary>
     [SerializeField]
     private int maxObjectCount = 5;
-    private bool isFocused = false;
+    public bool popUpIsBeingShown = false;
+    public Species currentFocused;
     
     /// <summary>
     /// y position of the spawned objects. This is used to ensure that the objects are spawned on the same plane.
     /// </summary>
-    private float y = 0f;
+    private float _y = 0f;
 
     public GameObject FloatingTextPrefab;
     public Animator objectPopUp;
     public TextMeshProUGUI objectPopUpText;
 
-
-    private void Awake()
+    /// <summary>
+    /// The ClickHandler attached to the object that is currently being focused on.
+    /// </summary>
+    internal ObjectClickHandler clickHandler { set; get; }
+    
+    private void Start()
     {
         // Initialize the AR components
         _raycastManager = GetComponent<ARRaycastManager>();
-        _planeManager = GetComponent<ARPlaneManager>();
-        //tempPopup.SetText("animal name here");
-        Debug.Log($"{switchToggle == null}");
+        _database = GetComponent<Database>();
+        
+        _database.SetUp(landModels, waterModels, _speciesInfo);
         if (!_mainCamera)
         {
             _mainCamera = Camera.main;
+        }
+        if (!likeToggle)
+        {
+            likeToggle = FindObjectOfType<ToggleBehavior>();
         }
     }
     
@@ -68,24 +82,20 @@ public class ObjectManager : MonoBehaviour
         // Spawn objects every 20 frames if the maximum number of objects has not been reached and surface is water
         if (_spawnedObjects.Count < maxObjectCount && Time.frameCount % 20 == 0)
         {
-            if (switchToggle.IsOn)
-            {
-                SpawnObjects(objectList.GetRange(0, 5));
-            }
-            else
-            {
-                SpawnObjects(objectList.GetRange(objectList.Count - 5, 5));
-            }
-            
+            if (switchToggle.IsOn) SpawnObjects(false);
+            else SpawnObjects(true);
         }
     }
     
     /// <summary>
     /// Method that spawns objects in the scene in a random location on a detected plane.
     /// </summary>
-    private void SpawnObjects(List<GameObject> objectList)
+    private void SpawnObjects(bool isLand)
     {
         List<ARRaycastHit> hits = new();
+        var objectList = isLand ? landModels : waterModels;
+        if (objectList.Count == 0) return;
+
         // Cast ray from a random point within the screen to detect planes
         if (_raycastManager.Raycast(new Vector2(Random.Range(0, Screen.width), Random.Range(0, Screen.height)),
                 hits, TrackableType.PlaneWithinPolygon))
@@ -94,28 +104,36 @@ public class ObjectManager : MonoBehaviour
 
             // Get spawn position and check if it is valid
             var spawnPosition = hitPose.position;
-            if (y == 0f) y = spawnPosition.y;
-            else spawnPosition.y = y;
+            if (_y == 0f) _y = spawnPosition.y;
+            else spawnPosition.y = _y;
             if (!IsPointValid(spawnPosition)) return;
 
             // Generate a random rotation around the y-axis only
-            Quaternion spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+            var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
 
             // Align the spawned object with the detected plane
             spawnRotation = Quaternion.FromToRotation(Vector3.up, hitPose.up) * spawnRotation;
 
             // Select prefabs from list and spawn them, adding them to the list of spawned objects.
-            // TODO: Download prefabs from db as AssetBundle instead of hardcoding them.
             var objectToSpawn = objectList[Random.Range(0, objectList.Count)];
-            objectToSpawn.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             var spawnedObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
             AddObject(spawnedObject);
 
             // Add a click handler to the spawned object
-            var clickHandler = spawnedObject.AddComponent<ObjectClickHandler>();
-            clickHandler.enabled = true;
-            clickHandler.objectManager = this;
-            clickHandler.spawnedObject = spawnedObject;
+            var handler = spawnedObject.AddComponent<ObjectClickHandler>();
+            handler.SetUp(spawnedObject, objectToSpawn.transform.position, objectToSpawn.transform.rotation);
+            
+            // Add a species component to the spawned object
+            var species = spawnedObject.AddComponent<Species>();
+            var modelName = spawnedObject.name.Replace("(Clone)", "");
+            
+            species.SetInfo(
+                _speciesInfo[modelName]["name"],
+                _speciesInfo[modelName]["binomial"],
+                _speciesInfo[modelName]["description"], 
+                _speciesInfo[modelName]["link"],
+                bool.Parse(_speciesInfo[modelName]["isLiked"])
+                );
         }
     }
 
@@ -127,19 +145,39 @@ public class ObjectManager : MonoBehaviour
         }
     }
 
-    public void ShowObjectPopUp(string name)
-    {   
-        isFocused = true;
-        objectPopUpText.SetText("Random info about " + name + ".");
+    public void ShowObjectPopUp(Species species)
+    {
+        popUpIsBeingShown = true;
+        currentFocused = species;
+
+        likeToggle.toggleChangedByUser = false;
+        likeToggle.toggle.isOn = species.isLiked;
+        likeToggle.toggleChangedByUser = true;
+
+        string formattedText = species.speciesNameCapitalized + " (<i>" + species.binomial + "</i>)\n" +
+                               species.description + "\n" +
+                               "More info: <link=google.ca>click this please lol</link>" + species.link;
+        objectPopUpText.SetText(formattedText);
         objectPopUp.SetBool("visible", true);
+        PopupButton.onClick.RemoveAllListeners();
+        PopupButton.onClick.AddListener(OpenLink);
+    }
+
+    private void OpenLink() {
+        Application.OpenURL(clickHandler.species.link);
     }
 
     public void HideObjectPopUp()
     {
-        isFocused = false;
+        if (!clickHandler) return;
+        clickHandler.UnfocusModel(false);
+        popUpIsBeingShown = false;
         objectPopUp.SetBool("visible", false);
     }
 
+    public void OpenPopupLink(){
+        Application.OpenURL("https://www.aquaticbiosphere.ca/opportunity");
+    }
     
     /// <summary>
     /// Method that checks if a point is a valid location for spawning an object.
@@ -162,7 +200,7 @@ public class ObjectManager : MonoBehaviour
     /// </summary>
     public void DeleteObjects()
     {
-        if (isFocused) 
+        if (popUpIsBeingShown) 
         {
             HideObjectPopUp();
         }
@@ -172,8 +210,7 @@ public class ObjectManager : MonoBehaviour
             Destroy(spawnedObject);
         }
         _spawnedObjects.Clear();
-        y = 0f;
-        Debug.Log("Object count after deletion: " + _spawnedObjects.Count);
+        _y = 0f;
     }
     
     /// <summary>
@@ -186,12 +223,12 @@ public class ObjectManager : MonoBehaviour
         Destroy(obj);
     }
     
-
     private void OnApplicationPause(bool pause)
     {
         if (pause) DeleteObjects();
     }
     
     public int ObjectCount => _spawnedObjects.Count;
+    
     public void AddObject(GameObject obj) => _spawnedObjects.Add(obj);
 }
