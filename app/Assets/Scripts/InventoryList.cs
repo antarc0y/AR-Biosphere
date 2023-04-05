@@ -24,7 +24,7 @@ public class InventoryList : MonoBehaviour
         GetLikedSpecies();
     }
 
-       /// <summary>
+    /// <summary>
     /// Get species info for each species at location.
     /// </summary>
     private void GetLikedSpecies()
@@ -96,7 +96,8 @@ public class InventoryList : MonoBehaviour
         }
     }
 
-    private void displayButtons() {
+    private void displayButtons()
+    {
         // Loop through the inventory items and create a button for each item
         float buttonHeight = ((RectTransform)buttonPrefab.transform).rect.height;
         float y = -buttonHeight / 2f;
@@ -107,7 +108,7 @@ public class InventoryList : MonoBehaviour
 
             // Set the text of the button to display the model name and link
             TMPro.TextMeshProUGUI modelNameText = button.transform.Find("Model Name").GetComponent<TMPro.TextMeshProUGUI>();
-            modelNameText.text = species.speciesName;
+            modelNameText.text = species.speciesNameCapitalized;
 
             // Set the position of the button based on its height
             RectTransform buttonRectTransform = button.GetComponent<RectTransform>();
@@ -116,7 +117,8 @@ public class InventoryList : MonoBehaviour
 
             // Add an onClick listener to the button
             Button buttonComponent = button.GetComponent<Button>();
-            buttonComponent.onClick.AddListener(() => {
+            buttonComponent.onClick.AddListener(() =>
+            {
                 Application.OpenURL(species.link);
             });
 
