@@ -26,8 +26,8 @@ The app includes tests that covers interactable UI elements of every scene, navi
 ### Technologies
 Most of  this app is build using Unity, we used Editor versions 2021.3.19f1. The database we use to store our 3D models is Firebase with SDK version 10.5.  We used the GoogleMaps API to access location settings. We used Nunit framework to perform unit testing and InputTestFixture for UI tests. Also integrated CI for checking the changed when anything is pushed on main and Sonarqube code analysis.
 
-## Github repository
-The Unity project exists in the app folder, all main components are stored in Assets with in app. 
+### Github repository
+The Unity project exists in the app folder, all main components are stored in Assets with in app. The repository structure with in the app folder is replicated as how files are stored with in Unity. 
 The docsblueprint folder contains all MkDocs images, pages, and .html files. 
 The User Manual and Job Description are PDF files within the first page of the code. 
 
