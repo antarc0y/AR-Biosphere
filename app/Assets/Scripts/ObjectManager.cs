@@ -155,8 +155,8 @@ public class ObjectManager : MonoBehaviour
         likeToggle.toggleChangedByUser = true;
 
         string formattedText = species.speciesNameCapitalized + " (<i>" + species.binomial + "</i>)\n" +
-                               species.description + "\n" +
-                               "More info: " + species.link;
+                               species.description;
+    
         objectPopUpText.SetText(formattedText);
         objectPopUp.SetBool("visible", true);
         PopupButton.onClick.RemoveAllListeners();

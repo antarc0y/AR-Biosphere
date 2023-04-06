@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
-using System;
+using UnityEngine.Android;
+
 
 public class GPSLocation : MonoBehaviour
 {
@@ -36,8 +37,10 @@ public class GPSLocation : MonoBehaviour
         rect = rawMap.GetComponent<RectTransform>().rect;
         mapWidth = (int)rect.width;
         mapHeight = (int)rect.height;
-        UpdateLatLonMap();
+        StartCoroutine(InputLocation()); // Request permission and get location
+        StartCoroutine(GetGoogleMap()); // Get the map
     }
+
 
     public void UpdateLatLonMap()
     {
@@ -55,50 +58,57 @@ public class GPSLocation : MonoBehaviour
 
     private IEnumerator InputLocation()
     {
-        /*
-        Get the user location using gps
-        */
-
-        //Check if the location service is enabled
-        if (Input.location.isEnabledByUser)
+        // Check if the user has already granted permission to access fine location
+        if (Permission.HasUserAuthorizedPermission(Permission.FineLocation))
         {
+            // If yes, start the location service
             Input.location.Start();
-            int maxWait = 20; //Max time to wait for the location to be determined
-            while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0 ) //Wait for the location to be determined
-            {
-                yield return new WaitForSeconds(1.0f); //Wait for 1 second
-                maxWait--;
-            }
-            
-            //If the location is not determined after 20 seconds, stop the coroutine
-            if (maxWait < 1) 
-            {
-                Debug.Log( "Timed Out" );
-                yield break;
-            }
-            
-            //If the location is not determined, stop the coroutine
-            if (Input.location.status == LocationServiceStatus.Failed) 
-            {
-                Debug.Log("Unable to determine device location");
-            }
-            
-            //If the location is determined, get the latitude and longitude
-            else 
-            {
-                lat = Input.location.lastData.latitude;
-                lon = Input.location.lastData.longitude;
-            }
-            
-            Input.location.Stop(); //Stop the location service
         }
-
         else
         {
-            Debug.Log("Location Services are not enabled"); 
+            // If no, request permission to access fine location
+            Permission.RequestUserPermission(Permission.FineLocation);
+
+            // Wait until the user responds to the permission request
+            while (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+            {
+                yield return null;
+            }
+
+            // Once the user grants permission, start the location service
+            Input.location.Start();
         }
 
+        int maxWait = 20; //Max time to wait for the location to be determined
+        while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0) //Wait for the location to be determined
+        {
+            yield return new WaitForSeconds(1.0f); //Wait for 1 second
+            maxWait--;
+        }
+
+        //If the location is not determined after 20 seconds, stop the coroutine
+        if (maxWait < 1)
+        {
+            Debug.Log("Timed Out");
+            yield break;
+        }
+
+        //If the location is not determined, stop the coroutine
+        if (Input.location.status == LocationServiceStatus.Failed)
+        {
+            Debug.Log("Unable to determine device location");
+        }
+
+        //If the location is determined, get the latitude and longitude
+        else
+        {
+            lat = Input.location.lastData.latitude;
+            lon = Input.location.lastData.longitude;
+        }
+
+        Input.location.Stop(); //Stop the location service
     }
+
 
     private IEnumerator GetGoogleMap()
     {
