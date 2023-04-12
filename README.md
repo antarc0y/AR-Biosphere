@@ -6,6 +6,7 @@
 
 Read more: [About us](https://www.aquaticbiosphere.ca/opportunity), [Aquatic Biosphere Network](https://www.thepublicplace.online/en/channel/the-aquatic-biosphere.8447)
 
+
 ### Project Description
 The project's `goal` is to build a prototype (proof of concept) of an [Augmented Reality](https://en.wikipedia.org/wiki/Augmented_reality) Ecosystem app.
 
@@ -29,9 +30,12 @@ SonarQube analysis was performed manually on major changes to ensure best practi
 ### Technologies
 Most of  this app is build using Unity, we used Editor versions 2021.3.19f1. The database we use to store our 3D models is Firebase with SDK version 10.5.  We used the GoogleMaps API to access location settings. We used Nunit framework to perform unit testing and InputTestFixture for UI tests. Also integrated CI for checking the changed when anything is pushed on main and Sonarqube code analysis.
 
+
 ### Github repository
 The Unity project exists in the app folder, all main components are stored in Assets with in app. The repository structure with in the app folder is replicated as how files are stored with in Unity. 
 The docsblueprint folder contains all MkDocs images, pages, and .html files. 
-The User Manual and Job Description are PDF files within the first page of the code. 
+The User Manual and Job Description are PDF files within the first page of the code.
 
 
+### Screencast/Video Demo
+A video recording demonstrating the app can be found here: ### https://drive.google.com/file/d/1aQTV6oJmLBg2a1R2u_HinWm0_iIQRHRM/view?usp=drivesdk
