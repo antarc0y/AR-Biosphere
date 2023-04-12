@@ -38,4 +38,4 @@ The User Manual and Job Description are PDF files within the first page of the c
 
 
 ### Screencast/Video Demo
-A video recording demonstrating the app can be found here: ### https://drive.google.com/file/d/1aQTV6oJmLBg2a1R2u_HinWm0_iIQRHRM/view?usp=drivesdk
+A video recording showcasing the app can be found here: https://drive.google.com/file/d/1aQTV6oJmLBg2a1R2u_HinWm0_iIQRHRM/view?usp=drivesdk
