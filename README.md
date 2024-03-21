@@ -6,6 +6,8 @@
 
 Read more: [About us](https://www.aquaticbiosphere.ca/opportunity), [Aquatic Biosphere Network](https://www.thepublicplace.online/en/channel/the-aquatic-biosphere.8447)
 
+Visit the documentation for this project [here](https://ualberta-cmput401.github.io/ar-biosphere/)
+
 
 ### Project Description
 The project's `goal` is to build a prototype (proof of concept) of an [Augmented Reality](https://en.wikipedia.org/wiki/Augmented_reality) Ecosystem app.
